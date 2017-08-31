@@ -12,7 +12,7 @@ import 'codemirror/mode/brainfuck/brainfuck'
 
 class CodeBox extends React.Component {
   state = {
-    code: '// Code',
+    code: '## Code',
     mode: 'ruby'
   }
 

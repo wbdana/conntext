@@ -17,10 +17,7 @@ class SelectLanguage extends React.Component {
     this.props.updateMode(data.value)
   }
 
-
-
-
-  render(){
+  render() {
     const languageOptions = [
           { key: 'Ruby', text: 'Ruby', value: 'ruby' },
           { key: 'JavaScript', text: 'JavaScript', value: 'javascript' },
@@ -42,21 +39,11 @@ class SelectLanguage extends React.Component {
           labeled
           icon='world'
           options={languageOptions}
-          placeholder='Select Language'
+          placeholder='Ruby'
         />
       </div>
     )
   }
-
-
-    // <select onChange={props.updateMode}>
-    //   <option value="ruby">Ruby</option>
-    //   <option value="javascript">JavaScript</option>
-    //   <option value="python">Python</option>
-    //   <option value="django">Django</option>
-    //   <option value="sql">SQL</option>
-    //   <option value="markdown">Markdown</option>
-    // </select>
 }
 
 export default SelectLanguage

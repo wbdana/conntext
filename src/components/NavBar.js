@@ -19,7 +19,8 @@ class NavBar extends React.Component {
     const { activePage } = this.state
     return(
       <div className="NavBar">
-        <Header size="huge">ConnText</Header>
+        <br/><br/><br/><br/>
+        <Header size="huge" className="App-logo">ConnText</Header>
         <Header size="small">Connected Text</Header>
         <Menu>
           <Menu.Item name="home" active={activePage === 'home'} onClick={this.handleItemClick}>

@@ -6,9 +6,22 @@
   text-align: center;
 }
 
-#AceEditor {
+.ace_content    {
+  width: 800px;
+}
+
+.ace_editor {
   height: 600px;
-  width: ;
+  width: 100%;
+}
+
+.ace_scroller {
+  width: 100%;
+}
+
+.ace_text_input {
+  height: 600px;
+  width: 100%;
 }
 
 .App-logo {

@@ -41,7 +41,7 @@ class SelectLanguage extends React.Component {
           labeled
           icon='world'
           options={languageOptions}
-          placeholder='Ruby'
+          placeholder='Select Language (Currently Ruby)'
         />
       </div>
     )

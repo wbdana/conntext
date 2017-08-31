@@ -20,6 +20,7 @@ import 'brace/mode/csharp'
 import 'brace/theme/github'
 import 'brace/theme/terminal'
 import 'brace/theme/solarized_dark'
+import 'brace/theme/solarized_light'
 
 class Editor extends React.Component {
   state = {
@@ -46,6 +47,7 @@ class Editor extends React.Component {
           updateMode={this.updateMode}
           mode={this.state.mode}
         />
+        <br/>
         <AceEditor
           mode={this.state.mode}
           theme="solarized_dark"
@@ -54,6 +56,8 @@ class Editor extends React.Component {
           value={this.state.code}
           editorProps={{$blockScrolling: true}}
           keyboardHandler="vim"
+          width="100%;"
+          height="auto;"
         />
       </div>
     )

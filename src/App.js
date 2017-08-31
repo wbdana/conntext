@@ -10,9 +10,10 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 
 // CSS
-import './App.css';
 import 'semantic-ui-css/semantic.min.css'
-import 'codemirror/lib/codemirror.css'
+// import 'codemirror/lib/codemirror.css'
+import './App.css';
+
 
 class App extends Component {
   state = {
@@ -28,7 +29,7 @@ class App extends Component {
   renderCorrectPage = () => {
     if (this.state.activePage === 'home') {
       return <Home />
-    } else if (this.state.activePage === 'files') {
+    } else if (this.state.activePage === 'editor') {
       return <Editor />
     }
   }

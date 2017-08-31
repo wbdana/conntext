@@ -27,7 +27,8 @@ class SelectLanguage extends React.Component {
           { key: 'Python', text: 'Python', value: 'python' },
           { key: 'Django', text: 'Django', value: 'django' },
           { key: 'SQL', text: 'SQL', value: 'sql' },
-          { key: 'Markdown', text: 'Markdown', value: 'markdown' }
+          { key: 'Markdown', text: 'Markdown', value: 'markdown' },
+          { key: 'Brainfuck', text: 'Brainfuck', value: 'brainfuck' }
     ]
     return(
       <div className="SelectLanguageDropdown">

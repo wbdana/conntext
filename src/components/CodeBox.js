@@ -7,6 +7,7 @@ import 'codemirror/mode/python/python'
 import 'codemirror/mode/django/django'
 import 'codemirror/mode/markdown/markdown'
 import 'codemirror/mode/sql/sql'
+import 'codemirror/mode/brainfuck/brainfuck'
 
 
 class CodeBox extends React.Component {

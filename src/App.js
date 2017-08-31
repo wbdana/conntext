@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import TextEditor from './components/TextEditor'
-import CodeBox from './components/CodeBox'
+
+// Editor Candidates
+import TextEditor from './components/TextEditor' // Draft-JS
+import CodeBox from './components/CodeBox' // CodeMirror
+import Editor from './components/Editor' // React-Ace
+
+// Other components
 import NavBar from './components/NavBar'
 import Home from './components/Home'
+
+// CSS
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 import 'codemirror/lib/codemirror.css'
@@ -22,7 +29,7 @@ class App extends Component {
     if (this.state.activePage === 'home') {
       return <Home />
     } else if (this.state.activePage === 'files') {
-      return <CodeBox />
+      return <Editor />
     }
   }
 

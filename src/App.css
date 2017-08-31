@@ -6,6 +6,11 @@
   text-align: center;
 }
 
+#AceEditor {
+  height: 600px;
+  width: ;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 1s linear;
   height: 80px;

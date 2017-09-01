@@ -9,7 +9,6 @@ import UserDirectory from './components/UserDirectory'
 
 // CSS
 import 'semantic-ui-css/semantic.min.css'
-// import 'codemirror/lib/codemirror.css'
 import './App.css';
 
 

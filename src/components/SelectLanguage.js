@@ -6,15 +6,15 @@ class SelectLanguage extends React.Component {
     super(props)
 
     this.state = {
-      mode: this.props.mode
+      language: this.props.language
     }
   }
 
-  updateMode = (event, data) => {
+  updateLanguage = (event, data) => {
     this.setState({
-      mode: data.value
+      language: data.value
     })
-    this.props.updateMode(data.value)
+    this.props.updateLanguage(data.value)
   }
 
   render() {
@@ -33,7 +33,7 @@ class SelectLanguage extends React.Component {
       <div className="SelectLanguageDropdown">
         <br/>
         <Dropdown
-          onChange={this.updateMode}
+          onChange={this.updateLanguage}
           button
           className='icon'
           fluid

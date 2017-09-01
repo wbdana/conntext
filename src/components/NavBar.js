@@ -36,6 +36,10 @@ class NavBar extends React.Component {
             <Icon name='edit' />Editor
           </Menu.Item>
 
+          <Menu.Item name='userDirectory' active={activePage === 'userDirectory'} onClick={this.handleItemClick}>
+            <Icon name='address book outline' />User Directory
+          </Menu.Item>
+
         </Menu>
       </div>
     )

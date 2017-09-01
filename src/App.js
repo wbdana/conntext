@@ -8,6 +8,7 @@ import Editor from './components/Editor' // React-Ace
 // Other components
 import NavBar from './components/NavBar'
 import Home from './components/Home'
+import SavedFiles from './components/SavedFiles'
 
 // CSS
 import 'semantic-ui-css/semantic.min.css'
@@ -31,6 +32,8 @@ class App extends Component {
       return <Home />
     } else if (this.state.activePage === 'editor') {
       return <Editor />
+    } else if (this.state.activePage === 'savedFiles') {
+      return <SavedFiles />
     }
   }
 

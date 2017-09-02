@@ -1,15 +1,14 @@
 import React from 'react'
 import { Header, Menu, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
+import { SiteHeader } from './PageAssets'
 
 const NavBar = () => {
   return(
     <div className="NavBar">
 
-      <br/><br/><br/><br/>
+      <SiteHeader />
 
-      <Header size="huge" className="App-logo">Connected Text</Header>
-      <Header size="small">Connected Text</Header>
       <Menu>
 
         <NavLink to="/home" exact>

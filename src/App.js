@@ -13,6 +13,9 @@ import UserShowPage from './components/UserShowPage'
 import 'semantic-ui-css/semantic.min.css'
 import './App.css';
 
+// Page Assets
+import { APIURL } from './components/PageAssets'
+
 
 class App extends Component {
 
@@ -23,7 +26,7 @@ class App extends Component {
         "content-type": "application/json"
       }
     }
-    fetch('http://localhost:3000/api/v1/users/1', options)
+    fetch(`${APIURL}`, options)
       .then(resp => resp.json())
       .then(json => console.log(json))
   }

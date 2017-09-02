@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Editor from './components/Editor' // React-Ace
 
 // Other components
@@ -13,27 +14,6 @@ import './App.css';
 
 
 class App extends Component {
-  state = {
-    activePage: 'home'
-  }
-
-  updateActivePage = (newPage) => {
-    this.setState({
-      activePage: newPage
-    })
-  }
-
-  renderCorrectPage = () => {
-    if (this.state.activePage === 'home') {
-      return <Home />
-    } else if (this.state.activePage === 'editor') {
-      return <Editor />
-    } else if (this.state.activePage === 'savedFiles') {
-      return <SavedFiles />
-    } else if (this.state.activePage === 'userDirectory') {
-      return <UserDirectory />
-    }
-  }
 
   apiConnectTest = () => {
     const options = {
@@ -55,8 +35,32 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar activePage={this.state.activePage} updateActivePage={this.updateActivePage} />
-        {this.renderCorrectPage()}
+        <Router>
+          <div className="RouterContainer">
+
+            <Route path="/" render={(props)=>(
+              <NavBar {...props} />
+            )} />
+
+            <Route path="/home" render={(props)=>(
+              <Home />
+            )} />
+
+            <Route path="/files" render={(props)=>(
+              <SavedFiles />
+            )} />
+
+            <Route path="/editor" render={(props)=>(
+              <Editor />
+            )} />
+
+            <Route path="/users" render={(props)=>(
+              <UserDirectory />
+            )} />
+
+          </div>
+
+        </Router>
       </div>
     );
   }

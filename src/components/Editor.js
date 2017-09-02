@@ -82,9 +82,14 @@ class Editor extends React.Component {
 
         <br/>
 
-        <Input placeholder='File name...' onChange={this.updateName} value={this.state.name} />
+        <Input
+          placeholder='File name...' onChange={this.updateName} value={this.state.name}
+          fluid
+        />
 
-        <Button animated='fade'>
+        <br/>
+
+        <Button animated='fade' fluid>
           <Button.Content visible>
             Save File
           </Button.Content>

@@ -21,6 +21,12 @@ import { APIURL } from './components/PageAssets'
 
 
 class App extends Component {
+  state = {
+    auth: {
+      isLoggedIn: false,
+      user: ''
+    }
+  }
 
   apiConnectTest = () => {
     const options = {

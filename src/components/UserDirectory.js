@@ -33,20 +33,7 @@ class UserDirectory extends React.Component {
     })
   }
 
-
-  // {this.state.users.filter( user => {return user.username.includes(this.state.search)}).map( (user, index) => {
-  //   return(
-  //     <Card key={index}>
-  //       <Image src={user.profile_image_url} size='small' />
-  //       <Card.Content>
-  //         <Card.Header>
-  //           {user.username}
-  //         </Card.Header>
-  //       </Card.Content>
-  //     </Card>
-  //   )
-  // })}
-
+  // TODO Remove filters after dropping db; controlling for username !== null/nil etc.
   render() {
     return(
       <div className='userDirectory'>

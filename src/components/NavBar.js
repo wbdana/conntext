@@ -1,12 +1,13 @@
 import React from 'react'
 import { Header, Menu, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
-import { SiteHeader } from './PageAssets'
+import { SiteHeader, FSP } from './PageAssets'
 
 const NavBar = () => {
   return(
     <div className="NavBar">
 
+      <FSP/>
       <SiteHeader />
 
       <Menu>

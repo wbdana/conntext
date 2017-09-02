@@ -8,6 +8,8 @@ import Home from './components/Home'
 import SavedFiles from './components/SavedFiles'
 import UserDirectory from './components/UserDirectory'
 import UserShowPage from './components/UserShowPage'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
 
 // CSS
 import 'semantic-ui-css/semantic.min.css'
@@ -41,8 +43,16 @@ class App extends Component {
         <Router>
           <div className="RouterContainer">
 
-            <Route path="/" render={(props)=>(
-              <NavBar {...props} />
+            <Route path="/" render={()=>(
+              <NavBar />
+            )} />
+
+            <Route path="/login" render={()=>(
+              <Login />
+            )} />
+
+            <Route path="/signup" render={()=>(
+              <SignUp />
             )} />
 
             <Route path="/home" render={(props)=>(

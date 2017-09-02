@@ -5,15 +5,29 @@ const APIURL = () => (
   "http://localhost:3000/"
 )
 
+// For spinning logo, className="App-logo"
 const SiteHeader = () => (
   <div className="SiteHeader">
-    <br/><br/><br/><br/>
-    <Header size="huge" className="App-logo">Connected Text</Header>
+    <Header size="huge">ConnText</Header>
     <Header size="small">Connected Text</Header>
   </div>
 )
 
+const TSP = () => (
+  <div className="TSP">
+    <br/><br/>
+  </div>
+)
+
+const FSP = () => (
+  <div className="FSP">
+    <br/><br/><br/><br/>
+  </div>
+)
+
 export {APIURL}
+export {FSP}
+export {TSP}
 // export {SiteLogo}
 export {SiteHeader}
 // export {PageHeader}

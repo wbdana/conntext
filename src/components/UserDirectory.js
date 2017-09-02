@@ -58,7 +58,7 @@ class UserDirectory extends React.Component {
         />
         <br/><br/><br/>
         <Card.Group itemsPerRow={9}>
-        {this.state.users.filter( user => {return user.username.includes(this.state.search)}).map( (user, index) => {
+        {this.state.users.filter( user => {return user.username !== null} ).filter( user => {return user.username.includes(this.state.search)}).map( (user, index) => {
           return(
             <Card key={index}>
               <Image src={user.profile_image_url} size='small' />

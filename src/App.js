@@ -6,6 +6,7 @@ import Editor from './components/Editor' // React-Ace
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SavedFiles from './components/SavedFiles'
+import AllFiles from './components/AllFiles'
 import UserDirectory from './components/UserDirectory'
 import UserShowPage from './components/UserShowPage'
 import Login from './components/Login'
@@ -59,8 +60,12 @@ class App extends Component {
               <Home {...props} />
             )} />
 
-            <Route path="/files" render={(props)=>(
+            <Route path="/savedfiles" render={(props)=>(
               <SavedFiles {...props} />
+            )} />
+
+            <Route path="/allfiles" render={(props)=>(
+              <AllFiles {...props} />
             )} />
 
             <Route path="/editor" render={(props)=>(

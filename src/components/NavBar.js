@@ -18,9 +18,15 @@ const NavBar = () => {
           </Menu.Item>
         </NavLink>
 
-        <NavLink to="/files" exact>
+        <NavLink to="/savedfiles" exact>
           <Menu.Item name='savedFiles'>
             <Icon name='file code outline' />Saved Files
+          </Menu.Item>
+        </NavLink>
+
+        <NavLink to="/allfiles" exact>
+          <Menu.Item name='allfiles'>
+            <Icon name='file code' />All Files
           </Menu.Item>
         </NavLink>
 

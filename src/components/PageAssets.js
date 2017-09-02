@@ -2,7 +2,7 @@ import React from "react"
 import { Header, Loader, Image } from 'semantic-ui-react'
 
 const APIURL = () => (
-  "http://localhost:3000/"
+  "http://localhost:3000/api/v1"
 )
 
 // For spinning logo, className="App-logo"

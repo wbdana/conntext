@@ -1,5 +1,6 @@
 import React from 'react'
 import { List, Image, Input, Card } from 'semantic-ui-react'
+import { APIURL } from './PageAssets'
 
 class UserDirectory extends React.Component {
   state = {
@@ -9,16 +10,17 @@ class UserDirectory extends React.Component {
 
   grabUsers = () => {
     const options = {
+      "method": "get",
       "headers": {
         "content-type": "application/json",
         "accept": "application/json"
       }
     }
-    fetch('http://localhost:3000/api/v1/users', options)
+    fetch(`${APIURL()}/users`, options)
       .then(resp => resp.json())
       .then(json => this.setState({
         users: [...json]
-      }))
+      }, console.log(this.state)))
   }
 
   componentDidMount() {
@@ -31,6 +33,20 @@ class UserDirectory extends React.Component {
     })
   }
 
+
+  // {this.state.users.filter( user => {return user.username.includes(this.state.search)}).map( (user, index) => {
+  //   return(
+  //     <Card key={index}>
+  //       <Image src={user.profile_image_url} size='small' />
+  //       <Card.Content>
+  //         <Card.Header>
+  //           {user.username}
+  //         </Card.Header>
+  //       </Card.Content>
+  //     </Card>
+  //   )
+  // })}
+
   render() {
     return(
       <div className='userDirectory'>
@@ -42,18 +58,18 @@ class UserDirectory extends React.Component {
         />
         <br/><br/><br/>
         <Card.Group itemsPerRow={9}>
-          {this.state.users.filter( user => {return user.username.includes(this.state.search)}).map( (user, index) => {
-            return(
-              <Card key={index}>
-                <Image src={user.profile_image_url} size='small' />
-                <Card.Content>
-                  <Card.Header>
-                    {user.username}
-                  </Card.Header>
-                </Card.Content>
-              </Card>
-            )
-          })}
+        {this.state.users.filter( user => {return user.username.includes(this.state.search)}).map( (user, index) => {
+          return(
+            <Card key={index}>
+              <Image src={user.profile_image_url} size='small' />
+              <Card.Content>
+                <Card.Header>
+                  {user.username}
+                </Card.Header>
+              </Card.Content>
+            </Card>
+          )
+        })}
         </Card.Group>
       </div>
     )

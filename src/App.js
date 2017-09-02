@@ -28,7 +28,7 @@ class App extends Component {
         "content-type": "application/json"
       }
     }
-    fetch(`${APIURL}`, options)
+    fetch(`${APIURL()}/users`, options)
       .then(resp => resp.json())
       .then(json => console.log(json))
   }

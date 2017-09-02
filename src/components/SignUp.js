@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Form, Button, Header } from 'semantic-ui-react'
-import { TSP, FSP } from './PageAssets'
+import { APIURL, TSP, FSP } from './PageAssets'
 
 class SignUp extends React.Component {
   state = {
@@ -10,8 +10,25 @@ class SignUp extends React.Component {
     profile_image_url: '',
   }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    }, ()=>{console.log(this.state)})
+  }
+
   handleSubmit = () => {
-    console.log('To be added!')
+    const options = {
+      "method": "post",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    }
+    console.log(`${APIURL()}/users`, options)
+    fetch(`${APIURL()}/users`, options)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
   }
 
   render() {
@@ -20,10 +37,10 @@ class SignUp extends React.Component {
         <FSP />
         <Header size='small'>Sign Up</Header>
         <Form>
-          <Form.Input label='Username' type='username' name='username' />
-          <Form.Input label='Password' type='password' name='password' />
-          <Form.Input label='Email' type='email' name='email' />
-          <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' />
+          <Form.Input label='Username' type='username' name='username' onChange={this.handleChange} />
+          <Form.Input label='Password' type='password' name='password' onChange={this.handleChange} />
+          <Form.Input label='Email' type='email' name='email' onChange={this.handleChange} />
+          <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' onChange={this.handleChange} />
         </Form>
         <TSP />
         <Button onClick={this.handleSubmit} animated='fade' size='huge'>

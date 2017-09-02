@@ -7,6 +7,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SavedFiles from './components/SavedFiles'
 import UserDirectory from './components/UserDirectory'
+import UserShowPage from './components/UserShowPage'
 
 // CSS
 import 'semantic-ui-css/semantic.min.css'
@@ -22,7 +23,6 @@ class App extends Component {
         "content-type": "application/json"
       }
     }
-
     fetch('http://localhost:3000/api/v1/users/1', options)
       .then(resp => resp.json())
       .then(json => console.log(json))
@@ -43,19 +43,23 @@ class App extends Component {
             )} />
 
             <Route path="/home" render={(props)=>(
-              <Home />
+              <Home {...props} />
             )} />
 
             <Route path="/files" render={(props)=>(
-              <SavedFiles />
+              <SavedFiles {...props} />
             )} />
 
             <Route path="/editor" render={(props)=>(
-              <Editor />
+              <Editor {...props} />
             )} />
 
             <Route path="/users" render={(props)=>(
-              <UserDirectory />
+              <UserDirectory {...props} />
+            )} />
+
+            <Route path="/users/:id" render={(props)=>(
+              <UserShowPage {...props} />
             )} />
 
           </div>

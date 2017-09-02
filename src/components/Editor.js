@@ -3,6 +3,7 @@ import brace from 'brace'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
 import { Input, Button, Icon } from 'semantic-ui-react'
+import { APIURL } from './PageAssets'
 
 
 // Import syntax highlights
@@ -71,6 +72,21 @@ class Editor extends React.Component {
     }
   }
 
+  handleSubmit = (event) => {
+    const options = {
+      "method": "post",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    }
+    console.log(`${APIURL()}/records`, options)
+    fetch(`${APIURL()}/records`, options)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
+  }
+
   render() {
     return(
       <div className="Editor">
@@ -89,7 +105,7 @@ class Editor extends React.Component {
 
         <br/>
 
-        <Button animated='fade' fluid>
+        <Button animated='fade' fluid onClick={this.handleSubmit}>
           <Button.Content visible>
             Save File
           </Button.Content>

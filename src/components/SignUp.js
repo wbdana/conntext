@@ -16,7 +16,7 @@ class SignUp extends React.Component {
     }, ()=>{console.log(this.state)})
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
     const options = {
       "method": "post",
       "headers": {

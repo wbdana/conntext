@@ -89,7 +89,7 @@ class Editor extends React.Component {
     }
   }
 
-  handleSubmit = (event) => {
+  handleNewSubmit = (event) => {
     const options = {
       "method": "post",
       "headers": {
@@ -122,9 +122,9 @@ class Editor extends React.Component {
 
         <br/>
 
-        <Button animated='fade' fluid onClick={this.handleSubmit}>
+        <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
           <Button.Content visible>
-            Save File
+            Save as New File
           </Button.Content>
           <Button.Content hidden>
             {this.state.name + this.getFileExtension()}

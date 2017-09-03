@@ -18,7 +18,7 @@ class SelectLanguage extends React.Component {
   }
 
   languagePlaceholder = () => {
-    if (this.props.language) {
+    if (this.props.language !== "") {
       switch (this.props.language) {
         case 'ruby':
           return 'Ruby'

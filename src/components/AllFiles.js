@@ -38,7 +38,6 @@ class AllFiles extends React.Component {
   }
 
   handleClick = (event, data) => {
-    // console.log(event.target.id)
     const options = {
       "method": "GET",
       "headers": {
@@ -51,18 +50,6 @@ class AllFiles extends React.Component {
       .then(json => {
         this.props.setActiveRecord(json)
       })
-      // .then(json => console.log(json))
-      // .then(json => {return(
-      //   <Redirect to={{
-      //     pathname: "/editor",
-      //     state: {
-      //       name: json.name,
-      //       content: json.content,
-      //       language: json.language,
-      //       recordId: json.id
-      //     }
-      //   }} />
-      // )})
   }
 
   render(){

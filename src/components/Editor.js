@@ -32,6 +32,21 @@ class Editor extends React.Component {
     recordId: ''
   }
 
+  propsCheck = () => {
+    if (this.props.activeRecord) {
+      this.setState({
+        name: this.props.activeRecord.name,
+        content: this.props.activeRecord.content,
+        language: this.props.activeRecord.language,
+        recordId: this.props.activeRecord.recordId
+      })
+    }
+  }
+
+  componentDidMount() {
+    this.propsCheck()
+  }
+
   updateName = (event, data) => {
     this.setState({
       name: data.value

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import Editor from './components/Editor' // React-Ace
 
 // Other components
@@ -25,7 +25,26 @@ class App extends Component {
     auth: {
       isLoggedIn: false,
       user: ''
+    },
+    activeRecord: {
+      name: '',
+      content: '',
+      language: '',
+      recordId: '',
+      redirect: false
     }
+  }
+
+  setActiveRecord = (response) => {
+    this.setState({
+      activeRecord: {
+        name: response.name,
+        content: response.content,
+        language: response.language,
+        recordId: response.id,
+        redirect: true
+      }
+    })
   }
 
   render() {
@@ -55,11 +74,19 @@ class App extends Component {
             )} />
 
             <Route path="/allfiles" render={(props)=>(
-              <AllFiles {...props} />
+              <AllFiles
+                {...props}
+                setActiveRecord={this.setActiveRecord}
+              />
             )} />
 
+            {this.state.activeRecord.redirect === true && <Redirect to="/editor" />}
+
             <Route path="/editor" render={(props)=>(
-              <Editor {...props} />
+              <Editor
+                {...props}
+                activeRecord={this.state.activeRecord}
+              />
             )} />
 
             <Route path="/users" render={(props)=>(

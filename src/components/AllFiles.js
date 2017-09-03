@@ -48,18 +48,21 @@ class AllFiles extends React.Component {
     }
     fetch(`${APIURL()}/records/${event.target.id}`, options)
       .then(resp => resp.json())
+      .then(json => {
+        this.props.setActiveRecord(json)
+      })
       // .then(json => console.log(json))
-      .then(json => {return(
-        <Redirect to={{
-          pathname: "/editor",
-          state: {
-            name: json.name,
-            content: json.content,
-            language: json.language,
-            recordId: json.id
-          }
-        }} />
-      )})
+      // .then(json => {return(
+      //   <Redirect to={{
+      //     pathname: "/editor",
+      //     state: {
+      //       name: json.name,
+      //       content: json.content,
+      //       language: json.language,
+      //       recordId: json.id
+      //     }
+      //   }} />
+      // )})
   }
 
   render(){

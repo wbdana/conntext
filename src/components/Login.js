@@ -5,12 +5,18 @@ import { TSP, FSP } from './PageAssets'
 
 class Login extends React.Component {
   state = {
-    username: '',
+    email: '',
     password: ''
   }
 
-  handleSubmit = () => {
-    console.log('To be added!')
+  onChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    this.props.login({auth: this.state})
   }
 
   render() {
@@ -19,8 +25,8 @@ class Login extends React.Component {
         <FSP />
         <Header size='small'>Login</Header>
         <Form>
-          <Form.Input label='Username' type='username' name='username' />
-          <Form.Input label='Password' type='password' name='password' />
+          <Form.Input label='Username' type='username' name='email' onChange={this.onChange} />
+          <Form.Input label='Password' type='password' name='password' onChange={this.onChange} />
         </Form>
         <TSP />
         <Button onClick={this.handleSubmit} animated='fade' size='huge'>

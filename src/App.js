@@ -11,6 +11,7 @@ import UserDirectory from './components/UserDirectory'
 import UserShowPage from './components/UserShowPage'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import Auth from './services/Auth'
 
 // CSS
 import 'semantic-ui-css/semantic.min.css'
@@ -57,6 +58,33 @@ class App extends Component {
     })
   }
 
+  login = (loginParams) => {
+    Auth.login(loginParams)
+      .then( user => {
+        if (!user.error) {
+          this.setState({
+            auth:{
+              user: user
+            }
+          })
+          localStorage.setItem('jwt', user.jwt )
+        }
+      }).then(()=>{
+        Auth.currentUser()
+          .then(user => {
+            if (!user.error) {
+              console.log("fetch user");
+              this.setState({
+                auth: {
+                  isLoggedIn: true,
+                  user: user
+                }
+              })
+            }
+          })
+      })
+    }
+
   render() {
     return (
       <div className="App">
@@ -67,15 +95,20 @@ class App extends Component {
               <NavBar />
             )} />
 
-            <Route path="/login" render={()=>(
-              <Login />
+            <Route exact path ="/" render={(props)=>(
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="/login" {...props} /> : <Redirect to="/home" {...props} />
             )} />
 
-            <Route path="/signup" render={()=>(
+            <Route path="/login" render={()=>(
+              <Login login={this.login} />
+            )} />
+
+            <Route exact path="/signup" render={()=>(
               <SignUp />
             )} />
 
-            <Route path="/home" render={(props)=>(
+            <Route exact path="/home" render={(props)=>(
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="/login" {...props} /> :
               <Home {...props} />
             )} />
 
@@ -83,8 +116,8 @@ class App extends Component {
               <SavedFiles {...props} />
             )} />
 
-            <Route path="/allfiles" render={(props)=>(
-              <AllFiles
+            <Route exact path="/allfiles" render={(props)=>(
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="/login" {...props} /> : <AllFiles
                 {...props}
                 setActiveRecord={this.setActiveRecord}
               />
@@ -109,7 +142,6 @@ class App extends Component {
             )} />
 
           </div>
-
         </Router>
       </div>
     );

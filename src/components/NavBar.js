@@ -1,13 +1,13 @@
 import React from 'react'
 import { Header, Menu, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
-import { SiteHeader, FSP } from './PageAssets'
+import { SiteHeader, FSP, TSP } from './PageAssets'
 
 const NavBar = () => {
   return(
     <div className="NavBar">
 
-      <FSP/>
+      <TSP/>
       <SiteHeader />
 
       <Menu>
@@ -26,7 +26,7 @@ const NavBar = () => {
 
         <NavLink to="/allfiles" exact>
           <Menu.Item name='allfiles'>
-            <Icon name='file code' />All Files
+            <Icon name='file' />All Files
           </Menu.Item>
         </NavLink>
 

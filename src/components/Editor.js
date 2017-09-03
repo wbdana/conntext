@@ -28,25 +28,26 @@ class Editor extends React.Component {
   state = {
     name: '',
     content: '## Code',
-    language: 'ruby'
+    language: 'ruby',
+    recordId: ''
   }
 
   updateName = (event, data) => {
     this.setState({
       name: data.value
-    }, ()=>{console.log(data.value, this.state.name)})
+    })
   }
 
   updateContent = (newContent) => {
     this.setState({
       content: newContent
-    }, ()=>{console.log(this.state.content)})
+    })
   }
 
   updateLanguage = (newLanguage) => {
     this.setState({
       language: newLanguage
-    }, ()=>{console.log(this.state.language)})
+    })
   }
 
   getFileExtension = () => {
@@ -118,14 +119,14 @@ class Editor extends React.Component {
 
         <AceEditor
           mode={this.state.language}
-          theme="solarized_dark"
+          theme="github"
           onChange={this.updateContent}
           name="AceEditor"
           value={this.state.content}
           editorProps={{$blockScrolling: true}}
           keyboardHandler="vim"
-          width="100%;"
-          height="auto;"
+          width="50%"
+          height="80%;"
         />
       </div>
     )

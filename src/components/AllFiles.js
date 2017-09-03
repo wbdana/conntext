@@ -1,5 +1,6 @@
 import React from 'react'
 import { List, Input } from 'semantic-ui-react'
+import { Redirect, Link } from 'react-router-dom'
 import { APIURL } from './PageAssets'
 
 class AllFiles extends React.Component {
@@ -36,6 +37,31 @@ class AllFiles extends React.Component {
     })
   }
 
+  handleClick = (event, data) => {
+    // console.log(event.target.id)
+    const options = {
+      "method": "GET",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      }
+    }
+    fetch(`${APIURL()}/records/${event.target.id}`, options)
+      .then(resp => resp.json())
+      // .then(json => console.log(json))
+      .then(json => {return(
+        <Redirect to={{
+          pathname: "/editor",
+          state: {
+            name: json.name,
+            content: json.content,
+            language: json.language,
+            recordId: json.id
+          }
+        }} />
+      )})
+  }
+
   render(){
     return(
       <div className='allFiles'>
@@ -44,13 +70,13 @@ class AllFiles extends React.Component {
           onChange={this.updateSearch}
           value={this.state.search}
         />
-        <List divided relaxed>
+        <List divided relaxed link>
           {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
             return(
               <List.Item>
                 <List.Icon name='github' size='large' verticalAlign='middle' />
                 <List.Content>
-                  <List.Header as='a'>{file.name}</List.Header>
+                  <List.Header as='a' onClick={this.handleClick} id={file.id}>{file.name}</List.Header>
                   <List.Description as='a'>Last updated...somewhen</List.Description>
                 </List.Content>
               </List.Item>

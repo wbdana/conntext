@@ -28,22 +28,6 @@ class App extends Component {
     }
   }
 
-  apiConnectTest = () => {
-    const options = {
-      "headers": {
-        "accept": "application/json",
-        "content-type": "application/json"
-      }
-    }
-    fetch(`${APIURL()}/users`, options)
-      .then(resp => resp.json())
-      .then(json => console.log(json))
-  }
-
-  componentDidMount() {
-    this.apiConnectTest()
-  }
-
   render() {
     return (
       <div className="App">

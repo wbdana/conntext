@@ -24,7 +24,8 @@ class App extends Component {
   state = {
     auth: {
       isLoggedIn: false,
-      user: ''
+      user: '',
+      userId: ''
     },
     activeRecord: {
       name: '',

@@ -11,6 +11,9 @@ import UserDirectory from './components/UserDirectory'
 import UserShowPage from './components/UserShowPage'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import About from './components/About'
+
+// Services
 import Auth from './services/Auth'
 
 // CSS
@@ -159,6 +162,10 @@ class App extends Component {
 
             <Route path="/users/:id" render={(props)=>(
               <UserShowPage {...props} />
+            )} />
+
+            <Route exact path="/about" render={()=>(
+              <About />
             )} />
 
           </div>

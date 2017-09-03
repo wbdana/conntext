@@ -66,6 +66,15 @@ class Editor extends React.Component {
     })
   }
 
+  newRecord = (event) => {
+    this.setState({
+      name: '',
+      content: '## Code',
+      language: 'ruby',
+      recordId: ''
+    })
+  }
+
   getFileExtension = () => {
     switch (this.state.language) {
       case 'ruby':
@@ -85,7 +94,7 @@ class Editor extends React.Component {
       case 'html':
         return '.html'
       default:
-        return '.??'
+        return '.rb'
     }
   }
 
@@ -121,6 +130,15 @@ class Editor extends React.Component {
         />
 
         <br/>
+
+        <Button animated='fade' width="50%" onClick={this.newRecord}>
+          <Button.Content visible>
+            New File
+          </Button.Content>
+          <Button.Content hidden>
+            Did you save your changes?
+          </Button.Content>
+        </Button>
 
         <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
           <Button.Content visible>

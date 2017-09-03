@@ -87,27 +87,49 @@ class App extends Component {
       })
     }
 
-    // Need to force redirect to Login after logout
-    logout = () => {
-      localStorage.removeItem('jwt')
-      this.setState({ auth: { isLoggedIn: false, user:{}}})
-    }
+  // Need to force redirect to Login after logout
+  logout = () => {
+    localStorage.removeItem('jwt')
+    this.setState({ auth: { isLoggedIn: false, user:{}}})
+  }
 
-    componentDidMount() {
-      if (localStorage.getItem('jwt')) {
-       Auth.currentUser()
-         .then(user => {
-           if (!user.error) {
-             this.setState({
-               auth: {
-                 isLoggedIn: true,
-                 user: user
-               }
-             })
-           }
-         })
-       }
-    }
+  componentDidMount() {
+    if (localStorage.getItem('jwt')) {
+     Auth.currentUser()
+       .then(user => {
+         if (!user.error) {
+           this.setState({
+             auth: {
+               isLoggedIn: true,
+               user: user
+             }
+           })
+         }
+       })
+     }
+  }
+
+  getRecord = (id) => {
+    fetch(`${APIURL()}/records/${id}`)
+      .then(resp => resp.json())
+      .then(json => this.setState({
+        activeRecord: {
+          name: json.name,
+          content: json.content,
+          language: json.language,
+          recordId: json.id,
+          redirect: true
+        }
+      }))
+  }
+
+
+//   getLineData = (id) => {
+//   let lineId = id || this.state.joinLine.lineId
+//   fetch(`${APIURL()}/lines/${lineId}`)
+//   .then(resp => resp.json())
+//   .then(json => this.setState({line: json}))
+// }
 
   render() {
     return (
@@ -147,7 +169,15 @@ class App extends Component {
               />
             )} />
 
-            {this.state.activeRecord.redirect === true && <Redirect to="/editor" />}
+            {this.state.activeRecord.redirect === true && <Redirect to={`/editor/${this.state.activeRecord.recordId}`} />}
+
+            <Route path="/editor/:id" render={(props)=>(
+              <Editor
+                {...props}
+                activeRecord={this.state.activeRecord}
+                redirectReset={this.redirectReset}
+              />
+            )} />
 
             <Route path="/editor" render={(props)=>(
               <Editor

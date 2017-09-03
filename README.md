@@ -3,9 +3,8 @@ Connected Text (ConnText) is a work-in-progress text editor for programmers.
 Planned features:
 
 1. Pull files from GitHub repos;
-2. Save/load files from ConnText API;
-3. Grant other ConnText users access to a file;
-4. Facilitate multi-user live text editing (think Google Docs) through Rails Action Cable in the back end.
+2. Grant other ConnText users access to a file;
+3. Facilitate multi-user live text editing (think Google Docs) through Rails Action Cable in the back end.
 
 Stretch goals that may or may not be implemented at a later date:
 

@@ -42,6 +42,12 @@ const NavBar = (props) => {
           </Menu.Item>
         </NavLink>
 
+        <NavLink to="/about" exact>
+          <Menu.Item name='about'>
+            <Icon name='question circle outline' />About
+          </Menu.Item>
+        </NavLink>
+
         {props.loggedIn === true && <Menu.Item name='logout' onClick={props.logout}>
           <Icon name='remove user' /> Logout
         </Menu.Item>}

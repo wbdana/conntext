@@ -45,6 +45,7 @@ class Editor extends React.Component {
 
   componentDidMount() {
     this.propsCheck()
+    this.props.redirectReset()
   }
 
   updateName = (event, data) => {

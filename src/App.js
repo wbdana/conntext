@@ -47,6 +47,15 @@ class App extends Component {
     })
   }
 
+  redirectReset = () => {
+    this.setState({
+      activeRecord: {
+        ...this.state.activeRecord,
+        redirect: false
+      }
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -86,6 +95,7 @@ class App extends Component {
               <Editor
                 {...props}
                 activeRecord={this.state.activeRecord}
+                redirectReset={this.redirectReset}
               />
             )} />
 

@@ -87,6 +87,7 @@ class App extends Component {
       })
     }
 
+    // Need to force redirect to Login after logout
     logout = () => {
       localStorage.removeItem('jwt')
       this.setState({ auth: { isLoggedIn: false, user:{}}})

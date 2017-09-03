@@ -8,7 +8,6 @@ const APIURL = () => (
 // For spinning logo, className="App-logo"
 const SiteHeader = () => (
   <div className="SiteHeader">
-    <Header size="large">ConnText</Header>
     <Header size="small">Connected Text</Header>
   </div>
 )

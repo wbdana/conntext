@@ -26,14 +26,14 @@ import 'brace/theme/solarized_light'
 
 class Editor extends React.Component {
   state = {
-    name: '',
-    content: '## Code',
-    language: 'ruby',
-    recordId: ''
+    name: this.props.activeRecord.name,
+    content: this.props.activeRecord.content,
+    language: this.props.activeRecord.language,
+    recordId: this.props.activeRecord.recordId
   }
 
   propsCheck = () => {
-    if (this.props.activeRecord) {
+    if (this.props.activeRecord.recordId) {
       this.setState({
         name: this.props.activeRecord.name,
         content: this.props.activeRecord.content,
@@ -44,7 +44,11 @@ class Editor extends React.Component {
   }
 
   componentDidMount() {
-    this.propsCheck()
+    if (window.location.href.match(/\d+$/) !== null) {
+      this.props.getRecord(window.location.href.match(/\d+$/)[0])
+    } else {
+      this.propsCheck()
+    }
     this.props.redirectReset()
   }
 

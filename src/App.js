@@ -112,6 +112,7 @@ class App extends Component {
   getRecord = (id) => {
     fetch(`${APIURL()}/records/${id}`)
       .then(resp => resp.json())
+      // .then(json => console.log(json))
       .then(json => this.setState({
         activeRecord: {
           name: json.name,
@@ -122,14 +123,6 @@ class App extends Component {
         }
       }))
   }
-
-
-//   getLineData = (id) => {
-//   let lineId = id || this.state.joinLine.lineId
-//   fetch(`${APIURL()}/lines/${lineId}`)
-//   .then(resp => resp.json())
-//   .then(json => this.setState({line: json}))
-// }
 
   render() {
     return (
@@ -174,6 +167,7 @@ class App extends Component {
             <Route path="/editor/:id" render={(props)=>(
               <Editor
                 {...props}
+                getRecord={this.getRecord}
                 activeRecord={this.state.activeRecord}
                 redirectReset={this.redirectReset}
               />
@@ -182,6 +176,7 @@ class App extends Component {
             <Route path="/editor" render={(props)=>(
               <Editor
                 {...props}
+                getRecord={this.getRecord}
                 activeRecord={this.state.activeRecord}
                 redirectReset={this.redirectReset}
               />

@@ -17,6 +17,34 @@ class SelectLanguage extends React.Component {
     this.props.updateLanguage(data.value)
   }
 
+  languagePlaceholder = () => {
+    if (this.props.language) {
+      switch (this.props.language) {
+        case 'ruby':
+          return 'Ruby'
+        case 'javascript':
+          return 'JavaScript'
+        case 'python':
+          return 'Python'
+        case 'csharp':
+          return 'C#'
+        case 'xml':
+          return 'XML'
+        case 'markdown':
+          return 'MarkDown'
+        case 'css':
+          return 'CSS'
+        case 'html':
+          return 'HTML'
+        default:
+          return '.??'
+      }
+    } else {
+      return 'Select Language (Currently Ruby)'
+    }
+
+  }
+
   render() {
     const languageOptions = [
           { key: 'Ruby', text: 'Ruby', value: 'ruby' },
@@ -41,7 +69,7 @@ class SelectLanguage extends React.Component {
           labeled
           icon='world'
           options={languageOptions}
-          placeholder='Select Language (Currently Ruby)'
+          placeholder={this.languagePlaceholder()}
         />
       </div>
     )

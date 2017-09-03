@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, Input } from 'semantic-ui-react'
 import { Redirect, Link } from 'react-router-dom'
-import { APIURL } from './PageAssets'
+import { APIURL, TSP, FSP } from './PageAssets'
 
 class AllFiles extends React.Component {
   state = {
@@ -55,11 +55,13 @@ class AllFiles extends React.Component {
   render(){
     return(
       <div className='allFiles'>
+        <TSP />
         <Input
           placeholder='Search records...'
           onChange={this.updateSearch}
           value={this.state.search}
         />
+        <TSP />
         <List divided relaxed link>
           {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
             return(

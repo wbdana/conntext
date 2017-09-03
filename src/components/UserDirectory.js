@@ -1,6 +1,6 @@
 import React from 'react'
 import { List, Image, Input, Card } from 'semantic-ui-react'
-import { APIURL } from './PageAssets'
+import { APIURL, TSP, FSP } from './PageAssets'
 
 class UserDirectory extends React.Component {
   state = {
@@ -37,13 +37,13 @@ class UserDirectory extends React.Component {
   render() {
     return(
       <div className='userDirectory'>
-        <br/>
+        <TSP />
         <Input
           placeholder='Search users...'
           onChange={this.updateSearch}
           value={this.state.search}
         />
-        <br/><br/><br/>
+        <TSP />
         <Card.Group itemsPerRow={9}>
         {this.state.users.filter( user => {return user.username !== null} ).filter( user => {return user.username.includes(this.state.search)}).map( (user, index) => {
           return(

@@ -3,7 +3,7 @@ import brace from 'brace'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
 import { Input, Button, Icon } from 'semantic-ui-react'
-import { APIURL } from './PageAssets'
+import { APIURL, TSP, FSP } from './PageAssets'
 
 
 // Import syntax highlights
@@ -66,15 +66,6 @@ class Editor extends React.Component {
     })
   }
 
-  newRecord = (event) => {
-    this.setState({
-      name: '',
-      content: '## Code',
-      language: 'ruby',
-      recordId: ''
-    })
-  }
-
   getFileExtension = () => {
     switch (this.state.language) {
       case 'ruby':
@@ -98,6 +89,15 @@ class Editor extends React.Component {
     }
   }
 
+  newRecord = (event) => {
+    this.setState({
+      name: '',
+      content: '## Code',
+      language: 'ruby',
+      recordId: ''
+    })
+  }
+
   handleNewSubmit = (event) => {
     const options = {
       "method": "post",
@@ -109,6 +109,20 @@ class Editor extends React.Component {
     }
     console.log(`${APIURL()}/records`, options)
     fetch(`${APIURL()}/records`, options)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
+  }
+
+  handleUpdateSubmit = (event) => {
+    const options = {
+      "method": "PATCH",
+      "headers": {
+        "content-type":"application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    }
+    fetch(`${APIURL()}/records/${this.state.recordId}`, options)
       .then(resp => resp.json())
       .then(json => console.log(json))
   }
@@ -149,7 +163,16 @@ class Editor extends React.Component {
           </Button.Content>
         </Button>
 
-        <br/>
+        <Button animated='fade' width="50%" onClick={this.handleUpdateSubmit}>
+          <Button.Content visible>
+            Update Saved File
+          </Button.Content>
+          <Button.Content hidden>
+            {this.state.name + this.getFileExtension()}
+          </Button.Content>
+        </Button>
+
+        <br/><br/>
 
         <AceEditor
           mode={this.state.language}
@@ -160,7 +183,6 @@ class Editor extends React.Component {
           editorProps={{$blockScrolling: true}}
           keyboardHandler="vim"
           width="50%"
-          height="80%;"
         />
       </div>
     )

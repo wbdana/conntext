@@ -20,7 +20,6 @@ class AllFiles extends React.Component {
     }
     fetch(`${APIURL()}/records`, options)
       .then(resp => resp.json())
-      // .then(json => console.log(json))
       .then(json => {this.setState({
         records: [...json.records],
         recordsUsers: [...json.records_users]
@@ -52,6 +51,29 @@ class AllFiles extends React.Component {
       })
   }
 
+  getFileExtension = (file) => {
+    switch (file.language) {
+      case 'ruby':
+        return '.rb'
+      case 'javascript':
+        return '.js'
+      case 'python':
+        return '.py'
+      case 'csharp':
+        return '.cs'
+      case 'xml':
+        return '.xml'
+      case 'markdown':
+        return '.md'
+      case 'css':
+        return '.css'
+      case 'html':
+        return '.html'
+      default:
+        return '.rb'
+    }
+  }
+
   render(){
     return(
       <div className='allFiles'>
@@ -68,7 +90,7 @@ class AllFiles extends React.Component {
               <List.Item>
                 <List.Icon name='github' size='large' verticalAlign='middle' />
                 <List.Content>
-                  <List.Header as='a' onClick={this.handleClick} id={file.id}>{file.name}</List.Header>
+                  <List.Header as='a' onClick={this.handleClick} id={file.id}>{`${file.name}${this.getFileExtension(file)}`}</List.Header>
                   <List.Description as='a'>Last updated {file.updated_at}</List.Description>
                 </List.Content>
               </List.Item>

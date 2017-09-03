@@ -3,7 +3,7 @@ import { Header, Menu, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { SiteHeader, FSP, TSP } from './PageAssets'
 
-const NavBar = () => {
+const NavBar = (props) => {
   return(
     <div className="NavBar">
 
@@ -26,7 +26,7 @@ const NavBar = () => {
 
         <NavLink to="/allfiles" exact>
           <Menu.Item name='allfiles'>
-            <Icon name='file' />All Files
+            <Icon name='file code outline' />All Files
           </Menu.Item>
         </NavLink>
 
@@ -41,6 +41,10 @@ const NavBar = () => {
             <Icon name='address book outline' />User Directory
           </Menu.Item>
         </NavLink>
+
+        {props.loggedIn === true && <Menu.Item name='logout' onClick={props.logout}>
+          <Icon name='remove user' /> Logout
+        </Menu.Item>}
 
       </Menu>
     </div>

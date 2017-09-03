@@ -25,7 +25,7 @@ class App extends Component {
   state = {
     auth: {
       isLoggedIn: false,
-      user: '',
+      user: {},
       userId: ''
     },
     activeRecord: {
@@ -71,9 +71,8 @@ class App extends Component {
         }
       }).then(()=>{
         Auth.currentUser()
-          .then(user => {
+          .then( user => {
             if (!user.error) {
-              console.log("fetch user");
               this.setState({
                 auth: {
                   isLoggedIn: true,
@@ -85,6 +84,27 @@ class App extends Component {
       })
     }
 
+    logout = () => {
+      localStorage.removeItem('jwt')
+      this.setState({ auth: { isLoggedIn: false, user:{}}})
+    }
+
+    componentDidMount() {
+      if (localStorage.getItem('jwt')) {
+       Auth.currentUser()
+         .then(user => {
+           if (!user.error) {
+             this.setState({
+               auth: {
+                 isLoggedIn: true,
+                 user: user
+               }
+             })
+           }
+         })
+       }
+    }
+
   render() {
     return (
       <div className="App">
@@ -92,19 +112,19 @@ class App extends Component {
           <div className="RouterContainer">
 
             <Route path="/" render={()=>(
-              <NavBar />
+              <NavBar logout={this.logout} loggedIn={this.state.auth.isLoggedIn}/>
             )} />
 
             <Route exact path ="/" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <Redirect to="/login" {...props} /> : <Redirect to="/home" {...props} />
             )} />
 
-            <Route path="/login" render={()=>(
-              <Login login={this.login} />
+            <Route path="/login" render={(props)=>(
+              (this.state.auth.isLoggedIn === false) ? <Login login={this.login} /> : <Redirect to="/home" {...props} />
             )} />
 
-            <Route exact path="/signup" render={()=>(
-              <SignUp />
+            <Route exact path="/signup" render={(props)=>(
+              (this.state.auth.isLoggedIn === false) ? <SignUp /> : <Redirect to="/home" {...props} />
             )} />
 
             <Route exact path="/home" render={(props)=>(

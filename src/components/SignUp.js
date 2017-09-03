@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Form, Button, Header } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 import { APIURL, TSP, FSP } from './PageAssets'
 
 class SignUp extends React.Component {
@@ -45,12 +46,14 @@ class SignUp extends React.Component {
         <TSP />
         <Button onClick={this.handleSubmit} animated='fade' size='huge'>
           <Button.Content visible>
-            Login
+            Sign Up
           </Button.Content>
           <Button.Content hidden>
             I'm in!
           </Button.Content>
         </Button>
+        <FSP />
+        Already a member? <NavLink to="/login" exact>Click here to login!</NavLink>
       </Container>
     )
   }

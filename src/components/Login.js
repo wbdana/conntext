@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Form, Button, Header } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { TSP, FSP } from './PageAssets'
 
 class Login extends React.Component {
@@ -17,6 +17,7 @@ class Login extends React.Component {
 
   handleSubmit = (event) => {
     this.props.login({auth: this.state})
+    return(<Redirect to="/home" />)
   }
 
   render() {

@@ -5,9 +5,8 @@ import { APIURL, TSP, FSP } from './PageAssets'
 
 class SignUp extends React.Component {
   state = {
-    username: '',
-    password: '',
     email: '',
+    password: '',
     profile_image_url: '',
   }
 
@@ -38,9 +37,8 @@ class SignUp extends React.Component {
         <FSP />
         <Header size='small'>Sign Up</Header>
         <Form>
-          <Form.Input label='Username' type='username' name='username' onChange={this.handleChange} />
-          <Form.Input label='Password' type='password' name='password' onChange={this.handleChange} />
           <Form.Input label='Email' type='email' name='email' onChange={this.handleChange} />
+          <Form.Input label='Password' type='password' name='password' onChange={this.handleChange} />
           <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' onChange={this.handleChange} />
         </Form>
         <TSP />

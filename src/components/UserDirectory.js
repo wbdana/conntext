@@ -33,7 +33,6 @@ class UserDirectory extends React.Component {
     })
   }
 
-  // TODO Remove filters after dropping db; controlling for username !== null/nil etc.
   render() {
     return(
       <div className='userDirectory'>
@@ -45,13 +44,13 @@ class UserDirectory extends React.Component {
         />
         <TSP />
         <Card.Group itemsPerRow={9}>
-        {this.state.users.filter( user => {return user.username !== null} ).filter( user => {return user.username.includes(this.state.search)}).map( (user, index) => {
+        {this.state.users.filter( user => {return user.email.includes(this.state.search)}).map( (user, index) => {
           return(
             <Card key={index}>
               <Image src={user.profile_image_url} size='small' />
               <Card.Content>
                 <Card.Header>
-                  {user.username}
+                  {user.email}
                 </Card.Header>
               </Card.Content>
             </Card>

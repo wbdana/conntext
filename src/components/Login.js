@@ -26,7 +26,7 @@ class Login extends React.Component {
         <FSP />
         <Header size='small'>Login</Header>
         <Form>
-          <Form.Input label='Username' type='username' name='email' onChange={this.onChange} />
+          <Form.Input label='Username' type='email' name='email' onChange={this.onChange} />
           <Form.Input label='Password' type='password' name='password' onChange={this.onChange} />
         </Form>
         <TSP />

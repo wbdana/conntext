@@ -148,13 +148,19 @@ class Editor extends React.Component {
   }
 
   handleUpdateSubmit = (event) => {
+    const updateState = {
+      name: this.state.name,
+      content: this.state.content,
+      language: this.state.language,
+      recordId: this.state.recordId
+    }
     const options = {
       "method": "PATCH",
       "headers": {
         "content-type":"application/json",
         "accept": "application/json"
       },
-      body: JSON.stringify(this.state)
+      body: JSON.stringify(updateState)
     }
     fetch(`${APIURL()}/records/${this.state.recordId}`, options)
       .then(resp => resp.json())

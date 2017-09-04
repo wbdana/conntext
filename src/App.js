@@ -174,6 +174,10 @@ class App extends Component {
               <SavedFiles {...props} auth={this.state.auth} />
             )} />
 
+            <Route path="/partnerfiles" render={(props)=>(
+              <PartnerFiles {...props} auth={this.state.auth}
+            )} />
+
             <Route exact path="/allfiles" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <Redirect to="/login" {...props} /> : <AllFiles
                 {...props}

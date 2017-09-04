@@ -71,6 +71,16 @@ class Editor extends React.Component {
     this.props.redirectReset()
   }
 
+  componentWillUnmount(){
+    this.props.resetRecord()
+    this.setState({
+      name: '',
+      content: '',
+      language: '',
+      recordId: ''
+    })
+  }
+
   updateName = (event, data) => {
     this.setState({
       name: data.value

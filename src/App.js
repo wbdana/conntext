@@ -129,6 +129,19 @@ class App extends Component {
       }))
   }
 
+  resetRecord = () => {
+    console.log('resetRecord -- app')
+    this.setState({
+      activeRecord: {
+        name: '',
+        content: '',
+        language: '',
+        recordId: '',
+        redirect: false
+      }
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -175,6 +188,8 @@ class App extends Component {
                 getRecord={this.getRecord}
                 activeRecord={this.state.activeRecord}
                 redirectReset={this.redirectReset}
+                resetRecord={this.resetRecord}
+                auth={this.state.auth}
               />
             )} />
 
@@ -184,6 +199,8 @@ class App extends Component {
                 getRecord={this.getRecord}
                 activeRecord={this.state.activeRecord}
                 redirectReset={this.redirectReset}
+                resetRecord={this.resetRecord}
+                auth={this.state.auth}
               />
             )} />
 

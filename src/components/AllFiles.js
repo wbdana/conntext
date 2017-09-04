@@ -36,21 +36,6 @@ class AllFiles extends React.Component {
     })
   }
 
-  handleClick = (event, data) => {
-    const options = {
-      "method": "GET",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json"
-      }
-    }
-    fetch(`${APIURL()}/records/${event.target.id}`, options)
-      .then(resp => resp.json())
-      .then(json => {
-        this.props.setActiveRecord(json)
-      })
-  }
-
   getFileExtension = (file) => {
     switch (file.language) {
       case 'ruby':

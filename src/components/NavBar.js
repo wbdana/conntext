@@ -24,6 +24,12 @@ const NavBar = (props) => {
           </Menu.Item>
         </NavLink>
 
+        <NavLink to="/partnerfiles" exact>
+          <Menu.Item name='partnerFiles'>
+            <Icon name='file code outline' />Partner Files
+          </Menu.Item>
+        </NavLink>
+
         <NavLink to="/allfiles" exact>
           <Menu.Item name='allfiles'>
             <Icon name='file code outline' />All Files

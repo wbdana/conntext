@@ -23,7 +23,7 @@ class PartnerFiles extends React.Component {
         "accept": "application/json"
       }
     }
-    fetch(`${APIURL()}/users/${this.props.auth.user.id}/created_records`, options)
+    fetch(`${APIURL()}/users/${this.props.auth.user.id}/partner_records`, options)
       .then(resp => resp.json())
       .then(json => this.setState({
         records: [...json]

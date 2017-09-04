@@ -170,7 +170,7 @@ class App extends Component {
             )} />
 
             <Route path="/savedfiles" render={(props)=>(
-              <SavedFiles {...props} />
+              <SavedFiles {...props} auth={this.state.auth} />
             )} />
 
             <Route exact path="/allfiles" render={(props)=>(

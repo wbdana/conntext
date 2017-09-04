@@ -33,22 +33,41 @@ class Editor extends React.Component {
   }
 
   propsCheck = () => {
-    if (this.props.activeRecord.recordId) {
-      this.setState({
-        name: this.props.activeRecord.name,
-        content: this.props.activeRecord.content,
-        language: this.props.activeRecord.language,
-        recordId: this.props.activeRecord.recordId
-      })
-    }
+    console.log('Props checking!')
+    console.log(this.props)
+    // this.setState({
+    //   name: this.props.activeRecord.name,
+    //   content: this.props.activeRecord.content,
+    //   language: this.props.activeRecord.language,
+    //   recordId: this.props.activeRecord.recordId
+    // }, ()=>{
+      if (this.state.recordId === "") {
+        console.log('Fetching record!')
+        this.props.getRecord(window.location.href.match(/\d+$/)[0])
+      }
+
+    // })
+    console.log(this.state)
   }
 
-  componentDidMount() {
-    if (window.location.href.match(/\d+$/) !== null) {
-      this.props.getRecord(window.location.href.match(/\d+$/)[0])
-    } else {
-      this.propsCheck()
+  manualFetch = () => {
+    fetch(`${APIURL()}/records/${window.location.href.match(/\d+$/)[0]}`)
+      .then(resp => resp.json())
+      .then(json => {this.setState({
+        name: json.name,
+        content: json.content,
+        language: json.language,
+        recordId: json.id
+      }, ()=>{this.props.getRecord(this.state.recordId)})})
+  }
+
+  componentWillMount() {
+    console.log('WillMounting!')
+    if (window.location.href.match(/\d+$/)) {
+      this.manualFetch()
     }
+    // this.propsCheck()
+    // console.log('Done with Props check!')
     this.props.redirectReset()
   }
 
@@ -132,6 +151,7 @@ class Editor extends React.Component {
   }
 
   render() {
+    console.log('Rendering!')
     return(
       <div className="Editor">
 

@@ -53,12 +53,16 @@ class App extends Component {
   }
 
   redirectReset = () => {
-    this.setState({
-      activeRecord: {
-        ...this.state.activeRecord,
-        redirect: false
-      }
-    })
+    console.log(this.state)
+    console.log('redirectReset')
+    if (this.state.activeRecord.redirect === true) {
+      this.setState({
+        activeRecord: {
+          ...this.state.activeRecord,
+          redirect: false
+        }
+      })
+    }
   }
 
   login = (loginParams) => {
@@ -110,6 +114,7 @@ class App extends Component {
   }
 
   getRecord = (id) => {
+    console.log('Fetching record - App!')
     fetch(`${APIURL()}/records/${id}`)
       .then(resp => resp.json())
       // .then(json => console.log(json))
@@ -162,9 +167,9 @@ class App extends Component {
               />
             )} />
 
-            {this.state.activeRecord.redirect === true && <Redirect to={`/editor/${this.state.activeRecord.recordId}`} />}
 
-            <Route path="/editor/:id" render={(props)=>(
+
+            <Route exact path="/editor/:id" render={(props)=>(
               <Editor
                 {...props}
                 getRecord={this.getRecord}
@@ -173,7 +178,7 @@ class App extends Component {
               />
             )} />
 
-            <Route path="/editor" render={(props)=>(
+            <Route exact path="/editor" render={(props)=>(
               <Editor
                 {...props}
                 getRecord={this.getRecord}

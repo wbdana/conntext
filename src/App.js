@@ -175,7 +175,7 @@ class App extends Component {
             )} />
 
             <Route path="/partnerfiles" render={(props)=>(
-              <PartnerFiles {...props} auth={this.state.auth}
+              <PartnerFiles {...props} auth={this.state.auth} />
             )} />
 
             <Route exact path="/allfiles" render={(props)=>(

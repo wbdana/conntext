@@ -8,11 +8,14 @@ class SavedFiles extends React.Component {
     records: [],
     recordsUsers: [],
     search: '',
-    userId: this.props.auth.user.id
+    userId: ''
   }
 
   grabSavedFiles = (props) => {
     console.log(this.props.auth.user.id)
+    this.setState({
+      userId: this.props.auth.user.id
+    })
     const userId = this.props.auth.user.id
     const options = {
       "method": "get",
@@ -21,7 +24,7 @@ class SavedFiles extends React.Component {
         "accept": "application/json"
       }
     }
-    fetch(`${APIURL()}/users/${this.props.auth.user.id}/created_records`, options)
+    fetch(`${APIURL()}/users/${this.state.userId}/created_records`, options)
       .then(resp => resp.json())
       .then(json => console.log(json))
       // .then(json => {this.setState({

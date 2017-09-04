@@ -29,7 +29,8 @@ class Editor extends React.Component {
     name: this.props.activeRecord.name,
     content: this.props.activeRecord.content,
     language: this.props.activeRecord.language,
-    recordId: this.props.activeRecord.recordId
+    recordId: this.props.activeRecord.recordId,
+    owner_id: this.props.auth.user.id
   }
 
   propsCheck = () => {

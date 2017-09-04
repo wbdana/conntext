@@ -94,7 +94,6 @@ class PartnerFiles extends React.Component {
         />
         <TSP />
         <List divided relaxed link>
-          <Button onClick={this.grabPartnerFiles}>Reload</Button>
           {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
             return(
               <List.Item key={index}>

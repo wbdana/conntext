@@ -94,7 +94,6 @@ class SavedFiles extends React.Component {
         />
         <TSP />
         <List divided relaxed link>
-          <Button onClick={this.grabSavedFiles}>Reload</Button>
           {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
             return(
               <List.Item key={index}>

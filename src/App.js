@@ -6,6 +6,7 @@ import Editor from './components/Editor' // React-Ace
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SavedFiles from './components/SavedFiles'
+import PartnerFiles from './components/PartnerFiles'
 import AllFiles from './components/AllFiles'
 import UserDirectory from './components/UserDirectory'
 import UserShowPage from './components/UserShowPage'

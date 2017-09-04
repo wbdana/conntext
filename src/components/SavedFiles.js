@@ -6,7 +6,6 @@ import { APIURL, TSP, FSP } from './PageAssets'
 class SavedFiles extends React.Component {
   state = {
     records: [],
-    recordsUsers: [],
     search: '',
     userId: ''
   }
@@ -24,13 +23,11 @@ class SavedFiles extends React.Component {
         "accept": "application/json"
       }
     }
-    fetch(`${APIURL()}/users/${this.state.userId}/created_records`, options)
+    fetch(`${APIURL()}/users/${this.props.auth.user.id}/created_records`, options)
       .then(resp => resp.json())
-      .then(json => console.log(json))
-      // .then(json => {this.setState({
-      //   records: [...json.records],
-      //   recordsUsers: [...json.records_users]
-      // })})
+      .then(json => this.setState({
+        records: [...json]
+      }))
   }
 
   componentDidMount(){
@@ -77,7 +74,7 @@ class SavedFiles extends React.Component {
         />
         <TSP />
         <List divided relaxed link>
-          <Button onClick={this.grabSavedFiles} />
+          <Button onClick={this.grabSavedFiles}>Reload</Button>
           {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
             return(
               <List.Item key={index}>

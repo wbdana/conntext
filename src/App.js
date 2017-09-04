@@ -180,8 +180,6 @@ class App extends Component {
               />
             )} />
 
-
-
             <Route exact path="/editor/:id" render={(props)=>(
               <Editor
                 {...props}

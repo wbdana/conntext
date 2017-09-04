@@ -1,5 +1,6 @@
 import React from 'react'
 import { List, Image, Input, Card } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 import { APIURL, TSP, FSP } from './PageAssets'
 
 class UserDirectory extends React.Component {
@@ -47,12 +48,14 @@ class UserDirectory extends React.Component {
         {this.state.users.filter( user => {return user.email.includes(this.state.search)}).map( (user, index) => {
           return(
             <Card key={index}>
-              <Image src={user.profile_image_url} size='small' />
-              <Card.Content>
-                <Card.Header>
-                  {user.email}
-                </Card.Header>
-              </Card.Content>
+              <NavLink to={`users/${user.id}`}>
+                <Image src={user.profile_image_url} size='small' />
+                <Card.Content>
+                  <Card.Header>
+                    {user.email}
+                  </Card.Header>
+                </Card.Content>
+              </NavLink>
             </Card>
           )
         })}

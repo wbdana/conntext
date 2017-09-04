@@ -207,7 +207,7 @@ class App extends Component {
               />
             )} />
 
-            <Route path="/users" render={(props)=>(
+            <Route exact path="/users" render={(props)=>(
               <UserDirectory {...props} />
             )} />
 

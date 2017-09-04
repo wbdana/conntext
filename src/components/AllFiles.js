@@ -1,13 +1,33 @@
 import React from 'react'
-import { List, Input } from 'semantic-ui-react'
+import { List, Input, Button, Form } from 'semantic-ui-react'
 import { Redirect, Link, NavLink } from 'react-router-dom'
 import { APIURL, TSP, FSP } from './PageAssets'
+import AddPartnerForm from './AddPartnerForm'
 
 class AllFiles extends React.Component {
   state = {
     records: [],
     recordsUsers: [],
     search: ''
+  }
+
+  addPartner = (partnerName, fileId) => {
+    console.log(partnerName)
+    console.log(fileId)
+    const obj = {user_email: partnerName, file_id: fileId}
+    const options = {
+      "method": "post",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      "body": JSON.stringify(obj)
+    }
+    fetch(`${APIURL()}/records_users`, options)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
+    console.log(options)
+    console.log(obj)
   }
 
   grabAllFiles = () => {
@@ -77,9 +97,12 @@ class AllFiles extends React.Component {
                   <List.Icon name='github' size='large' verticalAlign='middle' />
                   <List.Content>
                     <List.Header  id={file.id}>{`${file.name}${this.getFileExtension(file)}`}</List.Header>
-                    <List.Description>Last updated {file.updated_at}</List.Description>
+                    <List.Description>
+                      Last updated {file.updated_at}
+                    </List.Description>
                   </List.Content>
                 </NavLink>
+                <AddPartnerForm fileId={file.id} addPartner={this.addPartner} />
               </List.Item>
             )
           })}

@@ -67,7 +67,7 @@ class Home extends React.Component {
           <Grid.Column width={6}>
             <TSP/>
             <Header size='medium'>Welcome to Connected Text, {this.state.user.email}</Header>
-            <Header size='small'>Created Records</Header>
+            <Header size='small'>Created Files</Header>
             <List divided relaxed link>
             {this.state.createdRecords.map((file, index)=>{
               return(
@@ -91,7 +91,7 @@ class Home extends React.Component {
           <Grid.Column width={6}>
             <TSP/>
             <Header size='medium'>Testing</Header>
-            <Header size='small'>Partner Records</Header>
+            <Header size='small'>Partner Files</Header>
             <List divided relaxed link>
             {this.state.partnerRecords.map((file, index)=>{
               return(

@@ -10,6 +10,7 @@ import PartnerFiles from './components/PartnerFiles'
 import AllFiles from './components/AllFiles'
 import UserDirectory from './components/UserDirectory'
 import UserShowPage from './components/UserShowPage'
+import UserLoading from './components/UserLoading'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import About from './components/About'
@@ -43,7 +44,31 @@ class App extends Component {
       user: {},
       createdRecords: [],
       partnerRecords: []
+    },
+    viewUser: {
+      user: {},
+      createdRecords: {},
+      partnerRecords: {}
     }
+  }
+
+  grabViewUser = () => {
+    const options = {
+      "method": "get",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      }
+    }
+    fetch(`${APIURL()}/users/${window.location.href.match(/\d+$/)[0]}`, options)
+      .then(resp => resp.json())
+      .then(json => this.setState({
+        viewUser: {
+          user: json.user,
+          createdRecords: json.created_records,
+          partnerRecords: json.partner_records
+        }
+      }, ()=>{console.log(this.state)}))
   }
 
   setActiveRecord = (response) => {
@@ -180,7 +205,7 @@ class App extends Component {
             )} />
 
             <Route path="/login" render={(props)=>(
-              (this.state.auth.isLoggedIn === true && this.state.currentUser.user !== {}) ? <Redirect to="/home" {...props} currentUser={this.state.currentUser} /> : <Login login={this.login} /> 
+              (this.state.auth.isLoggedIn === true && this.state.currentUser.user !== {}) ? <Redirect to="/home" {...props} currentUser={this.state.currentUser} /> : <Login login={this.login} />
             )} />
 
             <Route exact path="/signup" render={(props)=>(
@@ -233,7 +258,7 @@ class App extends Component {
             )} />
 
             <Route path="/users/:id" render={(props)=>(
-              <UserShowPage {...props} />
+              (this.state.viewUser.user !== {} && this.state.viewUser.createdRecords !== []) ? <UserShowPage {...props} viewUser={this.state.viewUser} /> : <UserLoading {...props} grabViewUser={this.grabViewUser} />
             )} />
 
             <Route exact path="/about" render={()=>(

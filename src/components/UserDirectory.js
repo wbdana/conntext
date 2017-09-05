@@ -21,7 +21,7 @@ class UserDirectory extends React.Component {
       .then(resp => resp.json())
       .then(json => this.setState({
         users: [...json]
-      }, console.log(this.state)))
+      }))
   }
 
   componentDidMount() {

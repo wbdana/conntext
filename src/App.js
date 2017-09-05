@@ -65,7 +65,7 @@ class App extends Component {
       })
     }
   }
-
+  
   login = (loginParams) => {
     Auth.login(loginParams)
       .then( user => {

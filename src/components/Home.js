@@ -28,7 +28,7 @@ class Home extends React.Component {
       }, ()=>{console.log(this.state)}))
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.grabUserData()
   }
 

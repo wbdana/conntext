@@ -167,6 +167,21 @@ class Editor extends React.Component {
       .then(json => console.log(json))
   }
 
+  showUpdateButton = () => {
+    if (this.state.recordId !== '') {
+      return(
+        <Button animated='fade' width="50%" onClick={this.handleUpdateSubmit}>
+          <Button.Content visible>
+            Update Saved File
+          </Button.Content>
+          <Button.Content hidden>
+            {this.state.name + this.getFileExtension()}
+          </Button.Content>
+        </Button>
+      )
+    }
+  }
+
   render() {
     console.log('Rendering!')
     return(
@@ -204,14 +219,7 @@ class Editor extends React.Component {
           </Button.Content>
         </Button>
 
-        <Button animated='fade' width="50%" onClick={this.handleUpdateSubmit}>
-          <Button.Content visible>
-            Update Saved File
-          </Button.Content>
-          <Button.Content hidden>
-            {this.state.name + this.getFileExtension()}
-          </Button.Content>
-        </Button>
+        {this.showUpdateButton()}
 
         <br/><br/>
 

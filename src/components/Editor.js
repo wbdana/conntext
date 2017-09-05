@@ -33,24 +33,6 @@ class Editor extends React.Component {
     owner_id: this.props.auth.user.id
   }
 
-  propsCheck = () => {
-    console.log('Props checking!')
-    console.log(this.props)
-    // this.setState({
-    //   name: this.props.activeRecord.name,
-    //   content: this.props.activeRecord.content,
-    //   language: this.props.activeRecord.language,
-    //   recordId: this.props.activeRecord.recordId
-    // }, ()=>{
-      if (this.state.recordId === "") {
-        console.log('Fetching record!')
-        this.props.getRecord(window.location.href.match(/\d+$/)[0])
-      }
-
-    // })
-    console.log(this.state)
-  }
-
   manualFetch = () => {
     fetch(`${APIURL()}/records/${window.location.href.match(/\d+$/)[0]}`)
       .then(resp => resp.json())
@@ -67,8 +49,6 @@ class Editor extends React.Component {
     if (window.location.href.match(/\d+$/)) {
       this.manualFetch()
     }
-    // this.propsCheck()
-    // console.log('Done with Props check!')
     this.props.redirectReset()
   }
 

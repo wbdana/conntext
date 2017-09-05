@@ -24,7 +24,7 @@ class Home extends React.Component {
         user: json.user,
         createdRecords: json.created_records,
         partnerRecords: json.partner_records
-      }, ()=>{console.log(this.state)}))
+      }))
   }
 
   componentDidMount(){

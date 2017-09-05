@@ -11,7 +11,7 @@ class AddPartnerForm extends React.Component {
   updatePartnerName = (event, data) => {
     this.setState({
       partnerName: data.value
-    }, ()=>{console.log(this.state)})
+    })
   }
 
   handleSubmit = () => {

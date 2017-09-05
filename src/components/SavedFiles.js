@@ -3,6 +3,7 @@ import { List, Input } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
 import AddPartnerForm from './AddPartnerForm'
+import DeleteRecordButton from './DeleteRecordButton'
 
 class SavedFiles extends React.Component {
   state = {
@@ -42,6 +43,19 @@ class SavedFiles extends React.Component {
       .then(json => this.setState({
         records: [...json]
       }))
+  }
+
+  deleteRecord = (fileId) => {
+    const options = {
+      "method": "delete",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      }
+    }
+    fetch(`${APIURL()}/${fileId}`, options)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
   }
 
   componentDidMount(){
@@ -99,6 +113,7 @@ class SavedFiles extends React.Component {
                   </List.Content>
                 </NavLink>
                 <AddPartnerForm fileId={file.id} addPartner={this.addPartner} />
+                <DeleteRecordButton deleteRecord={this.deleteRecord} recordId={file.id} />
               </List.Item>
             )
           })}

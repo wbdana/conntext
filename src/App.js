@@ -47,8 +47,8 @@ class App extends Component {
     },
     viewUser: {
       user: {},
-      createdRecords: {},
-      partnerRecords: {}
+      createdRecords: [],
+      partnerRecords: []
     }
   }
 
@@ -68,7 +68,17 @@ class App extends Component {
           createdRecords: json.created_records,
           partnerRecords: json.partner_records
         }
-      }, ()=>{console.log(this.state)}))
+      }, ()=>{console.log(this.state.viewUser)}))
+  }
+
+  resetViewUser = () => {
+    this.setState({
+      viewUser: {
+        user: {},
+        createdRecords: [],
+        partnerRecords: []
+      }
+    })
   }
 
   setActiveRecord = (response) => {
@@ -258,7 +268,7 @@ class App extends Component {
             )} />
 
             <Route path="/users/:id" render={(props)=>(
-              (this.state.viewUser.user !== {} && this.state.viewUser.createdRecords !== []) ? <UserShowPage {...props} viewUser={this.state.viewUser} /> : <UserLoading {...props} grabViewUser={this.grabViewUser} />
+              (!this.state.viewUser.user.email) ? <UserLoading {...props} grabViewUser={this.grabViewUser} /> : <UserShowPage {...props} viewUser={this.state.viewUser} resetViewUser={this.resetViewUser}/>
             )} />
 
             <Route exact path="/about" render={()=>(

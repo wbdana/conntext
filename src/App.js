@@ -95,6 +95,24 @@ class App extends Component {
             }
           })
       })
+      .then(()=>{
+        const options = {
+          "method": "get",
+          "headers": {
+            "content-type": "application/json",
+            "accept": "application/json"
+          }
+        }
+        fetch(`${APIURL()}/users/${this.props.userId}`, options)
+          .then(resp => resp.json())
+          .then(json => this.setState({
+            currentUser: {
+              user: json.user,
+              createdRecords: json.created_records,
+              partnerRecords: json.partner_records
+            }
+          }, ()=>{console.log(this.state)}))
+      })
     }
 
   // Need to force redirect to Login after logout
@@ -162,7 +180,7 @@ class App extends Component {
             )} />
 
             <Route path="/login" render={(props)=>(
-              (this.state.auth.isLoggedIn === false) ? <Login login={this.login} /> : <Redirect to="/home" {...props} />
+              (this.state.auth.isLoggedIn === true && this.state.currentUser.user !== {}) ? <Redirect to="/home" {...props} currentUser={this.state.currentUser} /> : <Login login={this.login} /> 
             )} />
 
             <Route exact path="/signup" render={(props)=>(
@@ -170,8 +188,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/home" render={(props)=>(
-              (this.state.auth.isLoggedIn === false) ? <Redirect to="/login" {...props} /> :
-              <Home {...props} userId={this.state.auth.user.id} />
+              (this.state.auth.isLoggedIn === true && this.state.currentUser.user !== {}) ? <Home {...props} userId={this.state.auth.user.id} currentUser={this.state.currentUser} /> : <Redirect to="/login" {...props} />
             )} />
 
             <Route path="/savedfiles" render={(props)=>(

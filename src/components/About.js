@@ -14,7 +14,6 @@ const About = () => {
         <li>Planned features:
           <ol>
             <li>Pull files from GitHub repos;</li>
-            <li>Grant other ConnText users access to a file;</li>
             <li>Facilitate multi-user live text editing (think Google Docs) through Rails Action Cable in the back end.</li>
           </ol>
         </li>

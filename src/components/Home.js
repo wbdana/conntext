@@ -11,6 +11,7 @@ class Home extends React.Component {
   }
 
   grabUserData = (props) => {
+    console.log('Grabbing!')
     const options = {
       "method": "get",
       "headers": {
@@ -55,6 +56,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log('Rendering!')
     return(
       <div className="userShowPage">
         <TSP/>

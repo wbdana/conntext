@@ -94,8 +94,6 @@ class App extends Component {
   }
 
   redirectReset = () => {
-    console.log(this.state)
-    console.log('redirectReset')
     if (this.state.activeRecord.redirect === true) {
       this.setState({
         activeRecord: {
@@ -146,7 +144,7 @@ class App extends Component {
               createdRecords: json.created_records,
               partnerRecords: json.partner_records
             }
-          }, ()=>{console.log(this.state)}))
+          }))
       })
     }
 
@@ -173,7 +171,6 @@ class App extends Component {
   }
 
   getRecord = (id) => {
-    console.log('Fetching record - App!')
     fetch(`${APIURL()}/records/${id}`)
       .then(resp => resp.json())
       .then(json => this.setState({
@@ -188,7 +185,6 @@ class App extends Component {
   }
 
   resetRecord = () => {
-    console.log('resetRecord -- app')
     this.setState({
       activeRecord: {
         name: '',

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Header, Menu, Icon } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
-import { SiteHeader, FSP, TSP } from './PageAssets'
+import { SiteHeader, TSP } from './PageAssets'
 
 const NavBar = (props) => {
   return(

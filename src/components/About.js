@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Header } from 'semantic-ui-react'
-import { TSP, FSP } from './PageAssets'
+import { TSP } from './PageAssets'
 
 const About = () => {
   return(

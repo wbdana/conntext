@@ -1,7 +1,6 @@
 import React from 'react'
-import { Image, Grid, Header, List } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
-import { APIURL, TSP, FSP } from './PageAssets'
+import { Image, Grid, Header } from 'semantic-ui-react'
+import { APIURL, TSP } from './PageAssets'
 
 class Home extends React.Component {
   state = {

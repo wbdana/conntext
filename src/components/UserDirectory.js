@@ -1,7 +1,7 @@
 import React from 'react'
-import { List, Image, Input, Card } from 'semantic-ui-react'
+import { Image, Input, Card } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
-import { APIURL, TSP, FSP } from './PageAssets'
+import { APIURL, TSP } from './PageAssets'
 
 class UserDirectory extends React.Component {
   state = {

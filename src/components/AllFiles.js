@@ -1,7 +1,7 @@
 import React from 'react'
-import { List, Input, Button, Form } from 'semantic-ui-react'
-import { Redirect, Link, NavLink } from 'react-router-dom'
-import { APIURL, TSP, FSP } from './PageAssets'
+import { List, Input } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
+import { APIURL, TSP } from './PageAssets'
 import AddPartnerForm from './AddPartnerForm'
 
 class AllFiles extends React.Component {

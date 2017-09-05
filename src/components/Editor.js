@@ -1,9 +1,9 @@
 import React from 'react'
-import brace from 'brace'
+// import brace from 'brace'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
-import { Input, Button, Icon } from 'semantic-ui-react'
-import { APIURL, TSP, FSP } from './PageAssets'
+import { Input, Button } from 'semantic-ui-react'
+import { APIURL } from './PageAssets'
 
 
 // Import syntax highlights
@@ -227,7 +227,7 @@ class Editor extends React.Component {
             {this.state.name + this.getFileExtension()}
           </Button.Content>
         </Button>
-        
+
         <br/><br/>
 
         <AceEditor

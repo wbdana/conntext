@@ -1,7 +1,7 @@
 import React from 'react'
-import { List, Input, Button } from 'semantic-ui-react'
-import { Redirect, Link, NavLink } from 'react-router-dom'
-import { APIURL, TSP, FSP } from './PageAssets'
+import { List, Input } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
+import { APIURL, TSP } from './PageAssets'
 import AddPartnerForm from './AddPartnerForm'
 
 class SavedFiles extends React.Component {
@@ -35,7 +35,6 @@ class SavedFiles extends React.Component {
     this.setState({
       userId: this.props.auth.user.id
     })
-    const userId = this.props.auth.user.id
     const options = {
       "method": "get",
       "headers": {

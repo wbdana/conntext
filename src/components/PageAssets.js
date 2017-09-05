@@ -1,5 +1,5 @@
 import React from "react"
-import { Header, Loader, Image } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 
 const APIURL = () => (
   "http://localhost:3000/api/v1"
@@ -27,9 +27,4 @@ const FSP = () => (
 export {APIURL}
 export {FSP}
 export {TSP}
-// export {SiteLogo}
 export {SiteHeader}
-// export {PageHeader}
-// export {SectionHeader}
-// export {contentLoader}
-// export {SiteFooter}

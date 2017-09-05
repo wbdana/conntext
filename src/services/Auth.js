@@ -1,5 +1,3 @@
-import { APIURL } from '../components/PageAssets'
-
 class Auth {
   static login(loginParams) {
     const options = {

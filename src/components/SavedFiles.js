@@ -53,7 +53,7 @@ class SavedFiles extends React.Component {
         "accept": "application/json"
       }
     }
-    fetch(`${APIURL()}/${fileId}`, options)
+    fetch(`${APIURL()}/records/${fileId}`, options)
       .then(resp => resp.json())
       .then(json => console.log(json))
   }

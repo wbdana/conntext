@@ -68,7 +68,7 @@ class App extends Component {
           createdRecords: json.created_records,
           partnerRecords: json.partner_records
         }
-      }, ()=>{console.log(this.state.viewUser)}))
+      }))
   }
 
   resetViewUser = () => {

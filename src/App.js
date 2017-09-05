@@ -38,6 +38,11 @@ class App extends Component {
       language: '',
       recordId: '',
       redirect: false
+    },
+    currentUser: {
+      user: {},
+      createdRecords: [],
+      partnerRecords: []
     }
   }
 
@@ -65,7 +70,7 @@ class App extends Component {
       })
     }
   }
-  
+
   login = (loginParams) => {
     Auth.login(loginParams)
       .then( user => {
@@ -118,7 +123,6 @@ class App extends Component {
     console.log('Fetching record - App!')
     fetch(`${APIURL()}/records/${id}`)
       .then(resp => resp.json())
-      // .then(json => console.log(json))
       .then(json => this.setState({
         activeRecord: {
           name: json.name,

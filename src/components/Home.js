@@ -58,7 +58,7 @@ class Home extends React.Component {
   render() {
     console.log('Rendering!')
     return(
-      <div className="userShowPage">
+      <div className="home">
         <TSP/>
         <Grid>
           <Grid.Column width={4}>

@@ -12,8 +12,6 @@ class PartnerFiles extends React.Component {
   }
 
   addPartner = (partnerName, fileId) => {
-    console.log(partnerName)
-    console.log(fileId)
     const obj = {user_email: partnerName, file_id: fileId}
     const options = {
       "method": "post",
@@ -26,12 +24,9 @@ class PartnerFiles extends React.Component {
     fetch(`${APIURL()}/records_users`, options)
       .then(resp => resp.json())
       .then(json => console.log(json))
-    console.log(options)
-    console.log(obj)
   }
 
   grabPartnerFiles = (props) => {
-    console.log(this.props.auth.user.id)
     this.setState({
       userId: this.props.auth.user.id
     })

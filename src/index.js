@@ -5,7 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 // ActionCable setup
-import actionCable form 'actioncable'
+import actionCable from 'actioncable'
 
 const CableApp = {}
 CableApp.cable = actionCable.createConsumer(`ws://${window.location.hostname}:3000/cable`)

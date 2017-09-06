@@ -2,6 +2,7 @@ import React from 'react'
 // import brace from 'brace'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
+import RecordCable from './RecordCable'
 import { Input, Button } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
@@ -50,6 +51,7 @@ class Editor extends React.Component {
       this.manualFetch()
     }
     this.props.redirectReset()
+    console.log(this.props['data-cableApp'])
   }
 
   componentWillUnmount(){
@@ -65,19 +67,19 @@ class Editor extends React.Component {
   updateName = (event, data) => {
     this.setState({
       name: data.value
-    })
+    }, this.handleUpdateSubmit())
   }
 
   updateContent = (newContent) => {
     this.setState({
       content: newContent
-    })
+    }, this.handleUpdateSubmit())
   }
 
   updateLanguage = (newLanguage) => {
     this.setState({
       language: newLanguage
-    })
+    }, this.handleUpdateSubmit())
   }
 
   getFileExtension = () => {
@@ -166,6 +168,8 @@ class Editor extends React.Component {
     console.log('Rendering!')
     return(
       <div className="Editor">
+
+        <RecordCable data-cableApp={this.props['data-cableApp']} recordId={this.state.recordId} />
 
         <SelectLanguage
           updateLanguage={this.updateLanguage}

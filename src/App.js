@@ -104,6 +104,7 @@ class App extends Component {
     }
   }
 
+  // Need to add error handling
   login = (loginParams) => {
     Auth.login(loginParams)
       .then( user => {

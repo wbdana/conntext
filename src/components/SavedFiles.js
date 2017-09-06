@@ -120,7 +120,6 @@ class SavedFiles extends React.Component {
       </div>
     )
   }
-
 }
 
 export default SavedFiles

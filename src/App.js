@@ -246,6 +246,7 @@ class App extends Component {
                 redirectReset={this.redirectReset}
                 resetRecord={this.resetRecord}
                 auth={this.state.auth}
+                cableApp={this.props.cableApp}
               />
             )} />
 

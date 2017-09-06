@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import actionCable from 'actioncable'
 
 const CableApp = {}
-CableApp.cable = actionCable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
+CableApp.cable = actionCable.createConsumer(`wss://conntext-api.herokuapp.com/cable`)
 
 // Pass in CableApp as cableApp prop
 ReactDOM.render(<App cableApp={CableApp} />, document.getElementById('root'));

@@ -9,7 +9,7 @@ class Auth {
       },
       "body": JSON.stringify(loginParams)
     }
-    return fetch("http://localhost:3000/user_token", options)
+    return fetch("https://conntext-api.herokuapp.com/user_token", options)
       .then(resp => resp.json())
   }
 
@@ -22,7 +22,7 @@ class Auth {
         "Authorization": localStorage.getItem('jwt')
       }
     }
-    return fetch("http://localhost:3000/api/v1/cu", options)
+    return fetch("https://conntext-api.herokuapp.com/api/v1/cu", options)
       .then(resp => resp.json())
   }
 }

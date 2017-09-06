@@ -164,12 +164,18 @@ class Editor extends React.Component {
     }
   }
 
+  updateWSContent = (data) => {
+    this.setState({
+      content: data
+    })
+  }
+
   render() {
     console.log('Rendering!')
     return(
       <div className="Editor">
 
-        <RecordCable data-cableApp={this.props['data-cableApp']} recordId={this.state.recordId} />
+        <RecordCable data-cableApp={this.props['data-cableApp']} recordId={this.state.recordId} updateWSContent={this.updateWSContent} getRecord={this.props.getRecord} />
 
         <SelectLanguage
           updateLanguage={this.updateLanguage}

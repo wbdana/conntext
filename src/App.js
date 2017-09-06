@@ -128,8 +128,7 @@ class App extends Component {
               })
             }
           })
-      })
-      .then(()=>{
+      }, ()=>{
         const options = {
           "method": "get",
           "headers": {
@@ -137,7 +136,8 @@ class App extends Component {
             "accept": "application/json"
           }
         }
-        fetch(`${APIURL()}/users/${this.props.userId}`, options)
+        console.log(`${APIURL()}/users/${this.state.auth.user.id}`)
+        fetch(`${APIURL()}/users/${this.state.auth.user.id}`, options)
           .then(resp => resp.json())
           .then(json => this.setState({
             currentUser: {
@@ -258,6 +258,7 @@ class App extends Component {
                 redirectReset={this.redirectReset}
                 resetRecord={this.resetRecord}
                 auth={this.state.auth}
+                data-cableApp={this.props.cableApp}
               />
             )} />
 

@@ -2,7 +2,7 @@ import React from "react"
 import { Header } from 'semantic-ui-react'
 
 const APIURL = () => (
-  "http://localhost:3000/api/v1"
+  "https://conntext-api.herokuapp.com/api/v1"
 )
 
 // For spinning logo, className="App-logo"

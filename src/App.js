@@ -223,11 +223,11 @@ class App extends Component {
             )} />
 
             <Route path="/savedfiles" render={(props)=>(
-              <SavedFiles {...props} auth={this.state.auth} />
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <SavedFiles {...props} auth={this.state.auth} />
             )} />
 
             <Route path="/partnerfiles" render={(props)=>(
-              <PartnerFiles {...props} auth={this.state.auth} />
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <PartnerFiles {...props} auth={this.state.auth} />
             )} />
 
             <Route exact path="/allfiles" render={(props)=>(
@@ -238,7 +238,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/editor/:id" render={(props)=>(
-              <Editor
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <Editor
                 {...props}
                 getRecord={this.getRecord}
                 activeRecord={this.state.activeRecord}
@@ -249,7 +249,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/editor" render={(props)=>(
-              <Editor
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <Editor
                 {...props}
                 getRecord={this.getRecord}
                 activeRecord={this.state.activeRecord}
@@ -260,7 +260,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/users" render={(props)=>(
-              <UserDirectory {...props} />
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <UserDirectory {...props} />
             )} />
 
             <Route path="/users/:id" render={(props)=>(

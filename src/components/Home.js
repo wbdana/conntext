@@ -88,7 +88,7 @@ class Home extends React.Component {
           </Grid.Column>
           <Grid.Column width={6}>
             <TSP/>
-            <Header size='medium'>Testing</Header>
+            <Header size='medium'></Header>
             <Header size='small'>Partner Files</Header>
             <List divided relaxed link>
             {this.state.partnerRecords.map((file, index)=>{

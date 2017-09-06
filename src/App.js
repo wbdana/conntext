@@ -215,7 +215,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/signup" render={(props)=>(
-              (this.state.auth.isLoggedIn === false) ? <SignUp /> : <Redirect to="/home" {...props} />
+              (this.state.auth.isLoggedIn === false) ? <SignUp {...props} login={this.login} /> : <Redirect to="/home" {...props} />
             )} />
 
             <Route exact path="/home" render={(props)=>(

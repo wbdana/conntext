@@ -28,7 +28,7 @@ class SignUp extends React.Component {
     console.log(`${APIURL()}/users`, options)
     fetch(`${APIURL()}/users`, options)
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => this.props.login({auth: {email: this.state.email, password: this.state.password}}))
   }
 
   render() {

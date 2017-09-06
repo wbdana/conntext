@@ -1,5 +1,4 @@
 import React from 'react'
-import actionCable from 'actioncable'
 
 class RecordCable extends React.Component {
 

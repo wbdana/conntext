@@ -26,12 +26,16 @@ import 'brace/theme/solarized_dark'
 import 'brace/theme/solarized_light'
 
 class Editor extends React.Component {
-  state = {
-    name: '',
-    content: '',
-    language: 'ruby',
-    recordId: '',
-    owner_id: this.props.auth.user.id
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      name: '',
+      content: '',
+      language: 'ruby',
+      recordId: '',
+      owner_id: this.props.auth.user.id
+    }
   }
 
   manualFetch = () => {
@@ -54,32 +58,52 @@ class Editor extends React.Component {
     this.props.redirectReset()
   }
 
-  // componentWillUnmount(){
-  //   this.props.resetRecord()
-  //   this.setState({
-  //     name: '',
-  //     content: '',
-  //     language: '',
-  //     recordId: ''
-  //   })
-  // }
+  componentWillUnmount(){
+    this.props.resetRecord()
+    this.setState({
+      name: '',
+      content: '',
+      language: '',
+      recordId: ''
+    })
+  }
 
   updateName = (event, data) => {
     this.setState({
       name: data.value
-    }, this.handleUpdateSubmit())
+    })
   }
 
   updateContent = (newContent) => {
     this.setState({
       content: newContent
-    }, console.log(this.state.content))
+    })
+  }
+
+  broadcast = () => {
+    const options = {
+      "method": "get",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      "body": JSON.stringify({
+        name: this.state.name,
+        content: this.state.content,
+        language: this.state.language,
+        recordId: this.state.recordId
+      })
+    }
+    console.log(`${APIURL()}/records/${this.state.recordId}/broadcast`, options)
+    fetch(`${APIURL()}/records/${this.state.recordId}/broadcast`, options)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
   }
 
   updateLanguage = (newLanguage) => {
     this.setState({
       language: newLanguage
-    }, this.handleUpdateSubmit())
+    })
   }
 
   getFileExtension = () => {
@@ -174,7 +198,6 @@ class Editor extends React.Component {
     this.setState({
       content: record.content
     })
-    setTimeout(()=>{console.log('Waited .25 sec')}, 250)
   }
 
   render() {
@@ -233,6 +256,7 @@ class Editor extends React.Component {
           theme="github"
           onChange={this.updateContent}
           name="AceEditor"
+          defaultValue={this.state.content}
           value={this.state.content}
           editorProps={{$blockScrolling: Infinity}}
           keyboardHandler="vim"

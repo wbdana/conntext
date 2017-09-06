@@ -27,14 +27,15 @@ import 'brace/theme/solarized_light'
 
 class Editor extends React.Component {
   state = {
-    name: this.props.activeRecord.name,
-    content: this.props.activeRecord.content,
-    language: this.props.activeRecord.language,
-    recordId: this.props.activeRecord.recordId,
+    name: '',
+    content: '',
+    language: 'ruby',
+    recordId: '',
     owner_id: this.props.auth.user.id
   }
 
   manualFetch = () => {
+    console.log('manualFetch')
     fetch(`${APIURL()}/records/${window.location.href.match(/\d+$/)[0]}`)
       .then(resp => resp.json())
       .then(json => {this.setState({
@@ -51,18 +52,17 @@ class Editor extends React.Component {
       this.manualFetch()
     }
     this.props.redirectReset()
-    console.log(this.props['data-cableApp'])
   }
 
-  componentWillUnmount(){
-    this.props.resetRecord()
-    this.setState({
-      name: '',
-      content: '',
-      language: '',
-      recordId: ''
-    })
-  }
+  // componentWillUnmount(){
+  //   this.props.resetRecord()
+  //   this.setState({
+  //     name: '',
+  //     content: '',
+  //     language: '',
+  //     recordId: ''
+  //   })
+  // }
 
   updateName = (event, data) => {
     this.setState({
@@ -73,7 +73,7 @@ class Editor extends React.Component {
   updateContent = (newContent) => {
     this.setState({
       content: newContent
-    }, this.handleUpdateSubmit())
+    }, console.log(this.state.content))
   }
 
   updateLanguage = (newLanguage) => {
@@ -129,7 +129,7 @@ class Editor extends React.Component {
       .then(json => console.log(json))
   }
 
-  handleUpdateSubmit = (event) => {
+  handleUpdateSubmit = () => {
     const updateState = {
       name: this.state.name,
       content: this.state.content,
@@ -146,7 +146,12 @@ class Editor extends React.Component {
     }
     fetch(`${APIURL()}/records/${this.state.recordId}`, options)
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => this.setState({
+        name: json.name,
+        content: json.content,
+        language: json.language,
+        recordId: json.id
+      }))
   }
 
   showUpdateButton = () => {
@@ -164,18 +169,21 @@ class Editor extends React.Component {
     }
   }
 
-  updateWSContent = (data) => {
+  updateWSContent = (record) => {
+    console.log(record)
     this.setState({
-      content: data
+      content: record.content
     })
+    setTimeout(()=>{console.log('Waited .25 sec')}, 250)
   }
 
   render() {
     console.log('Rendering!')
+    console.log(this.state.content)
     return(
       <div className="Editor">
 
-        <RecordCable data-cableApp={this.props['data-cableApp']} recordId={this.state.recordId} updateWSContent={this.updateWSContent} getRecord={this.props.getRecord} />
+        <RecordCable data-cableApp={this.props['data-cableApp']} data-recordId={this.props.activeRecord.recordId} updateWSContent={this.updateWSContent} getRecord={this.props.getRecord} />
 
         <SelectLanguage
           updateLanguage={this.updateLanguage}
@@ -226,7 +234,7 @@ class Editor extends React.Component {
           onChange={this.updateContent}
           name="AceEditor"
           value={this.state.content}
-          editorProps={{$blockScrolling: true}}
+          editorProps={{$blockScrolling: Infinity}}
           keyboardHandler="vim"
           width="50%"
         />

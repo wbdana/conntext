@@ -239,7 +239,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/editor/:id" render={(props)=>(
-              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <Editor
+              (!this.state) ? <Redirect to="login" {...props} /> : <Editor
                 {...props}
                 getRecord={this.getRecord}
                 activeRecord={this.state.activeRecord}

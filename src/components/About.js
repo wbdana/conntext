@@ -11,10 +11,17 @@ const About = () => {
       <Header size="small">About Connected Text</Header>
       <ul>
         <li>Connected Text (ConnText) is a work-in-progress text editor for programmers.</li>
+
+        <li>Features
+          <ol>
+            <li>Multi-user live text editing (like Google Docs);</li>
+            <li>Live chatrooms for each file to facilitate communication for collaboration.</li>
+          </ol>
+        </li>
+
         <li>Planned features:
           <ol>
-            <li>Pull files from GitHub repos;</li>
-            <li>Facilitate multi-user live text editing (think Google Docs) through Rails Action Cable in the back end.</li>
+            <li>Pull files from GitHub repos.</li>
           </ol>
         </li>
         <li>Stretch goals that may or may not be implemented at a later date:

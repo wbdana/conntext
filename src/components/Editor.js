@@ -66,45 +66,8 @@ class Editor extends React.Component {
       name: '',
       content: '',
       language: '',
-      recordId: ''
-    })
-  }
-
-  updateName = (event, data) => {
-    this.setState({
-      name: data.value
-    })
-  }
-
-  updateContent = (newContent) => {
-    this.setState({
-      content: newContent
-    })
-  }
-
-  broadcast = () => {
-    const options = {
-      "method": "get",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json"
-      },
-      "body": JSON.stringify({
-        name: this.state.name,
-        content: this.state.content,
-        language: this.state.language,
-        recordId: this.state.recordId
-      })
-    }
-    console.log(`${APIURL()}/records/${this.state.recordId}/broadcast`, options)
-    fetch(`${APIURL()}/records/${this.state.recordId}/broadcast`, options)
-      .then(resp => resp.json())
-      .then(json => console.log(json))
-  }
-
-  updateLanguage = (newLanguage) => {
-    this.setState({
-      language: newLanguage
+      recordId: '',
+      openCable: false
     })
   }
 
@@ -131,6 +94,33 @@ class Editor extends React.Component {
     }
   }
 
+  updateName = (event, data) => {
+    console.log(`Updating Name: ${data.value}`)
+    this.setState({
+      name: data.value
+    })
+  }
+
+  updateContent = (newContent) => {
+    this.setState({
+      content: newContent
+    })
+    console.log(`Updating Content: ${this.state.content}`)
+    setTimeout(()=>{this.handleUpdateSubmit()}, 500)
+  }
+
+  updateLanguage = (newLanguage) => {
+    console.log(`Updating Language: ${newLanguage}`)
+    this.setState({
+      language: newLanguage
+    })
+  }
+
+  // This is a stupid button to have
+  // in something that would ideally
+  // auto-save any updates to an
+  // already-saved file. Should remove
+  // when RecordCable works properly
   newRecord = (event) => {
     this.setState({
       name: '',
@@ -172,34 +162,35 @@ class Editor extends React.Component {
     }
     fetch(`${APIURL()}/records/${this.state.recordId}`, options)
       .then(resp => resp.json())
-      .then(json => this.setState({
-        name: json.name,
-        content: json.content,
-        language: json.language,
-        recordId: json.id
-      }))
+      .then(json => console.log(json))
+      // .then(json => this.setState({
+      //   name: json.name,
+      //   content: json.content,
+      //   language: json.language,
+      //   recordId: json.id
+      // }))
   }
 
-  showUpdateButton = () => {
-    if (this.state.recordId !== '') {
-      return(
-        <Button animated='fade' width="50%" onClick={this.handleUpdateSubmit}>
-          <Button.Content visible>
-            Update Saved File
-          </Button.Content>
-          <Button.Content hidden>
-            {this.state.name + this.getFileExtension()}
-          </Button.Content>
-        </Button>
-      )
-    }
-  }
-
-  updateWSContent = (record) => {
+  updateWSContent = (data) => {
+    console.log(data)
     this.setState({
-      content: record.content
+      name: data.record.name,
+      content: data.record.content,
+      language: data.record.language,
+      recordId: data.record.id,
+      owner_id: data.record.owner_id
     })
   }
+
+
+  // this.state = {
+  //   name: '',
+  //   content: '',
+  //   language: 'ruby',
+  //   recordId: '',
+  //   owner_id: '',
+  //   openCable: false
+  // }
 
   render() {
     console.log('Rendering!')
@@ -261,7 +252,6 @@ class Editor extends React.Component {
           theme="github"
           onChange={this.updateContent}
           name="AceEditor"
-          defaultValue={this.state.content}
           value={this.state.content}
           editorProps={{$blockScrolling: Infinity}}
           keyboardHandler="vim"

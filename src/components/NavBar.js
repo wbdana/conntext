@@ -22,7 +22,7 @@ const NavBar = (props) => {
 
         {props.loggedIn === true && <NavLink to="/savedfiles" exact>
           <Menu.Item name='savedFiles'>
-            <Icon name='file code outline' />My Files
+            <Icon name='folder open outline' />My Files
           </Menu.Item>
         </NavLink>}
 

@@ -3,6 +3,7 @@ import React from 'react'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
+import ChatBox from './ChatBox'
 import { Input, Button } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 

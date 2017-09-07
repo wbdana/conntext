@@ -25,7 +25,7 @@ import 'brace/theme/terminal'
 import 'brace/theme/solarized_dark'
 import 'brace/theme/solarized_light'
 
-class Editor extends React.Component {
+class NewEditor extends React.Component {
   constructor(props) {
     super(props)
 
@@ -38,21 +38,7 @@ class Editor extends React.Component {
     }
   }
 
-  manualFetch = () => {
-    console.log('manualFetch')
-    fetch(`${APIURL()}/records/${window.location.href.match(/\d+$/)[0]}`)
-      .then(resp => resp.json())
-      .then(json => {this.setState({
-        name: json.name,
-        content: json.content,
-        language: json.language,
-        recordId: json.id
-      }, ()=>{this.props.getRecord(this.state.recordId)})})
-  }
-
   componentWillMount() {
-    console.log('WillMount!')
-    this.manualFetch()
     this.props.redirectReset()
   }
 
@@ -76,26 +62,6 @@ class Editor extends React.Component {
     this.setState({
       content: newContent
     })
-  }
-
-  broadcast = () => {
-    const options = {
-      "method": "get",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json"
-      },
-      "body": JSON.stringify({
-        name: this.state.name,
-        content: this.state.content,
-        language: this.state.language,
-        recordId: this.state.recordId
-      })
-    }
-    console.log(`${APIURL()}/records/${this.state.recordId}/broadcast`, options)
-    fetch(`${APIURL()}/records/${this.state.recordId}/broadcast`, options)
-      .then(resp => resp.json())
-      .then(json => console.log(json))
   }
 
   updateLanguage = (newLanguage) => {
@@ -145,62 +111,13 @@ class Editor extends React.Component {
       },
       body: JSON.stringify(this.state)
     }
-    console.log(`${APIURL()}/records`, options)
     fetch(`${APIURL()}/records`, options)
       .then(resp => resp.json())
       .then(json => console.log(json))
   }
 
-  handleUpdateSubmit = () => {
-    const updateState = {
-      name: this.state.name,
-      content: this.state.content,
-      language: this.state.language,
-      recordId: this.state.recordId
-    }
-    const options = {
-      "method": "PATCH",
-      "headers": {
-        "content-type":"application/json",
-        "accept": "application/json"
-      },
-      body: JSON.stringify(updateState)
-    }
-    fetch(`${APIURL()}/records/${this.state.recordId}`, options)
-      .then(resp => resp.json())
-      .then(json => this.setState({
-        name: json.name,
-        content: json.content,
-        language: json.language,
-        recordId: json.id
-      }))
-  }
-
-  showUpdateButton = () => {
-    if (this.state.recordId !== '') {
-      return(
-        <Button animated='fade' width="50%" onClick={this.handleUpdateSubmit}>
-          <Button.Content visible>
-            Update Saved File
-          </Button.Content>
-          <Button.Content hidden>
-            {this.state.name + this.getFileExtension()}
-          </Button.Content>
-        </Button>
-      )
-    }
-  }
-
-  updateWSContent = (record) => {
-    console.log(record)
-    this.setState({
-      content: record.content
-    })
-  }
-
   render() {
     console.log('Rendering!')
-    console.log(this.state.content)
     return(
       <div className="Editor">
 
@@ -238,15 +155,6 @@ class Editor extends React.Component {
           </Button.Content>
         </Button>
 
-        <Button animated='fade' width="50%" onClick={this.handleUpdateSubmit}>
-          <Button.Content visible>
-            Update Saved File
-          </Button.Content>
-          <Button.Content hidden>
-            {this.state.name + this.getFileExtension()}
-          </Button.Content>
-        </Button>
-
         <br/><br/>
 
         <AceEditor
@@ -254,7 +162,6 @@ class Editor extends React.Component {
           theme="github"
           onChange={this.updateContent}
           name="AceEditor"
-          defaultValue={this.state.content}
           value={this.state.content}
           editorProps={{$blockScrolling: Infinity}}
           keyboardHandler="vim"
@@ -265,4 +172,4 @@ class Editor extends React.Component {
   }
 }
 
-export default Editor
+export default NewEditor

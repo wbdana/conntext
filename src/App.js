@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import Editor from './components/Editor' // React-Ace
+import NewEditor from './components/NewEditor' // Blank React-Ace
 
 // Other components
 import NavBar from './components/NavBar'
@@ -252,7 +253,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/editor" render={(props)=>(
-              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <Editor
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <NewEditor
                 {...props}
                 getRecord={this.getRecord}
                 activeRecord={this.state.activeRecord}

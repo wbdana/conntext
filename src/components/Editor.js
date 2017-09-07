@@ -1,5 +1,4 @@
 import React from 'react'
-// import brace from 'brace'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
@@ -237,7 +236,7 @@ class Editor extends React.Component {
 
         <AceEditor
           mode={this.state.language}
-          theme="solarized_dark"
+          theme="github"
           onChange={this.updateContent}
           name="AceEditor"
           value={this.state.content}

@@ -46,9 +46,13 @@ class Editor extends React.Component {
         name: json.name,
         content: json.content,
         language: json.language,
-        recordId: json.id
-      }, ()=>{this.props.getRecord(this.state.recordId)})})
+        recordId: json.id,
+        owner_id: json.owner_id
+      }
+    )})
   }
+
+// ()=>{this.props.getRecord(this.state.recordId)}
 
   componentWillMount() {
     console.log('WillMount!')

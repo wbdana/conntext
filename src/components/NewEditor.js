@@ -2,7 +2,6 @@ import React from 'react'
 // import brace from 'brace'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
-import RecordCable from './RecordCable'
 import { Input, Button } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
@@ -120,8 +119,6 @@ class NewEditor extends React.Component {
     console.log('Rendering!')
     return(
       <div className="Editor">
-
-        <RecordCable data-cableApp={this.props['data-cableApp']} data-recordId={this.props.activeRecord.recordId} updateWSContent={this.updateWSContent} getRecord={this.props.getRecord} />
 
         <SelectLanguage
           updateLanguage={this.updateLanguage}

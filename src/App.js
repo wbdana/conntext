@@ -35,9 +35,6 @@ class App extends Component {
       userId: ''
     },
     activeRecord: {
-      name: '',
-      content: '',
-      language: '',
       recordId: '',
       redirect: false
     },
@@ -216,6 +213,8 @@ class App extends Component {
               (this.state.auth.isLoggedIn === true && this.state.currentUser.user !== {}) ? <Redirect to="/home" {...props} currentUser={this.state.currentUser} /> : <Login login={this.login} />
             )} />
 
+            <Route exact path="editor/login" render={()=>(<Redirect to="/login" />)} />
+
             <Route exact path="/signup" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <SignUp {...props} login={this.login} /> : <Redirect to="/home" {...props} />
             )} />
@@ -242,7 +241,6 @@ class App extends Component {
             <Route exact path="/editor/:id" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <Editor
                 {...props}
-                getRecord={this.getRecord}
                 setActiveRecord={this.setActiveRecord}
                 activeRecord={this.state.activeRecord}
                 redirectReset={this.redirectReset}
@@ -255,7 +253,7 @@ class App extends Component {
             <Route exact path="/editor" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <NewEditor
                 {...props}
-                getRecord={this.getRecord}
+                setActiveRecord={this.setActiveRecord}
                 activeRecord={this.state.activeRecord}
                 redirectReset={this.redirectReset}
                 resetRecord={this.resetRecord}

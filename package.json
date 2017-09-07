@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "actioncable": "^5.1.3",
+    "base-64": "^0.1.0",
     "brace": "^0.10.0",
     "draft-js": "^0.10.1",
     "react": "^15.6.1",

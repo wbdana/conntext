@@ -1,14 +1,10 @@
 import React from 'react'
 import { Menu, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
-import { SiteHeader, TSP } from './PageAssets'
 
 const NavBar = (props) => {
   return(
     <div className="NavBar">
-
-      <TSP/>
-      <SiteHeader />
 
       <Menu>
 
@@ -18,27 +14,27 @@ const NavBar = (props) => {
           </Menu.Item>
         </NavLink>}
 
+        {props.loggedIn === true && <NavLink to="/editor" exact>
+          <Menu.Item name='editor'>
+            <Icon name='edit' />New
+          </Menu.Item>
+        </NavLink>}
+
         {props.loggedIn === true && <NavLink to="/savedfiles" exact>
           <Menu.Item name='savedFiles'>
-            <Icon name='file code outline' />Saved Files
+            <Icon name='file code outline' />My Files
           </Menu.Item>
         </NavLink>}
 
         {props.loggedIn === true && <NavLink to="/partnerfiles" exact>
           <Menu.Item name='partnerFiles'>
-            <Icon name='file code outline' />Partner Files
+            <Icon name='file code outline' />Shared Files
           </Menu.Item>
         </NavLink>}
 
         {props.loggedIn === true && <NavLink to="/allfiles" exact>
           <Menu.Item name='allfiles'>
             <Icon name='file code outline' />All Files
-          </Menu.Item>
-        </NavLink>}
-
-        {props.loggedIn === true && <NavLink to="/editor" exact>
-          <Menu.Item name='editor'>
-            <Icon name='edit' />Editor
           </Menu.Item>
         </NavLink>}
 

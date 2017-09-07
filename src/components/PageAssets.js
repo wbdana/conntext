@@ -5,13 +5,6 @@ const APIURL = () => (
   "https://conntext-api.herokuapp.com/api/v1"
 )
 
-// For spinning logo, className="App-logo"
-const SiteHeader = () => (
-  <div className="SiteHeader">
-    <Header size="small">Connected Text</Header>
-  </div>
-)
-
 const TSP = () => (
   <div className="TSP">
     <br/><br/>
@@ -27,4 +20,3 @@ const FSP = () => (
 export {APIURL}
 export {FSP}
 export {TSP}
-export {SiteHeader}

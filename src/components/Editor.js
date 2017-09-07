@@ -34,7 +34,7 @@ class Editor extends React.Component {
       content: '',
       language: 'ruby',
       recordId: '',
-      owner_id: this.props.auth.user.id
+      owner_id: ''
     }
   }
 
@@ -51,8 +51,6 @@ class Editor extends React.Component {
       }
     )})
   }
-
-// ()=>{this.props.getRecord(this.state.recordId)}
 
   componentWillMount() {
     console.log('WillMount!')
@@ -208,7 +206,11 @@ class Editor extends React.Component {
     return(
       <div className="Editor">
 
-        <RecordCable data-cableApp={this.props['data-cableApp']} data-recordId={this.props.activeRecord.recordId} updateWSContent={this.updateWSContent} getRecord={this.props.getRecord} />
+        <RecordCable
+          data-cableApp={this.props['data-cableApp']}
+          data-recordId={this.props.activeRecord.recordId}
+          updateWSContent={this.updateWSContent}
+        />
 
         <SelectLanguage
           updateLanguage={this.updateLanguage}

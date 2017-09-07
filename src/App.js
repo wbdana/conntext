@@ -82,9 +82,6 @@ class App extends Component {
   setActiveRecord = (response) => {
     this.setState({
       activeRecord: {
-        name: response.name,
-        content: response.content,
-        language: response.language,
         recordId: response.id,
         redirect: true
       }
@@ -169,26 +166,9 @@ class App extends Component {
      }
   }
 
-  getRecord = (id) => {
-    fetch(`${APIURL()}/records/${id}`)
-      .then(resp => resp.json())
-      .then(json => this.setState({
-        activeRecord: {
-          name: json.name,
-          content: json.content,
-          language: json.language,
-          recordId: json.id,
-          redirect: true
-        }
-      }))
-  }
-
   resetRecord = () => {
     this.setState({
       activeRecord: {
-        name: '',
-        content: '',
-        language: '',
         recordId: '',
         redirect: false
       }

@@ -194,7 +194,6 @@ class Editor extends React.Component {
   }
 
   updateWSContent = (record) => {
-    console.log(record)
     this.setState({
       content: record.content
     })

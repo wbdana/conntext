@@ -106,7 +106,7 @@ class Editor extends React.Component {
       content: newContent
     })
     console.log(`Updating Content: ${this.state.content}`)
-    setTimeout(()=>{this.handleUpdateSubmit()}, 500)
+    this.handleUpdateSubmit()
   }
 
   updateLanguage = (newLanguage) => {
@@ -163,12 +163,6 @@ class Editor extends React.Component {
     fetch(`${APIURL()}/records/${this.state.recordId}`, options)
       .then(resp => resp.json())
       .then(json => console.log(json))
-      // .then(json => this.setState({
-      //   name: json.name,
-      //   content: json.content,
-      //   language: json.language,
-      //   recordId: json.id
-      // }))
   }
 
   updateWSContent = (data) => {
@@ -181,16 +175,6 @@ class Editor extends React.Component {
       owner_id: data.record.owner_id
     })
   }
-
-
-  // this.state = {
-  //   name: '',
-  //   content: '',
-  //   language: 'ruby',
-  //   recordId: '',
-  //   owner_id: '',
-  //   openCable: false
-  // }
 
   render() {
     console.log('Rendering!')
@@ -218,27 +202,9 @@ class Editor extends React.Component {
 
         <br/>
 
-        <Button animated='fade' width="50%" onClick={this.newRecord}>
-          <Button.Content visible>
-            New File
-          </Button.Content>
-          <Button.Content hidden>
-            Did you save your changes?
-          </Button.Content>
-        </Button>
-
         <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
           <Button.Content visible>
             Save as New File
-          </Button.Content>
-          <Button.Content hidden>
-            {this.state.name + this.getFileExtension()}
-          </Button.Content>
-        </Button>
-
-        <Button animated='fade' width="50%" onClick={this.handleUpdateSubmit}>
-          <Button.Content visible>
-            Update Saved File
           </Button.Content>
           <Button.Content hidden>
             {this.state.name + this.getFileExtension()}

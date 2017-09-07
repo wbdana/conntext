@@ -3,7 +3,7 @@ import React from 'react'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
-import ChatBox from './ChatBox'
+import Messages from './Messages'
 import { Input, Button } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
@@ -36,7 +36,10 @@ class Editor extends React.Component {
       language: 'ruby',
       recordId: '',
       owner_id: '',
-      openCable: false
+      openCable: false,
+      messages: [],
+      inputContent: '',
+      userId: this.props.auth.user.id
     }
   }
 
@@ -45,18 +48,20 @@ class Editor extends React.Component {
     fetch(`${APIURL()}/records/${window.location.href.match(/\d+$/)[0]}`)
       .then(resp => resp.json())
       .then(json => {this.setState({
-        name: json.name,
-        content: json.content,
-        language: json.language,
-        recordId: json.id,
-        owner_id: json.owner_id,
-        openCable: true
+        name: json.record.name,
+        content: json.record.content,
+        language: json.record.language,
+        recordId: json.record.id,
+        owner_id: json.record.owner_id,
+        openCable: true,
+        messages: json.messages
       }
     )})
   }
 
   componentWillMount() {
     console.log('WillMount!')
+    console.log(this.state)
     this.manualFetch()
     this.props.redirectReset()
   }
@@ -173,8 +178,36 @@ class Editor extends React.Component {
       content: data.record.content,
       language: data.record.language,
       recordId: data.record.id,
-      owner_id: data.record.owner_id
+      owner_id: data.record.owner_id,
+      messages: [...data.messages]
     })
+  }
+
+  updateInputContent = (event, data) => {
+    this.setState({
+      inputContent: data.value
+    })
+  }
+
+  sendMessage = () => {
+    const body = {
+      record_id: this.state.recordId,
+      content: this.state.inputContent,
+      user_id: this.state.userId
+    }
+    const options = {
+      "method": "post",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      "body": JSON.stringify(body)
+    }
+    console.log(body)
+    console.log(options)
+    fetch(`${APIURL()}/messages`, options)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
   }
 
   render() {
@@ -224,6 +257,13 @@ class Editor extends React.Component {
           keyboardHandler="vim"
           width="50%"
         />
+
+        <div className="ChatBox">
+          <Messages messages={this.state.messages} />
+          <Input type='text' onChange={this.updateInputContent} />
+          <Button onClick={this.sendMessage}>SEND</Button>
+        </div>
+
       </div>
     )
   }

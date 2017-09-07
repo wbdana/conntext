@@ -44,7 +44,6 @@ class Editor extends React.Component {
   }
 
   manualFetch = () => {
-    console.log('manualFetch')
     fetch(`${APIURL()}/records/${window.location.href.match(/\d+$/)[0]}`)
       .then(resp => resp.json())
       .then(json => {this.setState({
@@ -60,8 +59,6 @@ class Editor extends React.Component {
   }
 
   componentWillMount() {
-    console.log('WillMount!')
-    console.log(this.state)
     this.manualFetch()
     this.props.redirectReset()
   }
@@ -101,7 +98,6 @@ class Editor extends React.Component {
   }
 
   updateName = (event, data) => {
-    console.log(`Updating Name: ${data.value}`)
     this.setState({
       name: data.value
     })
@@ -111,12 +107,10 @@ class Editor extends React.Component {
     this.setState({
       content: newContent
     })
-    console.log(`Updating Content: ${this.state.content}`)
     this.handleUpdateSubmit()
   }
 
   updateLanguage = (newLanguage) => {
-    console.log(`Updating Language: ${newLanguage}`)
     this.setState({
       language: newLanguage
     })
@@ -145,10 +139,9 @@ class Editor extends React.Component {
       },
       body: JSON.stringify(this.state)
     }
-    console.log(`${APIURL()}/records`, options)
     fetch(`${APIURL()}/records`, options)
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => console.log('New file created!'))
   }
 
   handleUpdateSubmit = () => {
@@ -168,11 +161,10 @@ class Editor extends React.Component {
     }
     fetch(`${APIURL()}/records/${this.state.recordId}`, options)
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => console.log('Record updated!'))
   }
 
   updateWSContent = (data) => {
-    console.log(data)
     this.setState({
       name: data.record.name,
       content: data.record.content,
@@ -203,16 +195,12 @@ class Editor extends React.Component {
       },
       "body": JSON.stringify(body)
     }
-    console.log(body)
-    console.log(options)
     fetch(`${APIURL()}/messages`, options)
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => console.log('Message sent!'))
   }
 
   render() {
-    console.log('Rendering!')
-    console.log(this.state.content)
     return(
       <div className="Editor">
 
@@ -249,7 +237,7 @@ class Editor extends React.Component {
 
         <AceEditor
           mode={this.state.language}
-          theme="github"
+          theme="solarized_dark"
           onChange={this.updateContent}
           name="AceEditor"
           value={this.state.content}

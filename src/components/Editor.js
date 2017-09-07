@@ -34,7 +34,8 @@ class Editor extends React.Component {
       content: '',
       language: 'ruby',
       recordId: '',
-      owner_id: ''
+      owner_id: '',
+      openCable: false
     }
   }
 
@@ -47,7 +48,8 @@ class Editor extends React.Component {
         content: json.content,
         language: json.language,
         recordId: json.id,
-        owner_id: json.owner_id
+        owner_id: json.owner_id,
+        openCable: true
       }
     )})
   }
@@ -205,11 +207,11 @@ class Editor extends React.Component {
     return(
       <div className="Editor">
 
-        <RecordCable
+        {(this.state.openCable === true) && <RecordCable
           data-cableApp={this.props['data-cableApp']}
           data-recordId={this.props.activeRecord.recordId}
           updateWSContent={this.updateWSContent}
-        />
+        />}
 
         <SelectLanguage
           updateLanguage={this.updateLanguage}

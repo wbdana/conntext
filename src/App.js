@@ -15,6 +15,7 @@ import UserLoading from './components/UserLoading'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import About from './components/About'
+import GitFetch from './components/GitFetch'
 
 // Services
 import Auth from './services/Auth'
@@ -240,6 +241,10 @@ class App extends Component {
                 auth={this.state.auth}
                 data-cableApp={this.props.cableApp}
               />
+            )} />
+
+            <Route exact path="/gitfetch" render={(props)=>(
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <GitFetch />
             )} />
 
             <Route exact path="/users" render={(props)=>(

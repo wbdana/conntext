@@ -244,7 +244,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/gitfetch" render={(props)=>(
-              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <GitFetch />
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <GitFetch {...props} userId={this.state.auth.user.id} />
             )} />
 
             <Route exact path="/users" render={(props)=>(

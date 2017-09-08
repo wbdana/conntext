@@ -242,7 +242,7 @@ class Editor extends React.Component {
           value={this.state.content}
           editorProps={{$blockScrolling: Infinity}}
           keyboardHandler="vim"
-          width="50%"
+          width="80%"
         />
 
         <div className="ChatBox">

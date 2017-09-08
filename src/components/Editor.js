@@ -115,11 +115,7 @@ class Editor extends React.Component {
     })
   }
 
-  // This is a stupid button to have
-  // in something that would ideally
-  // auto-save any updates to an
-  // already-saved file. Should remove
-  // when RecordCable works properly
+// This makes sense if directly redirecting to the new version of the file
   newRecord = (event) => {
     this.setState({
       name: '',

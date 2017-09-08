@@ -16,12 +16,7 @@ const About = () => {
           <ol>
             <li>Multi-user live text editing (like Google Docs);</li>
             <li>Live chatrooms for each file to facilitate communication for collaboration.</li>
-          </ol>
-        </li>
-
-        <li>Planned features:
-          <ol>
-            <li>Pull files from GitHub repos.</li>
+            <li>Pull files from GitHub repos through GitFetch.</li>
           </ol>
         </li>
         <li>Stretch goals that may or may not be implemented at a later date:
@@ -37,12 +32,8 @@ const About = () => {
 
       <Header size="small">Current Recommended Usage of Connected Text</Header>
       <ul>
-        <li>File naming conventions:
-          <ul>
-            <li>File naming conventions: Currently, Connected Text does not support repository/folder structures for your saved files. As such, we recommend that you add your full file path to your file name. For example, instead of 'Login', use 'repo_name/src/components/Login'.</li>
-            <li>However, Connected Text will append the appropriate file extension for you. Just select the desired language in the Editor and Connected Text will do the rest!</li>
-          </ul>
-        </li>
+        <li>File naming conventions: Currently, Connected Text does not support repository/folder structures for your saved files. As such, we recommend that you add your full file path to your file name. For example, instead of 'Login', use 'repo_name/src/components/Login.js'.</li>
+        <li>Syntax highlighting: Simply select the language you need to enable syntax highlighting in the Editor.</li>
       </ul>
     </Container>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import AceEditor from 'react-ace'
+import { Redirect } from 'react-router-dom'
 import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
 import Messages from './Messages'
@@ -38,7 +39,8 @@ class Editor extends React.Component {
       openCable: false,
       messages: [],
       inputContent: '',
-      userId: this.props.auth.user.id
+      userId: this.props.auth.user.id,
+      redirect: false
     }
   }
 
@@ -71,29 +73,6 @@ class Editor extends React.Component {
       recordId: '',
       openCable: false
     })
-  }
-
-  getFileExtension = () => {
-    switch (this.state.language) {
-      case 'ruby':
-        return '.rb'
-      case 'javascript':
-        return '.js'
-      case 'python':
-        return '.py'
-      case 'csharp':
-        return '.cs'
-      case 'xml':
-        return '.xml'
-      case 'markdown':
-        return '.md'
-      case 'css':
-        return '.css'
-      case 'html':
-        return '.html'
-      default:
-        return '.rb'
-    }
   }
 
   updateName = (event, data) => {
@@ -136,7 +115,10 @@ class Editor extends React.Component {
     }
     fetch(`${APIURL()}/records`, options)
       .then(resp => resp.json())
-      .then(json => console.log('New file created!'))
+      .then(json => this.setState({
+        recordId: json.record.id,
+        redirect: true
+      }))
   }
 
   handleUpdateSubmit = () => {
@@ -198,6 +180,8 @@ class Editor extends React.Component {
   render() {
     return(
       <div className="Editor">
+
+        {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
 
         {(this.state.openCable === true) && <RecordCable
           data-cableApp={this.props['data-cableApp']}

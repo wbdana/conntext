@@ -97,11 +97,11 @@ class GitFetch extends React.Component {
     return(
       <Container className="gitFetch">
         <TSP />
-        <Input label='GitHub Username' type='text' onChange={this.updateGithubUsername} />
+        <Input placeholder='wbdana' label='GitHub Username' type='text' onChange={this.updateGithubUsername} />
         <TSP />
-        <Input label='Repo Name' type='text' onChange={this.updateRepoName} />
+        <Input placeholder='conntext' label='Repo Name' type='text' onChange={this.updateRepoName} />
         <TSP />
-        <Input label='Full file path (with extension)' type='text' onChange={this.updateFilePath} />
+        <Input placeholder='src/App.js' label='Full file path (with extension)' type='text' onChange={this.updateFilePath} />
         <TSP />
         <Button onClick={this.fetchFile}>GitFetch!</Button>
       </Container>

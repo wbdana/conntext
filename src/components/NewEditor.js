@@ -1,5 +1,6 @@
 import React from 'react'
 // import brace from 'brace'
+import { Redirect } from 'react-router-dom'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
 import { Input, Button } from 'semantic-ui-react'
@@ -33,7 +34,8 @@ class NewEditor extends React.Component {
       content: '',
       language: 'ruby',
       recordId: '',
-      owner_id: this.props.auth.user.id
+      owner_id: this.props.auth.user.id,
+      redirect: false
     }
   }
 
@@ -47,7 +49,8 @@ class NewEditor extends React.Component {
       name: '',
       content: '',
       language: '',
-      recordId: ''
+      recordId: '',
+      redirect: false
     })
   }
 
@@ -69,27 +72,8 @@ class NewEditor extends React.Component {
     })
   }
 
-  getFileExtension = () => {
-    switch (this.state.language) {
-      case 'ruby':
-        return '.rb'
-      case 'javascript':
-        return '.js'
-      case 'python':
-        return '.py'
-      case 'csharp':
-        return '.cs'
-      case 'xml':
-        return '.xml'
-      case 'markdown':
-        return '.md'
-      case 'css':
-        return '.css'
-      case 'html':
-        return '.html'
-      default:
-        return '.rb'
-    }
+  componentWillUnmount() {
+    this.newRecord()
   }
 
   newRecord = (event) => {
@@ -112,13 +96,18 @@ class NewEditor extends React.Component {
     }
     fetch(`${APIURL()}/records`, options)
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => this.setState({
+        recordId: json.record.id,
+        redirect: true
+      }))
   }
 
   render() {
     console.log('Rendering!')
     return(
       <div className="Editor">
+
+        {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
 
         <SelectLanguage
           updateLanguage={this.updateLanguage}
@@ -136,10 +125,10 @@ class NewEditor extends React.Component {
 
         <Button animated='fade' width="50%" onClick={this.newRecord}>
           <Button.Content visible>
-            New File
+            Clear All
           </Button.Content>
           <Button.Content hidden>
-            Did you save your changes?
+            Did you save?
           </Button.Content>
         </Button>
 

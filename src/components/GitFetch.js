@@ -1,5 +1,6 @@
 import React from 'react'
 import base64 from 'base-64'
+import { Redirect } from 'react-router-dom'
 import { Container, Input, Button } from 'semantic-ui-react'
 import { APIURL, TSP } from './PageAssets'
 import { GHTK } from '../.secret.js'
@@ -8,7 +9,20 @@ class GitFetch extends React.Component {
   state = {
     githubUsername: '',
     repoName: '',
-    filePath: ''
+    filePath: '',
+    recordId: '',
+    redirect: false
+  }
+
+
+  componentWillUnmount(){
+    this.setState({
+      githubUsername: '',
+      repoName: '',
+      filePath: '',
+      recordId: '',
+      redirect: false
+    })
   }
 
   updateGithubUsername = (event, data) => {
@@ -28,8 +42,6 @@ class GitFetch extends React.Component {
       filePath: data.value
     })
   }
-
-  // Need to write a "get language from file extension method" here
 
   getLanguage = (filePath) => {
     if (filePath.includes('.rb')) {
@@ -89,13 +101,17 @@ class GitFetch extends React.Component {
         }
         fetch(`${APIURL()}/records`, newOptions)
           .then(resp => resp.json())
-          .then(json => console.log(json))
+          .then(json => this.setState({
+            recordId: json.record.id,
+            redirect: true
+          }))
       })
   }
 
   render() {
     return(
       <Container className="gitFetch">
+        {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
         <TSP />
         <Input placeholder='wbdana' label='GitHub Username' type='text' onChange={this.updateGithubUsername} />
         <TSP />

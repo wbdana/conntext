@@ -1,5 +1,4 @@
 import React from 'react'
-import { Header } from 'semantic-ui-react'
 
 const APIURL = () => (
   "https://conntext-api.herokuapp.com/api/v1"

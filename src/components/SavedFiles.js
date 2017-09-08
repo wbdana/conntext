@@ -90,6 +90,7 @@ class SavedFiles extends React.Component {
                   </List.Content>
                 </NavLink>
                 <AddPartnerForm fileId={file.id} addPartner={this.addPartner} />
+                <DeleteRecordButton recordId={file.id} deleteRecord={this.deleteRecord} />
               </List.Item>
             )
           })}

@@ -43,17 +43,6 @@ class NewEditor extends React.Component {
     this.props.redirectReset()
   }
 
-  componentWillUnmount(){
-    this.props.resetRecord()
-    this.setState({
-      name: '',
-      content: '',
-      language: '',
-      recordId: '',
-      redirect: false
-    })
-  }
-
   updateName = (event, data) => {
     this.setState({
       name: data.value
@@ -73,6 +62,7 @@ class NewEditor extends React.Component {
   }
 
   componentWillUnmount() {
+    this.props.resetRecord()
     this.newRecord()
   }
 
@@ -81,7 +71,8 @@ class NewEditor extends React.Component {
       name: '',
       content: '## Code',
       language: 'ruby',
-      recordId: ''
+      recordId: '',
+      redirect: false
     })
   }
 

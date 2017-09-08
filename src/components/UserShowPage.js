@@ -55,7 +55,7 @@ class UserShowPage extends React.Component {
                       <NavLink to={`/editor/${file.id}`}>
                         <List.Icon name='github' size='large' verticalAlign='middle' />
                         <List.Content>
-                          <List.Header  id={file.id}>{`${file.name}${this.getFileExtension(file)}`}</List.Header>
+                          <List.Header  id={file.id}>{file.name}</List.Header>
                           <List.Description>Last updated {file.updated_at}</List.Description>
                         </List.Content>
                       </NavLink>

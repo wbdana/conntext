@@ -148,7 +148,7 @@ class NewEditor extends React.Component {
             Save as New File
           </Button.Content>
           <Button.Content hidden>
-            {this.state.name + this.getFileExtension()}
+            {this.state.name}
           </Button.Content>
         </Button>
 

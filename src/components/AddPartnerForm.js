@@ -22,7 +22,7 @@ class AddPartnerForm extends React.Component {
     return(
       <div className="addPartnerForm">
         <Form onSubmit={this.handleSubmit}>
-          <Input type='text' onChange={this.updatePartnerName} />
+          <Input type='text' placeholder='Add collaborator name' onChange={this.updatePartnerName} />
           <Input type='submit' />
         </Form>
       </div>

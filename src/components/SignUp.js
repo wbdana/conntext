@@ -37,7 +37,7 @@ class SignUp extends React.Component {
         <FSP />
         <Header size='small'>Sign Up</Header>
         <Form>
-          <Form.Input label='Email' type='email' name='email' onChange={this.handleChange} />
+          <Form.Input label='Username' type='email' name='email' onChange={this.handleChange} />
           <Form.Input label='Password' type='password' name='password' onChange={this.handleChange} />
           <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' onChange={this.handleChange} />
         </Form>

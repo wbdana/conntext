@@ -131,7 +131,7 @@ class Editor extends React.Component {
     const options = {
       "method": "PATCH",
       "headers": {
-        "content-type":"application/json",
+        "content-type": "application/json",
         "accept": "application/json"
       },
       body: JSON.stringify(updateState)

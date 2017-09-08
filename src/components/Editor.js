@@ -5,7 +5,7 @@ import { Debounce } from 'react-throttle'
 import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
 import Messages from './Messages'
-import { Input, Button } from 'semantic-ui-react'
+import { Container, Icon, Input, Button } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
 
@@ -182,38 +182,41 @@ class Editor extends React.Component {
     return(
       <div className="Editor">
 
-        {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
+        <Container>
 
-        {(this.state.openCable === true) && <RecordCable
-          data-cableApp={this.props['data-cableApp']}
-          data-recordId={this.props.activeRecord.recordId}
-          updateWSContent={this.updateWSContent}
-        />}
+          {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
 
-        <SelectLanguage
-          updateLanguage={this.updateLanguage}
-          language={this.state.language}
-        />
+          {(this.state.openCable === true) && <RecordCable
+            data-cableApp={this.props['data-cableApp']}
+            data-recordId={this.props.activeRecord.recordId}
+            updateWSContent={this.updateWSContent}
+          />}
 
-        <br/>
+          <SelectLanguage
+            updateLanguage={this.updateLanguage}
+            language={this.state.language}
+          />
 
-        <Input
-          placeholder='File name...' onChange={this.updateName} value={this.state.name}
-          fluid
-        />
+          <br/>
 
-        <br/>
+          <Input
+            placeholder='File name...' onChange={this.updateName} value={this.state.name}
+            fluid
+          />
 
-        <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
-          <Button.Content visible>
-            Save as New File
-          </Button.Content>
-          <Button.Content hidden>
-            {this.state.name}
-          </Button.Content>
-        </Button>
+          <br/>
 
-        <br/><br/>
+          <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
+            <Button.Content visible>
+              <Icon name='fork' />Save as New File
+            </Button.Content>
+            <Button.Content hidden>
+              {this.state.name}
+            </Button.Content>
+          </Button>
+
+          <br/><br/>
+        </Container>
 
         <AceEditor
           mode={this.state.language}

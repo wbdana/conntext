@@ -3,7 +3,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
-import { Input, Button } from 'semantic-ui-react'
+import { Container, Input, Button } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
 
@@ -96,42 +96,43 @@ class NewEditor extends React.Component {
   render() {
     console.log('Rendering!')
     return(
-      <div className="Editor">
+      <div className="newEditor">
+        <Container>
 
-        {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
+          {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
 
-        <SelectLanguage
-          updateLanguage={this.updateLanguage}
-          language={this.state.language}
-        />
+          <SelectLanguage
+            updateLanguage={this.updateLanguage}
+            language={this.state.language}
+          />
 
-        <br/>
+          <br/>
 
-        <Input
-          placeholder='File name...' onChange={this.updateName} value={this.state.name}
-          fluid
-        />
+          <Input
+            placeholder='File name...' onChange={this.updateName} value={this.state.name}
+            fluid
+          />
 
-        <br/>
+          <br/>
 
-        <Button animated='fade' width="50%" onClick={this.newRecord}>
-          <Button.Content visible>
-            Clear All
-          </Button.Content>
-          <Button.Content hidden>
-            Did you save?
-          </Button.Content>
-        </Button>
+          <Button animated='fade' width="50%" onClick={this.newRecord}>
+            <Button.Content visible>
+              Clear All
+            </Button.Content>
+            <Button.Content hidden>
+              Did you save?
+            </Button.Content>
+          </Button>
 
-        <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
-          <Button.Content visible>
-            Save as New File
-          </Button.Content>
-          <Button.Content hidden>
-            {this.state.name}
-          </Button.Content>
-        </Button>
-
+          <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
+            <Button.Content visible>
+              Save as New File
+            </Button.Content>
+            <Button.Content hidden>
+              {this.state.name}
+            </Button.Content>
+          </Button>
+        </Container>
         <br/><br/>
 
         <AceEditor

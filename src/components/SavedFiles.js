@@ -72,6 +72,7 @@ class SavedFiles extends React.Component {
   render(){
     return(
       <div className='savedFiles'>
+        <Container>
         <TSP />
         <Input
           placeholder='Search records...'
@@ -79,7 +80,6 @@ class SavedFiles extends React.Component {
           value={this.state.search}
         />
         <TSP />
-        <Container>
           <List divided relaxed link>
             {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
               return(

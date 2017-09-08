@@ -113,11 +113,11 @@ class GitFetch extends React.Component {
       <Container className="gitFetch">
         {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
         <TSP />
-        <Input placeholder='wbdana' label='GitHub Username' type='text' onChange={this.updateGithubUsername} />
+        <Input fluid placeholder='wbdana' label='GitHub Username' type='text' onChange={this.updateGithubUsername} />
         <TSP />
-        <Input placeholder='conntext' label='Repo Name' type='text' onChange={this.updateRepoName} />
+        <Input fluid placeholder='conntext' label='Repo Name' type='text' onChange={this.updateRepoName} />
         <TSP />
-        <Input placeholder='src/App.js' label='Full file path (with extension)' type='text' onChange={this.updateFilePath} />
+        <Input fluid placeholder='src/App.js' label='Full file path (with extension)' type='text' onChange={this.updateFilePath} />
         <TSP />
         <Button onClick={this.fetchFile}>GitFetch!</Button>
       </Container>

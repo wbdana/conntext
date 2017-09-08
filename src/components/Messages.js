@@ -1,10 +1,10 @@
 import React from 'react'
-import { List } from 'semantic-ui-react'
+import { Container, List } from 'semantic-ui-react'
 
 const Messages = (props) => {
 
   return(
-    <div className="messages">
+    <Container>
       <List>
         {props.messages.map( (message, index) => {
           return(
@@ -16,7 +16,7 @@ const Messages = (props) => {
           )
         })}
       </List>
-    </div>
+    </Container>
   )
 }
 

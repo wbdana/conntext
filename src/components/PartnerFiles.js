@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Input } from 'semantic-ui-react'
+import { Container, List, Input } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
 import AddPartnerForm from './AddPartnerForm'
@@ -57,6 +57,7 @@ class PartnerFiles extends React.Component {
   render(){
     return(
       <div className='partnerFiles'>
+        <Container>
         <TSP />
         <Input
           placeholder='Search records...'
@@ -64,22 +65,23 @@ class PartnerFiles extends React.Component {
           value={this.state.search}
         />
         <TSP />
-        <List divided relaxed link>
-          {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
-            return(
-              <List.Item key={index}>
-                <NavLink to={`/editor/${file.id}`}>
-                  <List.Icon name='github' size='large' verticalAlign='middle' />
-                  <List.Content>
-                    <List.Header  id={file.id}>{file.name}</List.Header>
-                    <List.Description>Last updated {file.updated_at}</List.Description>
-                  </List.Content>
-                </NavLink>
-                <AddPartnerForm fileId={file.id} addPartner={this.addPartner} />
-              </List.Item>
-            )
-          })}
-        </List>
+          <List divided relaxed link>
+            {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
+              return(
+                <List.Item key={index}>
+                  <NavLink to={`/editor/${file.id}`}>
+                    <List.Icon name='github' size='large' verticalAlign='middle' />
+                    <List.Content>
+                      <List.Header  id={file.id}>{file.name}</List.Header>
+                      <List.Description>Last updated {file.updated_at}</List.Description>
+                    </List.Content>
+                  </NavLink>
+                  <AddPartnerForm fileId={file.id} addPartner={this.addPartner} />
+                </List.Item>
+              )
+            })}
+          </List>
+        </Container>
       </div>
     )
   }

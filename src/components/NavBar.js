@@ -52,13 +52,13 @@ const NavBar = (props) => {
 
         {props.loggedIn === false && <NavLink to="/login" exact>
           <Menu.Item name='login'>
-            <Icon name='question circle outline' />Login
+            <Icon name='user' />Login
           </Menu.Item>
         </NavLink>}
 
         {props.loggedIn === false && <NavLink to="/signup" exact>
           <Menu.Item name='signup'>
-            <Icon name='question circle outline' />Signup
+            <Icon name='write' />Signup
           </Menu.Item>
         </NavLink>}
 

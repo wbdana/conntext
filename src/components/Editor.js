@@ -68,10 +68,6 @@ class Editor extends React.Component {
     this.props.redirectReset()
   }
 
-  componentDidMount() {
-    setInterval(this.handleUpdateSubmit(), 3000)
-  }
-
   componentWillUnmount(){
     this.props.resetRecord()
     this.setState({
@@ -93,22 +89,18 @@ class Editor extends React.Component {
     this.setState({
       content: newContent
     })
-    this.broadcast()
+    if (this._timeout) {
+      clearTimeout(this._timeout);
+    }
+    this._timeout = setTimeout(()=>{
+      this._timeout = null;
+      this.handleUpdateSubmit()
+    }, 500)
   }
 
   updateLanguage = (newLanguage) => {
     this.setState({
       language: newLanguage
-    })
-  }
-
-// This makes sense if directly redirecting to the new version of the file
-  newRecord = (event) => {
-    this.setState({
-      name: '',
-      content: '## Code',
-      language: 'ruby',
-      recordId: ''
     })
   }
 
@@ -129,26 +121,6 @@ class Editor extends React.Component {
       }))
   }
 
-  broadcast = () => {
-    const updateState = {
-      name: this.state.name,
-      content: this.state.content,
-      language: this.state.language,
-      recordId: this.state.recordId
-    }
-    const options = {
-      "method": "PATCH",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json"
-      },
-      body: JSON.stringify(updateState)
-    }
-    fetch(`${APIURL()}/records/${this.state.recordId}/broadcast`, options)
-      .then(resp => resp.json())
-      .then(json => console.log('Broadcasting!'))
-  }
-
   handleUpdateSubmit = () => {
     const updateState = {
       name: this.state.name,
@@ -166,7 +138,7 @@ class Editor extends React.Component {
     }
     fetch(`${APIURL()}/records/${this.state.recordId}`, options)
       .then(resp => resp.json())
-      .then(json => console.log('Record updated!'))
+      .then(json => console.log(json))
   }
 
   updateWSContent = (data) => {

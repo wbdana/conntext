@@ -2,7 +2,6 @@ import React from 'react'
 import { Container, List, Input } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
-import AddPartnerForm from './AddPartnerForm'
 import DeleteRecordButton from './DeleteRecordButton'
 
 class SavedFiles extends React.Component {

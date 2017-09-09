@@ -1,13 +1,11 @@
 import React from 'react'
 import AceEditor from 'react-ace'
-import ReactDOM from 'react-dom'
 import { Redirect } from 'react-router-dom'
-import { Throttle, Debounce } from 'react-throttle'
 import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
 import Messages from './Messages'
 import AddPartnerForm from './AddPartnerForm'
-import { Container, Grid, Icon, Input, Button } from 'semantic-ui-react'
+import { Container, Form, Grid, Icon, Input, Button } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
 
@@ -75,7 +73,8 @@ class Editor extends React.Component {
       content: '',
       language: '',
       recordId: '',
-      openCable: false
+      openCable: false,
+      redirect: false
     })
   }
 
@@ -95,7 +94,7 @@ class Editor extends React.Component {
     this._timeout = setTimeout(()=>{
       this._timeout = null;
       this.handleUpdateSubmit()
-    }, 500)
+    }, 750)
   }
 
   updateLanguage = (newLanguage) => {
@@ -174,7 +173,9 @@ class Editor extends React.Component {
     }
     fetch(`${APIURL()}/messages`, options)
       .then(resp => resp.json())
-      .then(json => console.log('Message sent!'))
+      .then(json => this.setState({
+        inputContent: ''
+      }, console.log('Message sent!')))
   }
 
   addPartner = (partnerName, fileId) => {
@@ -255,8 +256,10 @@ class Editor extends React.Component {
           <Grid.Column className="scroller" width={4}>
             <Container className="ChatBox scroller">
               <Messages messages={this.state.messages} />
-              <Input type='text' onChange={this.updateInputContent} />
-              <Button onClick={this.sendMessage}>SEND</Button>
+              <Form onSubmit={this.sendMessage}>
+                <Form.Input onChange={this.updateInputContent} value={this.state.inputContent} type='text' />
+                <Form.Input type='submit' value='Send message' />
+              </Form>
             </Container>
           </Grid.Column>
         </Grid>

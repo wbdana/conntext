@@ -76,7 +76,6 @@ class PartnerFiles extends React.Component {
                       <List.Description>Last updated {file.updated_at}</List.Description>
                     </List.Content>
                   </NavLink>
-                  <AddPartnerForm fileId={file.id} addPartner={this.addPartner} />
                 </List.Item>
               )
             })}

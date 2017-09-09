@@ -1,11 +1,13 @@
 import React from 'react'
 import AceEditor from 'react-ace'
+import ReactDOM from 'react-dom'
 import { Redirect } from 'react-router-dom'
-import { Debounce } from 'react-throttle'
+import { Throttle, Debounce } from 'react-throttle'
 import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
 import Messages from './Messages'
-import { Container, Icon, Input, Button } from 'semantic-ui-react'
+import AddPartnerForm from './AddPartnerForm'
+import { Container, Grid, Icon, Input, Button } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
 
@@ -41,7 +43,8 @@ class Editor extends React.Component {
       messages: [],
       inputContent: '',
       userId: this.props.auth.user.id,
-      redirect: false
+      redirect: false,
+      openAddPartner: false
     }
   }
 
@@ -55,14 +58,18 @@ class Editor extends React.Component {
         recordId: json.record.id,
         owner_id: json.record.owner_id,
         openCable: true,
-        messages: json.messages
-      }
-    )})
+        messages: json.messages,
+        openAddPartner: true
+      })})
   }
 
   componentWillMount() {
     this.manualFetch()
     this.props.redirectReset()
+  }
+
+  componentDidMount() {
+    setInterval(this.handleUpdateSubmit(), 3000)
   }
 
   componentWillUnmount(){
@@ -86,7 +93,7 @@ class Editor extends React.Component {
     this.setState({
       content: newContent
     })
-    this.handleUpdateSubmit()
+    this.broadcast()
   }
 
   updateLanguage = (newLanguage) => {
@@ -120,6 +127,26 @@ class Editor extends React.Component {
         recordId: json.record.id,
         redirect: true
       }))
+  }
+
+  broadcast = () => {
+    const updateState = {
+      name: this.state.name,
+      content: this.state.content,
+      language: this.state.language,
+      recordId: this.state.recordId
+    }
+    const options = {
+      "method": "PATCH",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify(updateState)
+    }
+    fetch(`${APIURL()}/records/${this.state.recordId}/broadcast`, options)
+      .then(resp => resp.json())
+      .then(json => console.log('Broadcasting!'))
   }
 
   handleUpdateSubmit = () => {
@@ -178,6 +205,22 @@ class Editor extends React.Component {
       .then(json => console.log('Message sent!'))
   }
 
+  addPartner = (partnerName, fileId) => {
+    const obj = {user_email: partnerName, file_id: fileId}
+    const options = {
+      "method": "post",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json",
+        "Authorization": localStorage.getItem('jwt')
+      },
+      "body": JSON.stringify(obj)
+    }
+    fetch(`${APIURL()}/records_users`, options)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
+  }
+
   render() {
     return(
       <div className="Editor">
@@ -206,6 +249,12 @@ class Editor extends React.Component {
 
           <br/>
 
+          {this.state.openAddPartner === true && <div className="AddPartnerForm">
+            <AddPartnerForm fileId={this.state.recordId} addPartner={this.addPartner} />
+          </div>}
+
+          <br/>
+
           <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
             <Button.Content visible>
               <Icon name='fork' />Save as New File
@@ -216,24 +265,29 @@ class Editor extends React.Component {
           </Button>
 
           <br/><br/>
+
         </Container>
-
-        <AceEditor
-          mode={this.state.language}
-          theme="github"
-          onChange={this.updateContent}
-          name="AceEditor"
-          value={this.state.content}
-          editorProps={{$blockScrolling: Infinity}}
-          keyboardHandler="vim"
-          width="80%"
-        />
-
-        <div className="ChatBox">
-          <Messages messages={this.state.messages} />
-          <Input type='text' onChange={this.updateInputContent} />
-          <Button onClick={this.sendMessage}>SEND</Button>
-        </div>
+        <Grid celled>
+          <Grid.Column width={12}>
+            <AceEditor
+              mode={this.state.language}
+              theme="github"
+              onChange={this.updateContent}
+              name="AceEditor"
+              value={this.state.content}
+              editorProps={{$blockScrolling: Infinity}}
+              keyboardHandler="vim"
+              width="100%"
+            />
+          </Grid.Column>
+          <Grid.Column className="scroller" width={4}>
+            <Container className="ChatBox scroller">
+              <Messages messages={this.state.messages} />
+              <Input type='text' onChange={this.updateInputContent} />
+              <Button onClick={this.sendMessage}>SEND</Button>
+            </Container>
+          </Grid.Column>
+        </Grid>
 
       </div>
     )

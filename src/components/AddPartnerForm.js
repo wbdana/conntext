@@ -15,7 +15,7 @@ class AddPartnerForm extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.addPartner(this.state.partnerName, this.state.fileId)
+    this.props.addPartner(this.state.partnerName, this.props.fileId)
   }
 
   render() {

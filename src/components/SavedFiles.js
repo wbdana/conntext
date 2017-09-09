@@ -12,22 +12,6 @@ class SavedFiles extends React.Component {
     userId: ''
   }
 
-  addPartner = (partnerName, fileId) => {
-    const obj = {user_email: partnerName, file_id: fileId}
-    const options = {
-      "method": "post",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json",
-        "Authorization": localStorage.getItem('jwt')
-      },
-      "body": JSON.stringify(obj)
-    }
-    fetch(`${APIURL()}/records_users`, options)
-      .then(resp => resp.json())
-      .then(json => console.log(json))
-  }
-
   grabSavedFiles = (props) => {
     this.setState({
       userId: this.props.auth.user.id
@@ -91,7 +75,6 @@ class SavedFiles extends React.Component {
                       <List.Description>Last updated {file.updated_at}</List.Description>
                     </List.Content>
                   </NavLink>
-                  <AddPartnerForm fileId={file.id} addPartner={this.addPartner} />
                   <DeleteRecordButton recordId={file.id} deleteRecord={this.deleteRecord} />
                 </List.Item>
               )

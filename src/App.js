@@ -111,6 +111,8 @@ class App extends Component {
             }
           })
           localStorage.setItem('jwt', user.jwt )
+        } else {
+          console.log(user.error)
         }
       }).then(()=>{
         Auth.currentUser()
@@ -204,11 +206,11 @@ class App extends Component {
               (this.state.auth.isLoggedIn === true && this.state.currentUser.user !== {}) ? <Home {...props} userId={this.state.auth.user.id} currentUser={this.state.currentUser} /> : <Redirect to="/login" {...props} />
             )} />
 
-            <Route path="/savedfiles" render={(props)=>(
+            <Route path="/myfiles" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <SavedFiles {...props} auth={this.state.auth} setActiveRecord={this.setActiveRecord} />
             )} />
 
-            <Route path="/partnerfiles" render={(props)=>(
+            <Route path="/sharedfiles" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <PartnerFiles {...props} auth={this.state.auth} setActiveRecord={this.setActiveRecord} />
             )} />
 

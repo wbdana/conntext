@@ -20,14 +20,14 @@ const NavBar = (props) => {
           </Menu.Item>
         </NavLink>}
 
-        {props.loggedIn === true && <NavLink to="/savedfiles" exact>
-          <Menu.Item name='savedFiles'>
+        {props.loggedIn === true && <NavLink to="/myfiles" exact>
+          <Menu.Item name='myFiles'>
             <Icon name='folder open outline' />My Files
           </Menu.Item>
         </NavLink>}
 
-        {props.loggedIn === true && <NavLink to="/partnerfiles" exact>
-          <Menu.Item name='partnerFiles'>
+        {props.loggedIn === true && <NavLink to="/sharedfiles" exact>
+          <Menu.Item name='sharedFiles'>
             <Icon name='file code outline' />Shared Files
           </Menu.Item>
         </NavLink>}

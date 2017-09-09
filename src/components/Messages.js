@@ -4,8 +4,8 @@ import { Container, List } from 'semantic-ui-react'
 const Messages = (props) => {
 
   return(
-    <Container>
-      <List>
+    <Container className="scroller">
+      <List celled animated>
         {props.messages.map( (message, index) => {
           return(
             <List.Item key={index}>
@@ -15,6 +15,9 @@ const Messages = (props) => {
             </List.Item>
           )
         })}
+        <List.Item>
+          <div style={{float:"left", clear:"both"}} ref={(el) => {this.messagesEnd = el;}} />
+        </List.Item>
       </List>
     </Container>
   )

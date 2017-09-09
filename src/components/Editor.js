@@ -74,7 +74,8 @@ class Editor extends React.Component {
       language: '',
       recordId: '',
       openCable: false,
-      redirect: false
+      redirect: false,
+      messages: []
     })
   }
 

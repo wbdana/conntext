@@ -25,7 +25,7 @@ class Login extends React.Component {
       <Container>
         <FSP />
         <Header size='small'>Login</Header>
-        <Form>
+        <Form id='login' >
           <Form.Input label='Username' type='email' name='email' placeholder='Must be exact' onChange={this.onChange} />
           <Form.Input label='Password' type='password' name='password' placeholder='Must be exact... obviously' onChange={this.onChange} />
         </Form>
@@ -39,7 +39,7 @@ class Login extends React.Component {
           </Button.Content>
         </Button>
         <FSP />
-        Not a member? <NavLink to="/signup" exact>Click here to sign up!</NavLink>
+        <div id='loginsmall'> Not a member? <NavLink to="/signup" exact>Click here to sign up!</NavLink></div>
       </Container>
     )
   }

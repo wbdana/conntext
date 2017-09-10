@@ -146,7 +146,7 @@ class NewEditor extends React.Component {
                       </Button.Content>
                     </Button>
                   </Button.Group>
-                  <FSP/><FSP/><FSP/><FSP/><FSP/><FSP/><br/>
+                  <FSP/><FSP/><FSP/><FSP/><FSP/><FSP/><br/><br/><br/>
                 </Container>
               </Segment>
             </Grid.Column>

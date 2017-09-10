@@ -36,7 +36,7 @@ class SignUp extends React.Component {
       <Container>
         <FSP />
         <Header size='small'>Sign Up</Header>
-        <Form>
+        <Form id='signup' >
           <Form.Input label='Username' type='email' name='email' placeholder='Literally whatever you want' onChange={this.handleChange} />
           <Form.Input label='Password' type='password' name='password' placeholder='Literally whatever you want' onChange={this.handleChange} />
           <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' placeholder='Must be .gif, .jpg, or .jpg' onChange={this.handleChange} />
@@ -51,7 +51,7 @@ class SignUp extends React.Component {
           </Button.Content>
         </Button>
         <FSP />
-        Already a member? <NavLink to="/login" exact>Click here to login!</NavLink>
+        <div id='signupsmall'>Already a member? <NavLink to="/login" exact>Click here to login!</NavLink></div>
       </Container>
     )
   }

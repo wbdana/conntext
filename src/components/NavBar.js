@@ -8,9 +8,11 @@ const NavBar = (props) => {
 
       <Menu className="navbar">
 
-        <Menu.Item name="conntext">
-          Connected Text - by wbdana
-        </Menu.Item>
+        <a href='https://github.com/wbdana/' target='_blank' rel="noopener noreferrer">
+          <Menu.Item name="conntext">
+            Connected Text - by wbdana
+          </Menu.Item>
+        </a>
 
         {props.loggedIn === true && <NavLink to="/home" exact>
           <Menu.Item name="home">

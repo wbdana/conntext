@@ -1,6 +1,6 @@
 body {
   /*background-color: black !important;*/
-  background-image: url("./pattern.svg") !important;
+  background-image: url("./leaf.jpg") !important;
   margin: 0;
   padding: 0;
   font-family: monospace;
@@ -32,7 +32,7 @@ body {
 }
 
 /*.column {
-  background-image: url("./pattern.svg") !important;
+  background-image: url("./leaf.jpg") !important;
 }*/
 
 .navbar .menu .item {
@@ -41,11 +41,11 @@ body {
 }
 
 .homepage {
-  background-image: url("./pattern.svg") !important;
+  background-image: url("./leaf.jpg") !important;
 }
 
 .about {
-  background-image: url("./pattern.svg") !important;
+  background-image: url("./leaf.jpg") !important;
 }
 
 .navbar .item {

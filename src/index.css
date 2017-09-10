@@ -27,7 +27,7 @@ body {
   background-color: white !important;
 }
 
-.about {
+.about ul, .about ul li {
   background-color: white !important;
 }
 
@@ -41,6 +41,10 @@ body {
 }
 
 .homepage {
+  background-image: url("./pattern.svg") !important;
+}
+
+.about {
   background-image: url("./pattern.svg") !important;
 }
 

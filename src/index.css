@@ -1,17 +1,20 @@
 body {
+  /*background-color: black !important;*/
   margin: 0;
   padding: 0;
   font-family: monospace;
-  background-color: #003333;
-  font-color: white;
+  background-color: white;
+  /*background-color: white;*/
+  font-color: white !important;
 }
 
-* {
+. {
   font-family: monospace;
+  /*background-color: black;*/
 }
 
 .Editor {
-  background-color: #003333;
+  background-color: white;
 }
 
 .ace_editor {
@@ -20,55 +23,44 @@ body {
 }
 
 .newEditor {
-  background-color: #003333;
+  background-color: white !important;
 }
 
-.navbar {
-  background-color: white;
+.column {
+  background-color: white !important;
+}
+
+.navbar .menu .item {
+  background-color: black;
+  font-color: white !important;
 }
 
 .homepage {
-  background-color: #003333;
+  background-color: white;
 }
 
-header {
-  font-family: monospace;
-  background-color: #003333;
+.navbar .item {
+  background-color: black;
+  font-color: white;
 }
 
-h {
-  font-family: monospace;
-  background-color: #003333;
+.header, .button, .form .input, .description, .navbar, .item {
+  font-family: monospace !important;
+  background-color: white;
 }
 
 .messages {
   height: 300px;
-  background-color: #003333;
+  background-color: white;
   font-color: #000000;
 }
 
 .input {
   font-family: monospace;
-  background-color: #003333;
+  background-color: white;
 }
 
 .grid {
   height: 100%;
-  background-color: #003333;
-}
-
-.savedFiles {
-  background-color: #003333;
-}
-
-.partnerFiles {
-  background-color: #003333;
-}
-
-.gitFetch {
-  background-color: #003333;
-}
-
-.userDirectory {
-  background-color: #003333;
+  background-color: white;
 }

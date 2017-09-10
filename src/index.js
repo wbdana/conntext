@@ -6,6 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 
 // CSS
 import './App.css';
+import 'semantic-ui-css/semantic.min.css'
+// import '../semantic/dist/semantic.min.css';
 
 // ActionCable setup
 import actionCable from 'actioncable'

@@ -203,7 +203,7 @@ class Editor extends React.Component {
             <Grid.Column width={12}>
               <AceEditor
                 mode={this.state.language}
-                theme="solarized_dark"
+                theme="terminal"
                 onChange={this.updateContent}
                 name="AceEditor"
                 value={this.state.content}

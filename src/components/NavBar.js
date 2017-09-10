@@ -38,12 +38,6 @@ const NavBar = (props) => {
           </Menu.Item>
         </NavLink>}
 
-        {props.loggedIn === true && <NavLink to="/allfiles" exact>
-          <Menu.Item name='allfiles'>
-            <Icon name='file code outline' />All Files
-          </Menu.Item>
-        </NavLink>}
-
         {props.loggedIn === true && <NavLink to="/gitfetch" exact>
           <Menu.Item name='gitfetch'>
             <Icon name='github' />GitFetch

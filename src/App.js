@@ -8,7 +8,6 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SavedFiles from './components/SavedFiles'
 import PartnerFiles from './components/PartnerFiles'
-import AllFiles from './components/AllFiles'
 import UserDirectory from './components/UserDirectory'
 import UserShowPage from './components/UserShowPage'
 import UserLoading from './components/UserLoading'
@@ -213,13 +212,6 @@ class App extends Component {
 
             <Route path="/sharedfiles" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <PartnerFiles {...props} auth={this.state.auth} setActiveRecord={this.setActiveRecord} />
-            )} />
-
-            <Route exact path="/allfiles" render={(props)=>(
-              (this.state.auth.isLoggedIn === false) ? <Redirect to="/login" {...props} /> : <AllFiles
-                {...props}
-                setActiveRecord={this.setActiveRecord}
-              />
             )} />
 
             <Route exact path="/editor/:id" render={(props)=>(

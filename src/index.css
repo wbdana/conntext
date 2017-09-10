@@ -53,7 +53,7 @@ body {
   font-color: white;
 }
 
-.header, .button, .form .input, .description, .navbar, .item, .column, .input, .ui.fluid.input input, .ui.fluid.input, .ui.button, .ui.segment.options, .selection.dropdown, div.ui.label, button.ui.button, a.item, ui.navbar.menu *, menu.item, div.ui.navbar.menu, ui.navbar.container, div.ui.input input {
+.header, .button, .form .input, .description, .navbar, .item, .column, .input, .ui.fluid.input input, .ui.fluid.input, .ui.button, .ui.segment.options, .selection.dropdown, div.ui.label, button.ui.button, a.item, ui.navbar.menu *, menu.item, div.ui.navbar.menu, ui.navbar.container, div.ui.input input, div.ui.card, div.ui.segment.chatbox, div.ui.container.messages {
   font-family: monospace !important;
   background-color: #FEF7DB;
 }

@@ -128,7 +128,7 @@ class NewEditor extends React.Component {
 
                   <br/>
                   <Button.Group>
-                    <Button color='red' basic animated='fade' width="50%" onClick={this.newRecord}>
+                    <Button color='grey' basic animated='fade' width="50%" onClick={this.newRecord}>
                       <Button.Content visible>
                         Clear All
                       </Button.Content>

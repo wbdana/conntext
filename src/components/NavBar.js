@@ -1,10 +1,10 @@
 import React from 'react'
-import { Menu, Icon } from 'semantic-ui-react'
+import { Container, Menu, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const NavBar = (props) => {
   return(
-    <div className="navbar">
+    <Container fluid className="navbar">
 
       <Menu className="navbar">
 
@@ -80,7 +80,7 @@ const NavBar = (props) => {
         </Menu.Item></NavLink>}
 
       </Menu>
-    </div>
+    </Container>
   )
 }
 

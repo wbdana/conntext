@@ -23,7 +23,7 @@ class AddPartnerForm extends React.Component {
       <div className="addPartnerForm">
         <Form onSubmit={this.handleSubmit}>
           <Input type='text' placeholder='Add collaborator name' onChange={this.updatePartnerName} />
-          <Button basic color='blue' type='submit'>Submit</Button>
+          <Button floated="right" basic color='blue' type='submit'>Submit</Button>
         </Form>
       </div>
     )

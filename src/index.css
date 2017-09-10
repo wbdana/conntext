@@ -1,5 +1,6 @@
 body {
   /*background-color: black !important;*/
+  background-image: url("./k.jpeg") !important;
   margin: 0;
   padding: 0;
   font-family: monospace;
@@ -27,7 +28,7 @@ body {
 }
 
 .column {
-  background-color: white !important;
+  background-image: url("./k.jpeg") !important;
 }
 
 .navbar .menu .item {
@@ -36,7 +37,7 @@ body {
 }
 
 .homepage {
-  background-color: white;
+  background-image: url("./k.jpeg") !important;
 }
 
 .navbar .item {

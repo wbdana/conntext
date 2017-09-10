@@ -1,6 +1,6 @@
 body {
   /*background-color: black !important;*/
-  background-image: url("./knot.jpg") !important;
+  background-image: url("./pattern.svg") !important;
   margin: 0;
   padding: 0;
   font-family: monospace;
@@ -32,7 +32,7 @@ body {
 }
 
 /*.column {
-  background-image: url("./knot.jpg") !important;
+  background-image: url("./pattern.svg") !important;
 }*/
 
 .navbar .menu .item {
@@ -41,7 +41,7 @@ body {
 }
 
 .homepage {
-  background-image: url("./knot.jpg") !important;
+  background-image: url("./pattern.svg") !important;
 }
 
 .navbar .item {

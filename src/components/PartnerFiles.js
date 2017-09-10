@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, List, Input } from 'semantic-ui-react'
+import { Container, List, Input, Grid } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
 
@@ -69,13 +69,23 @@ class PartnerFiles extends React.Component {
             {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
               return(
                 <List.Item key={index}>
-                  <NavLink to={`/editor/${file.id}`}>
-                    <List.Icon name='github' size='large' verticalAlign='middle' />
-                    <List.Content>
-                      <List.Header  id={file.id}>{file.name}</List.Header>
-                      <List.Description>Last updated {file.updated_at}</List.Description>
-                    </List.Content>
-                  </NavLink>
+                  <Grid>
+                    <Grid.Row verticalAlign="middle">
+                      <Grid.Column width={1}>
+                        <NavLink to={`/editor/${file.id}`}>
+                          <List.Icon name='github' size='huge' verticalAlign='middle' floated="center" />
+                        </NavLink>
+                      </Grid.Column>
+                      <Grid.Column width={15}>
+                        <NavLink to={`/editor/${file.id}`}>
+                          <List.Content floated="left" >
+                            <List.Header  id={file.id}>{file.name}</List.Header>
+                            <List.Description>Last updated {file.updated_at}</List.Description>
+                          </List.Content>
+                        </NavLink>
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
                 </List.Item>
               )
             })}

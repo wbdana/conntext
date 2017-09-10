@@ -9,8 +9,8 @@ class DeleteRecordButton extends React.Component {
 
   render(){
     return(
-      <Button color='teal' onClick={this.handleClick}>
-        Delete File!
+      <Button floated='right' id="deletebutton" onClick={this.handleClick}>
+        Delete File
       </Button>
     )
   }

@@ -137,7 +137,7 @@ class NewEditor extends React.Component {
                       </Button.Content>
                     </Button>
                     <Button.Or/>
-                    <Button color='teal' animated='fade' width="50%" onClick={this.handleNewSubmit}>
+                    <Button color='blue' basic animated='fade' width="50%" onClick={this.handleNewSubmit}>
                       <Button.Content visible>
                         Save as New File
                       </Button.Content>

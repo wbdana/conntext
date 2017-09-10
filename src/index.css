@@ -1,6 +1,6 @@
 body {
   /*background-color: black !important;*/
-  background-image: url("./leaf2.jpg") !important;
+  background-image: url("./blueleaf.jpg") !important;
   margin: 0;
   padding: 0;
   font-family: monospace;
@@ -31,32 +31,45 @@ body {
 }
 
 /*.column {
-  background-image: url("./leaf2.jpg") !important;
+  background-image: url("./blueleaf.jpg") !important;
 }*/
 
 /* NavBar items... minus logout and whitespace */
 .navbar a, .navbar a.item, .navbar .menu {
-  background-color: #DEE1CD;
+  background-color: #FEF7DB;
   font-color: black !important;
 }
 
 .homepage {
-  background-image: url("./leaf2.jpg") !important;
+  background-image: url("./blueleaf.jpg") !important;
 }
 
 .about {
-  background-image: url("./leaf2.jpg") !important;
+  background-image: url("./blueleaf.jpg") !important;
 }
 
 .navbar .item {
-  background-color: #DEE1CD;
+  background-color: #FEF7DB;
   font-color: white;
 }
 
-.header, .button, .form .input, .description, .navbar, .item, .column, .input, .ui.fluid.input input, .ui.fluid.input, .ui.button, .ui.segment.options, .selection.dropdown, div.ui.label, button.ui.button, a.item, ui.navbar.menu *, menu.item, div.ui.navbar.menu, ui.navbar.container, div.ui.input input, div.ui.card, div.ui.segment.chatbox, div.ui.container.messages, #login input, #signup input, #signupsmall, #loginsmall {
+.header, .button, .form .input, .description, .navbar, .item, .column, .input, .ui.fluid.input input, .ui.fluid.input, .ui.button, .ui.segment.options, .selection.dropdown, div.ui.label, button.ui.button, a.item, ui.navbar.menu *, menu.item, div.ui.navbar.menu, ui.navbar.container, div.ui.input input, div.ui.card, div.ui.segment.chatbox, div.ui.container.messages, #login input, #signup input, #signupsmall, #loginsmall, div.row {
   font-family: monospace !important;
-  background-color: #DEE1CD;
+  background-color: #FEF7DB;
 }
+
+i.github.large.icon.middle.aligned {
+
+}
+
+#deletebutton {
+  background-color: #940025;
+  color: #FEF7DB;
+  position: relative;
+  right: 50px;
+}
+
+/* DEE1CD */
 
 .messages {
   height: 300px;

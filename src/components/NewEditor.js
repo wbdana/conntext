@@ -103,7 +103,7 @@ class NewEditor extends React.Component {
             <Grid.Column width={12}>
               <AceEditor
                 mode={this.state.language}
-                theme="twilight"
+                theme="solarized_dark"
                 onChange={this.updateContent}
                 name="AceEditor"
                 value={this.state.content}
@@ -113,6 +113,9 @@ class NewEditor extends React.Component {
                 setOptions={{
                   enableBasicAutocompletion: true,
                   enableLiveAutocompletion: true,
+                  behavioursEnabled: true,
+                  wrapBehavioursEnabled: true,
+                  autoScrollEditorIntoView: true
                 }}
               />
             </Grid.Column>

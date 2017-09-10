@@ -136,7 +136,7 @@ class NewEditor extends React.Component {
                       Did you save?
                     </Button.Content>
                   </Button>
-
+                  <br/>
                   <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
                     <Button.Content visible>
                       Save as New File
@@ -145,7 +145,7 @@ class NewEditor extends React.Component {
                       {this.state.name}
                     </Button.Content>
                   </Button>
-                  <FSP/><FSP/><FSP/><FSP/><FSP/><FSP/><FSP/>
+                  <FSP/><FSP/><FSP/><FSP/><FSP/><FSP/><br/>
                 </Container>
               </Segment>
             </Grid.Column>

@@ -21,7 +21,7 @@ class AddPartnerForm extends React.Component {
   render() {
     return(
       <div className="addPartnerForm">
-        <Form onSubmit={this.handleSubmit}>
+        <Form fluid onSubmit={this.handleSubmit}>
           <Input type='text' placeholder='Add collaborator name' onChange={this.updatePartnerName} />
           <Input type='submit' />
         </Form>

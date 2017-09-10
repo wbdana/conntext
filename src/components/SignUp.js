@@ -39,7 +39,7 @@ class SignUp extends React.Component {
         <Form id='signup' >
           <Form.Input label='Username' type='email' name='email' placeholder='Literally whatever you want' onChange={this.handleChange} />
           <Form.Input label='Password' type='password' name='password' placeholder='Literally whatever you want' onChange={this.handleChange} />
-          <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' placeholder='Must be .gif, .jpg, or .jpg' onChange={this.handleChange} />
+          <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' placeholder='Must be .gif, .jpg, or .png' onChange={this.handleChange} />
         </Form>
         <TSP />
         <Button onClick={this.handleSubmit} animated='fade' size='huge'>

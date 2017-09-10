@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+// CSS
+import './App.css';
+
 // ActionCable setup
 import actionCable from 'actioncable'
 

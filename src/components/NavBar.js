@@ -4,9 +4,13 @@ import { NavLink } from 'react-router-dom'
 
 const NavBar = (props) => {
   return(
-    <div className="NavBar">
+    <div className="navbar">
 
-      <Menu>
+      <Menu className="navbar">
+
+        <Menu.Item name="conntext">
+          Connected Text - by wbdana
+        </Menu.Item>
 
         {props.loggedIn === true && <NavLink to="/home" exact>
           <Menu.Item name="home">

@@ -22,7 +22,7 @@ import Auth from './services/Auth'
 
 // CSS
 import 'semantic-ui-css/semantic.min.css'
-import './App.css';
+// import '../semantic/dist/semantic.min.css'
 
 // Page Assets
 import { APIURL } from './components/PageAssets'

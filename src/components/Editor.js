@@ -5,7 +5,7 @@ import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
 import Messages from './Messages'
 import AddPartnerForm from './AddPartnerForm'
-import { Container, Form, Grid, Icon, Input, Button } from 'semantic-ui-react'
+import { Container, Form, Grid, Icon, Input, Button, Segment } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
 
@@ -198,8 +198,66 @@ class Editor extends React.Component {
   render() {
     return(
       <div className="Editor">
+        <Grid celled stretched>
+          <Grid.Row>
+            <Grid.Column width={12}>
+              <AceEditor
+                mode={this.state.language}
+                theme="solarized_dark"
+                onChange={this.updateContent}
+                name="AceEditor"
+                value={this.state.content}
+                editorProps={{$blockScrolling: Infinity}}
+                keyboardHandler="vim"
+                width="100%"
+              />
+            </Grid.Column>
+            <Grid.Column className="scroller" width={4}>
+              <Segment className="options">
+                <Container>
+                  <SelectLanguage
+                    updateLanguage={this.updateLanguage}
+                    language={this.state.language}
+                  />
 
-        <Container>
+                  <br/>
+
+                  <Input
+                    placeholder='File name...' onChange={this.updateName} value={this.state.name}
+                    fluid
+                  />
+
+                  <br/>
+
+                  {this.state.openAddPartner === true && <div className="AddPartnerForm">
+                    <AddPartnerForm fileId={this.state.recordId} addPartner={this.addPartner} />
+                  </div>}
+
+                  <br/>
+
+                  <Button fluid animated='fade' width="50%" onClick={this.handleNewSubmit}>
+                    <Button.Content visible>
+                      <Icon name='fork' />Save as New File
+                    </Button.Content>
+                    <Button.Content hidden>
+                      {this.state.name}
+                    </Button.Content>
+                  </Button>
+
+                </Container>
+              </Segment>
+              <Segment className="chatbox">
+                <Container className="chatbox scroller">
+                  <Messages messages={this.state.messages} />
+                </Container>
+                <Form onSubmit={this.sendMessage}>
+                  <Form.Input onChange={this.updateInputContent} value={this.state.inputContent} type='text' />
+                  <Form.Input type='submit' value='Send message' />
+                </Form>
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
 
           {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
 
@@ -208,62 +266,6 @@ class Editor extends React.Component {
             data-recordId={this.props.activeRecord.recordId}
             updateWSContent={this.updateWSContent}
           />}
-
-          <SelectLanguage
-            updateLanguage={this.updateLanguage}
-            language={this.state.language}
-          />
-
-          <br/>
-
-          <Input
-            placeholder='File name...' onChange={this.updateName} value={this.state.name}
-            fluid
-          />
-
-          <br/>
-
-          {this.state.openAddPartner === true && <div className="AddPartnerForm">
-            <AddPartnerForm fileId={this.state.recordId} addPartner={this.addPartner} />
-          </div>}
-
-          <br/>
-
-          <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
-            <Button.Content visible>
-              <Icon name='fork' />Save as New File
-            </Button.Content>
-            <Button.Content hidden>
-              {this.state.name}
-            </Button.Content>
-          </Button>
-
-          <br/><br/>
-
-        </Container>
-        <Grid celled>
-          <Grid.Column width={12}>
-            <AceEditor
-              mode={this.state.language}
-              theme="solarized_dark"
-              onChange={this.updateContent}
-              name="AceEditor"
-              value={this.state.content}
-              editorProps={{$blockScrolling: Infinity}}
-              keyboardHandler="vim"
-              width="100%"
-            />
-          </Grid.Column>
-          <Grid.Column className="scroller" width={4}>
-            <Container className="ChatBox scroller">
-              <Messages messages={this.state.messages} />
-              <Form onSubmit={this.sendMessage}>
-                <Form.Input onChange={this.updateInputContent} value={this.state.inputContent} type='text' />
-                <Form.Input type='submit' value='Send message' />
-              </Form>
-            </Container>
-          </Grid.Column>
-        </Grid>
 
       </div>
     )

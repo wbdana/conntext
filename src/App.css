@@ -14,10 +14,11 @@
 
 .ace_content    {
   width: 800px;
+  height: auto;
 }
 
 .ace_editor {
-  height: 600px;
+  height: auto;
   width: 100%;
 }
 

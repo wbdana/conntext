@@ -3,7 +3,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
-import { Container, Input, Button } from 'semantic-ui-react'
+import { Grid, Segment, Container, Input, Button } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
 
@@ -97,54 +97,61 @@ class NewEditor extends React.Component {
     console.log('Rendering!')
     return(
       <div className="newEditor">
-        <Container>
+        <Grid celled stretched>
+          <Grid.Row>
+            <Grid.Column width={12}>
+              <AceEditor
+                mode={this.state.language}
+                theme="solarized_dark"
+                onChange={this.updateContent}
+                name="AceEditor"
+                value={this.state.content}
+                editorProps={{$blockScrolling: Infinity}}
+                keyboardHandler="vim"
+                width="80%"
+              />
+            </Grid.Column>
+            <Grid.Column width={4}>
+              <Segment className="options">
+                <Container>
+                  <SelectLanguage
+                    updateLanguage={this.updateLanguage}
+                    language={this.state.language}
+                  />
 
+                  <br/>
+
+                  <Input
+                    placeholder='File name...' onChange={this.updateName} value={this.state.name}
+                    fluid
+                  />
+
+                  <br/>
+
+                  <Button animated='fade' width="50%" onClick={this.newRecord}>
+                    <Button.Content visible>
+                      Clear All
+                    </Button.Content>
+                    <Button.Content hidden>
+                      Did you save?
+                    </Button.Content>
+                  </Button>
+
+                  <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
+                    <Button.Content visible>
+                      Save as New File
+                    </Button.Content>
+                    <Button.Content hidden>
+                      {this.state.name}
+                    </Button.Content>
+                  </Button>
+                  <br/><br/>
+                </Container>
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
           {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
-
-          <SelectLanguage
-            updateLanguage={this.updateLanguage}
-            language={this.state.language}
-          />
-
-          <br/>
-
-          <Input
-            placeholder='File name...' onChange={this.updateName} value={this.state.name}
-            fluid
-          />
-
-          <br/>
-
-          <Button animated='fade' width="50%" onClick={this.newRecord}>
-            <Button.Content visible>
-              Clear All
-            </Button.Content>
-            <Button.Content hidden>
-              Did you save?
-            </Button.Content>
-          </Button>
-
-          <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
-            <Button.Content visible>
-              Save as New File
-            </Button.Content>
-            <Button.Content hidden>
-              {this.state.name}
-            </Button.Content>
-          </Button>
-        </Container>
-        <br/><br/>
-
-        <AceEditor
-          mode={this.state.language}
-          theme="github"
-          onChange={this.updateContent}
-          name="AceEditor"
-          value={this.state.content}
-          editorProps={{$blockScrolling: Infinity}}
-          keyboardHandler="vim"
-          width="80%"
-        />
       </div>
     )
   }

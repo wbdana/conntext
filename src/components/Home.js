@@ -36,7 +36,7 @@ class Home extends React.Component {
       <div className="homepage">
         <Container>
           <TSP/>
-          <Grid>
+          <Grid celled>
             <Grid.Row>
               <Grid.Column width={4}>
                 <Image src={this.state.user.profile_image_url} />

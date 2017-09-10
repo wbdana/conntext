@@ -1,6 +1,6 @@
 body {
   /*background-color: black !important;*/
-  background-image: url("./k.jpeg") !important;
+  background-image: url("./knot.jpg") !important;
   margin: 0;
   padding: 0;
   font-family: monospace;
@@ -27,9 +27,13 @@ body {
   background-color: white !important;
 }
 
-.column {
-  background-image: url("./k.jpeg") !important;
+.about {
+  background-color: white !important;
 }
+
+/*.column {
+  background-image: url("./knot.jpg") !important;
+}*/
 
 .navbar .menu .item {
   background-color: black;
@@ -37,7 +41,7 @@ body {
 }
 
 .homepage {
-  background-image: url("./k.jpeg") !important;
+  background-image: url("./knot.jpg") !important;
 }
 
 .navbar .item {

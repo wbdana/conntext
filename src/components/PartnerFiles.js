@@ -59,7 +59,8 @@ class PartnerFiles extends React.Component {
         <Container>
         <TSP />
         <Input
-          placeholder='Search records...'
+          fluid
+          placeholder='Search files...'
           onChange={this.updateSearch}
           value={this.state.search}
         />

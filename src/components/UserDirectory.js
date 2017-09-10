@@ -40,6 +40,7 @@ class UserDirectory extends React.Component {
         <Container>
           <TSP />
           <Input
+            fluid
             placeholder='Search users...'
             onChange={this.updateSearch}
             value={this.state.search}

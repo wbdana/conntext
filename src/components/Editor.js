@@ -26,6 +26,7 @@ import 'brace/theme/github'
 import 'brace/theme/terminal'
 import 'brace/theme/solarized_dark'
 import 'brace/theme/solarized_light'
+import 'brace/theme/twilight'
 
 class Editor extends React.Component {
   constructor(props) {
@@ -203,13 +204,17 @@ class Editor extends React.Component {
             <Grid.Column width={12}>
               <AceEditor
                 mode={this.state.language}
-                theme="terminal"
+                theme="twilight"
                 onChange={this.updateContent}
                 name="AceEditor"
                 value={this.state.content}
                 editorProps={{$blockScrolling: Infinity}}
                 keyboardHandler="vim"
                 width="100%"
+                setOptions={{
+                  enableBasicAutocompletion: true,
+                  enableLiveAutocompletion: true,
+                }}
               />
             </Grid.Column>
             <Grid.Column className="scroller" width={4}>
@@ -235,7 +240,7 @@ class Editor extends React.Component {
 
                   <br/>
 
-                  <Button color='teal' fluid animated='fade' width="50%" onClick={this.handleNewSubmit}>
+                  <Button color='blue' basic fluid animated='fade' width="50%" onClick={this.handleNewSubmit}>
                     <Button.Content visible>
                       <Icon name='fork' />Save as New File
                     </Button.Content>

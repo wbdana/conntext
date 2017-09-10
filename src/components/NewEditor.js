@@ -24,6 +24,7 @@ import 'brace/theme/github'
 import 'brace/theme/terminal'
 import 'brace/theme/solarized_dark'
 import 'brace/theme/solarized_light'
+import 'brace/theme/twilight'
 
 class NewEditor extends React.Component {
   constructor(props) {
@@ -102,13 +103,17 @@ class NewEditor extends React.Component {
             <Grid.Column width={12}>
               <AceEditor
                 mode={this.state.language}
-                theme="terminal"
+                theme="twilight"
                 onChange={this.updateContent}
                 name="AceEditor"
                 value={this.state.content}
                 editorProps={{$blockScrolling: Infinity}}
                 keyboardHandler="vim"
                 width="100%"
+                setOptions={{
+                  enableBasicAutocompletion: true,
+                  enableLiveAutocompletion: true,
+                }}
               />
             </Grid.Column>
             <Grid.Column width={4}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input } from 'semantic-ui-react'
+import { Form, Input, Button } from 'semantic-ui-react'
 
 class AddPartnerForm extends React.Component {
   state = {
@@ -23,7 +23,7 @@ class AddPartnerForm extends React.Component {
       <div className="addPartnerForm">
         <Form onSubmit={this.handleSubmit}>
           <Input type='text' placeholder='Add collaborator name' onChange={this.updatePartnerName} />
-          <Input type='submit' />
+          <Button basic color='blue' type='submit'>Submit</Button>
         </Form>
       </div>
     )

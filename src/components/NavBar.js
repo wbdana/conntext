@@ -16,7 +16,7 @@ const NavBar = (props) => {
 
         {props.loggedIn === true && <NavLink to="/home" exact>
           <Menu.Item name="home">
-            <Icon name='home' />Home
+            <Icon name='home' />Home - {props.username}
           </Menu.Item>
         </NavLink>}
 
@@ -69,7 +69,7 @@ const NavBar = (props) => {
         </NavLink>
 
         {props.loggedIn === true && <NavLink to="/logout" exact>
-          <Menu.Item name='logout'>
+        <Menu.Item name='logout'>
           <Icon name='remove user' /> Logout
         </Menu.Item></NavLink>}
 

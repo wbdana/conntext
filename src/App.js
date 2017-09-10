@@ -185,7 +185,7 @@ class App extends Component {
           <div className="RouterContainer">
 
             <Route path="/" render={()=>(
-              <NavBar logout={this.logout} loggedIn={this.state.auth.isLoggedIn}/>
+              <NavBar logout={this.logout} loggedIn={this.state.auth.isLoggedIn} username={this.state.auth.user.email}/>
             )} />
 
             <Route exact path ="/" render={(props)=>(

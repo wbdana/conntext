@@ -193,7 +193,13 @@ class Editor extends React.Component {
     }
     fetch(`${APIURL()}/records_users`, options)
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => {
+        if (json.status === 500) {
+          alert('Could not find that user. Check the User Directory to confirm spelling!')
+        } else {
+          console.log(json)
+        }
+      })
   }
 
   render() {

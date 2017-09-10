@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 import AceEditor from 'react-ace'
 import SelectLanguage from './SelectLanguage'
 import { Grid, Segment, Container, Input, Button } from 'semantic-ui-react'
-import { APIURL } from './PageAssets'
+import { APIURL, FSP } from './PageAssets'
 
 
 // Import syntax highlights
@@ -108,7 +108,7 @@ class NewEditor extends React.Component {
                 value={this.state.content}
                 editorProps={{$blockScrolling: Infinity}}
                 keyboardHandler="vim"
-                width="80%"
+                width="100%"
               />
             </Grid.Column>
             <Grid.Column width={4}>
@@ -145,7 +145,7 @@ class NewEditor extends React.Component {
                       {this.state.name}
                     </Button.Content>
                   </Button>
-                  <br/><br/>
+                  <FSP/><FSP/><FSP/><FSP/><FSP/><FSP/><FSP/>
                 </Container>
               </Segment>
             </Grid.Column>

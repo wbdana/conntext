@@ -1,10 +1,10 @@
 body {
   /*background-color: black !important;*/
-  background-image: url("./leaf.jpg") !important;
+  background-image: url("./blueleaf.jpg") !important;
   margin: 0;
   padding: 0;
   font-family: monospace;
-  background-color: white;
+  background-color: #white;
   /*background-color: white;*/
   font-color: white !important;
 }
@@ -32,20 +32,21 @@ body {
 }
 
 /*.column {
-  background-image: url("./leaf.jpg") !important;
+  background-image: url("./blueleaf.jpg") !important;
 }*/
 
-.navbar .menu .item {
-  background-color: black;
+/* NavBar items... minus logout and whitespace */
+.navbar a, .navbar a.item, .navbar .menu {
+  background-color: #FEF7DB;
   font-color: white !important;
 }
 
 .homepage {
-  background-image: url("./leaf.jpg") !important;
+  background-image: url("./blueleaf.jpg") !important;
 }
 
 .about {
-  background-image: url("./leaf.jpg") !important;
+  background-image: url("./blueleaf.jpg") !important;
 }
 
 .navbar .item {

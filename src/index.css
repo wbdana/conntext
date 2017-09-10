@@ -4,18 +4,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: monospace;
-  background-color: #white;
+  background-color: #FEF7DB !important;
   /*background-color: white;*/
   font-color: white !important;
 }
 
 . {
   font-family: monospace;
-  /*background-color: black;*/
 }
 
 .Editor {
-  background-color: white;
+  background-color: #FEF7DB !important;
 }
 
 .ace_editor {
@@ -24,11 +23,11 @@ body {
 }
 
 .newEditor {
-  background-color: white !important;
+  background-color: #FEF7DB !important;
 }
 
 .about ul, .about ul li {
-  background-color: white !important;
+  background-color: #FEF7DB !important;
 }
 
 /*.column {
@@ -38,7 +37,7 @@ body {
 /* NavBar items... minus logout and whitespace */
 .navbar a, .navbar a.item, .navbar .menu {
   background-color: #FEF7DB;
-  font-color: white !important;
+  font-color: black !important;
 }
 
 .homepage {
@@ -50,13 +49,13 @@ body {
 }
 
 .navbar .item {
-  background-color: black;
+  background-color: #FEF7DB;
   font-color: white;
 }
 
-.header, .button, .form .input, .description, .navbar, .item {
+.header, .button, .form .input, .description, .navbar, .item, .column, .input, .ui.fluid.input input, .ui.fluid.input, .ui.button, .ui.segment.options, .selection.dropdown, div.ui.label, button.ui.button, a.item, ui.navbar.menu *, menu.item {
   font-family: monospace !important;
-  background-color: white;
+  background-color: #FEF7DB;
 }
 
 .messages {

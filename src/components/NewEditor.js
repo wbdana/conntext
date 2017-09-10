@@ -127,24 +127,25 @@ class NewEditor extends React.Component {
                   />
 
                   <br/>
-
-                  <Button animated='fade' width="50%" onClick={this.newRecord}>
-                    <Button.Content visible>
-                      Clear All
-                    </Button.Content>
-                    <Button.Content hidden>
-                      Did you save?
-                    </Button.Content>
-                  </Button>
-                  <br/>
-                  <Button animated='fade' width="50%" onClick={this.handleNewSubmit}>
-                    <Button.Content visible>
-                      Save as New File
-                    </Button.Content>
-                    <Button.Content hidden>
-                      {this.state.name}
-                    </Button.Content>
-                  </Button>
+                  <Button.Group>
+                    <Button color='red' basic animated='fade' width="50%" onClick={this.newRecord}>
+                      <Button.Content visible>
+                        Clear All
+                      </Button.Content>
+                      <Button.Content hidden>
+                        No undo!
+                      </Button.Content>
+                    </Button>
+                    <Button.Or/>
+                    <Button color='teal' animated='fade' width="50%" onClick={this.handleNewSubmit}>
+                      <Button.Content visible>
+                        Save as New File
+                      </Button.Content>
+                      <Button.Content hidden>
+                        {this.state.name}
+                      </Button.Content>
+                    </Button>
+                  </Button.Group>
                   <FSP/><FSP/><FSP/><FSP/><FSP/><FSP/><br/>
                 </Container>
               </Segment>

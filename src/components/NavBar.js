@@ -74,9 +74,10 @@ const NavBar = (props) => {
           </Menu.Item>
         </NavLink>
 
-        {props.loggedIn === true && <Menu.Item name='logout' onClick={props.logout}>
+        {props.loggedIn === true && <NavLink to="/logout" exact>
+          <Menu.Item name='logout' onClick={props.logout}>
           <Icon name='remove user' /> Logout
-        </Menu.Item>}
+        </Menu.Item></NavLink>}
 
       </Menu>
     </div>

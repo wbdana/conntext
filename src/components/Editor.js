@@ -235,7 +235,7 @@ class Editor extends React.Component {
 
                   <br/>
 
-                  <Button fluid animated='fade' width="50%" onClick={this.handleNewSubmit}>
+                  <Button color='teal' fluid animated='fade' width="50%" onClick={this.handleNewSubmit}>
                     <Button.Content visible>
                       <Icon name='fork' />Save as New File
                     </Button.Content>

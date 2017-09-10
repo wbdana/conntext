@@ -16,6 +16,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import About from './components/About'
 import GitFetch from './components/GitFetch'
+import Logout from './components/Logout'
 
 // Services
 import Auth from './services/Auth'
@@ -259,6 +260,10 @@ class App extends Component {
 
             <Route exact path="/about" render={()=>(
               <About />
+            )} />
+
+            <Route exact path="/logout" render={(props)=>(
+              (this.state.auth.isLoggedIn === true) ? <Logout logout={this.logout} /> : <Redirect to="/home" />
             )} />
 
           </div>

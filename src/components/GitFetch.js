@@ -78,6 +78,7 @@ class GitFetch extends React.Component {
     }
     fetch(`https://api.github.com/repos/${this.state.githubUsername}/${this.state.repoName}/contents/${this.state.filePath}`, options)
       .then(resp => resp.json())
+      // .then(json => console.log(json))
       .then(json => {
         const fileContent = base64.decode(json.content.replace(/^\s+|\s+$/gm, '').split('\n').join(''))
         const fileName = `${this.state.repoName}/${json.path}`
@@ -106,6 +107,7 @@ class GitFetch extends React.Component {
             redirect: true
           }))
       })
+      .catch(err => alert('Could not fetch this file from GitHub as specified! See About for assistance.'))
   }
 
   render() {

@@ -63,22 +63,22 @@ class Editor extends React.Component {
         messages: json.messages,
         openAddPartner: true,
         partners: [...json.partners]
-      })})
+      }); return json})
+      .then(json => {this.fetchOwner()})
   }
 
   fetchOwner = () => {
     fetch(`${APIURL()}/users/${this.state.owner_id}`)
       .then(resp => resp.json())
       .then(json => {this.setState({
-        owner: json,
+        owner: json.user,
         renderUsers: true
-      })})
+      }, ()=>{setTimeout(console.log(this.state), 1500)})})
   }
 
   componentWillMount() {
     this.manualFetch()
     this.props.redirectReset()
-    this.fetchOwner()
   }
 
   componentWillUnmount(){
@@ -289,7 +289,7 @@ class Editor extends React.Component {
             <Grid.Column width={16}>
               <Card.Group itemsPerRow={7}>
                 {this.state.renderUsers === true && <Card>
-                  <NavLink to={`users/${this.state.owner.id}`}>
+                  <NavLink to={`/users/${this.state.owner_id}`} exact>
                     <Image src={this.state.owner.profile_image_url} size='large' />
                     <Card.Content>
                       <Card.Header size='medium'>

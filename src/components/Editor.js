@@ -5,6 +5,7 @@ import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
 import Messages from './Messages'
 import AddPartnerForm from './AddPartnerForm'
+import DeletePartnerButton from './DeletePartnerButton'
 import { Container, Form, Grid, Icon, Input, Button, Segment, Card, Image } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
@@ -217,6 +218,30 @@ class Editor extends React.Component {
       })
   }
 
+  deletePartner = (userId, recordId) => {
+    const obj = {user_id: userId, record_id: recordId}
+    const options = {
+      "method": "DELETE",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json",
+        "Authorization": localStorage.getItem('jwt')
+      },
+      "body": JSON.stringify(obj)
+    }
+    console.log(options)
+    console.log(`${APIURL()}/records_users`)
+    fetch(`${APIURL()}/records_users`, options)
+      // .then(resp => resp.json())
+      .then(json => {
+        if (json.status === 500) {
+          alert('Could not remove partner from this record.')
+        } else {
+          console.log(json)
+        }
+      })
+  }
+
   render() {
     return(
       <div className="Editor">
@@ -310,6 +335,7 @@ class Editor extends React.Component {
                           </Card.Header>
                         </Card.Content>
                       </NavLink>
+                      <DeletePartnerButton recordId={this.state.recordId} userId={user.id} deletePartner={this.deletePartner} />
                     </Card>
                   )
                 })}

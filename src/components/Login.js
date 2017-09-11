@@ -22,15 +22,14 @@ class Login extends React.Component {
 
   render() {
     return(
-      <Container>
-        <FSP />
+      <Container id='login'>
         <Header size='small'>Login</Header>
-        <Form id='login' >
+        <Form id='login' className='loginform'>
           <Form.Input label='Username' type='email' name='email' placeholder='Must be exact' onChange={this.onChange} />
           <Form.Input label='Password' type='password' name='password' placeholder='Must be exact... obviously' onChange={this.onChange} />
         </Form>
         <TSP />
-        <Button onClick={this.handleSubmit} animated='fade' size='huge'>
+        <Button onClick={this.handleSubmit} animated='fade' size='huge' basic color='blue'>
           <Button.Content visible>
             Login
           </Button.Content>

@@ -38,8 +38,7 @@ class SignUp extends React.Component {
 
   render() {
     return(
-      <Container>
-        <FSP />
+      <Container id='signup'>
         <Header size='small'>Sign Up</Header>
         <Form id='signup' >
           <Form.Input label='Username' type='email' name='email' placeholder='Literally whatever you want' onChange={this.handleChange} />
@@ -47,7 +46,7 @@ class SignUp extends React.Component {
           <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' placeholder='Must be .gif, .jpg, or .png' onChange={this.handleChange} />
         </Form>
         <TSP />
-        <Button onClick={this.handleSubmit} animated='fade' size='huge'>
+        <Button onClick={this.handleSubmit} animated='fade' size='huge' basic color='blue'>
           <Button.Content visible>
             Sign Up
           </Button.Content>

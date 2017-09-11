@@ -43,23 +43,43 @@ body {
   background-image: url("./blueleaf.jpg") !important;
 }
 
-.about {
-  background-image: url("./blueleaf.jpg") !important;
-}
-
 .navbar .item {
   background-color: #FEF7DB;
   font-color: white;
 }
 
-.header, .button, .form .input, .description, .navbar, .item, .column, .input, .ui.fluid.input input, .ui.fluid.input, .ui.button, .ui.segment.options, .selection.dropdown, div.ui.label, button.ui.button, a.item, ui.navbar.menu *, menu.item, div.ui.navbar.menu, ui.navbar.container, form.ui.form div.ui.input input, div.ui.card, div.ui.segment.chatbox, div.ui.container.messages, #login input, #signup input, #signupsmall, #loginsmall, div.row, div.ui.button.fluid.labeled.selection.dropdown.icon, div.ui.seven.cards div.ui.card, .about, div.ui.container.about, .ui.header {
+.header, .button, .form .input, .description, .navbar, .item, .column, .input, .ui.fluid.input input, .ui.fluid.input, .ui.button, .ui.segment.options, .selection.dropdown, div.ui.label, button.ui.button, a.item, ui.navbar.menu *, menu.item, div.ui.navbar.menu, ui.navbar.container, form.ui.form div.ui.input input, div.ui.card, div.ui.segment.chatbox, div.ui.container.messages, div.row, div.ui.button.fluid.labeled.selection.dropdown.icon, div.ui.seven.cards div.ui.card, .about, div.ui.container.about, .ui.header {
   font-family: monospace !important;
   background-color: #FEF7DB;
 }
 
-div#abouta, div#aboutb {
+div#about.ui.container.about {
+  position: relative;
+  top: 40px;
   font-family: monospace !important;
-  background-color: #FEF7DB;
+  background-color: #FEF7DB !important;
+}
+
+div#login {
+  position: relative;
+  top: 100px;
+  font-family: monospace !important;
+  background-color: #FEF7DB !important;
+}
+
+form#login.loginform div.field div.ui.input input {
+  background-color: grey;
+}
+
+form#signup div.field div.ui.input input {
+  background-color: grey;
+}
+
+div#signup {
+  position: relative;
+  top: 100px;
+  font-family: monospace !important;
+  background-color: #FEF7DB !important;
 }
 
 i.github.large.icon.middle.aligned {
@@ -75,10 +95,6 @@ i.github.large.icon.middle.aligned {
 #deletebutton:hover {
   background-color: #940025;
   color: #FEF7DB;
-}
-
-#about, div#abouta, div#aboutb {
-  background-color: #FEF7DB !important;
 }
 
 /* DEE1CD */

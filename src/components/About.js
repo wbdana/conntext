@@ -4,7 +4,6 @@ import { Container, Header } from 'semantic-ui-react'
 const About = () => {
   return(
     <Container className="about" id="about">
-      <br/><br/>
       <Header size="medium" id="abouta">About</Header>
 
       <Header size="small" id="aboutb">About Connected Text</Header>

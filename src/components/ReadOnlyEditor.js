@@ -4,8 +4,6 @@ import { Redirect, NavLink } from 'react-router-dom'
 import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
 import Messages from './Messages'
-import AddPartnerForm from './AddPartnerForm'
-import DeletePartnerButton from './DeletePartnerButton'
 import { Container, Form, Grid, Icon, Input, Button, Segment, Card, Image } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
@@ -195,53 +193,6 @@ class ReadOnlyEditor extends React.Component {
       }, console.log('Message sent!')))
   }
 
-  addPartner = (partnerName, fileId) => {
-    const obj = {user_email: partnerName, file_id: fileId}
-    const options = {
-      "method": "post",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json",
-        "Authorization": localStorage.getItem('jwt')
-      },
-      "body": JSON.stringify(obj)
-    }
-    fetch(`${APIURL()}/records_users`, options)
-      .then(resp => resp.json())
-      .then(json => {
-        if (json.status === 500) {
-          alert('Could not find that user. Check the User Directory to confirm spelling!')
-        } else {
-          console.log(json)
-        }
-      })
-      .catch(err => {alert('That user is already a collaborator on this file!')})
-  }
-
-  deletePartner = (userId, recordId) => {
-    const obj = {user_id: userId, record_id: recordId}
-    const options = {
-      "method": "DELETE",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json",
-        "Authorization": localStorage.getItem('jwt')
-      },
-      "body": JSON.stringify(obj)
-    }
-    console.log(options)
-    console.log(`${APIURL()}/records_users`)
-    fetch(`${APIURL()}/records_users`, options)
-      // .then(resp => resp.json())
-      .then(json => {
-        if (json.status === 500) {
-          alert('Could not remove partner from this record.')
-        } else {
-          console.log(json)
-        }
-      })
-  }
-
   render() {
     return(
       <div className="Editor">
@@ -283,10 +234,6 @@ class ReadOnlyEditor extends React.Component {
                   />
 
                   <br/>
-
-                  {this.state.openAddPartner === true && <div className="AddPartnerForm">
-                    <AddPartnerForm fileId={this.state.recordId} addPartner={this.addPartner} />
-                  </div>}
 
                   <br/>
 
@@ -336,7 +283,6 @@ class ReadOnlyEditor extends React.Component {
                           </Card.Header>
                         </Card.Content>
                       </NavLink>
-                      <DeletePartnerButton recordId={this.state.recordId} userId={user.id} deletePartner={this.deletePartner} />
                     </Card>
                   )
                 })}

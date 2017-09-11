@@ -115,7 +115,7 @@ class App extends Component {
           })
           localStorage.setItem('jwt', user.jwt )
         } else {
-          console.log(user.error)
+          alert('Failed to login.')
         }
       }).then(()=>{
         Auth.currentUser()
@@ -127,6 +127,8 @@ class App extends Component {
                   user: user
                 }
               })
+            } else {
+              alert('Failed to login.')
             }
           })
       }, ()=>{

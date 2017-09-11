@@ -1,11 +1,11 @@
 import React from 'react'
 import AceEditor from 'react-ace'
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
 import SelectLanguage from './SelectLanguage'
 import RecordCable from './RecordCable'
 import Messages from './Messages'
 import AddPartnerForm from './AddPartnerForm'
-import { Container, Form, Grid, Icon, Input, Button, Segment } from 'semantic-ui-react'
+import { Container, Form, Grid, Icon, Input, Button, Segment, Card, Image } from 'semantic-ui-react'
 import { APIURL } from './PageAssets'
 
 
@@ -43,7 +43,10 @@ class Editor extends React.Component {
       inputContent: '',
       userId: this.props.auth.user.id,
       redirect: false,
-      openAddPartner: false
+      openAddPartner: false,
+      partners: [],
+      owner: {},
+      renderUsers: false
     }
   }
 
@@ -58,13 +61,24 @@ class Editor extends React.Component {
         owner_id: json.record.owner_id,
         openCable: true,
         messages: json.messages,
-        openAddPartner: true
+        openAddPartner: true,
+        partners: [...json.partners]
+      })})
+  }
+
+  fetchOwner = () => {
+    fetch(`${APIURL()}/users/${this.state.owner_id}`)
+      .then(resp => resp.json())
+      .then(json => {this.setState({
+        owner: json,
+        renderUsers: true
       })})
   }
 
   componentWillMount() {
     this.manualFetch()
     this.props.redirectReset()
+    this.fetchOwner()
   }
 
   componentWillUnmount(){
@@ -269,6 +283,26 @@ class Editor extends React.Component {
                   <Form.Input type='submit' value='Send message' />
                 </Form>
               </Segment>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={16}>
+              <Card.Group itemsPerRow={7}>
+                {this.state.partners.map( (user, index) => {
+                  return(
+                    <Card key={index}>
+                      <NavLink to={`users/${user.id}`}>
+                        <Image src={user.profile_image_url} size='large' />
+                        <Card.Content>
+                          <Card.Header size='medium'>
+                            {user.email}
+                          </Card.Header>
+                        </Card.Content>
+                      </NavLink>
+                    </Card>
+                  )
+                })}
+              </Card.Group>
             </Grid.Column>
           </Grid.Row>
         </Grid>

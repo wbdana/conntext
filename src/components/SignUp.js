@@ -28,7 +28,13 @@ class SignUp extends React.Component {
     console.log(`${APIURL()}/users`, options)
     fetch(`${APIURL()}/users`, options)
       .then(resp => resp.json())
-      .then(json => this.props.login({auth: {email: this.state.email, password: this.state.password}}))
+      .then(json => {
+        if(json.status === 200) {
+          this.props.login({auth: {email: this.state.email, password: this.state.password}})
+        } else {
+          alert('Sorry, that username is already taken.')
+        }
+      })
   }
 
   render() {

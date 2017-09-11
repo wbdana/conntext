@@ -68,11 +68,11 @@ div#login {
 }
 
 form#login.loginform div.field div.ui.input input {
-  background-color: grey;
+  background-color: #1678C2;
 }
 
 form#signup div.field div.ui.input input {
-  background-color: grey;
+  background-color: #1678C2;
 }
 
 div#signup {

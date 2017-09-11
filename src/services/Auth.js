@@ -10,7 +10,12 @@ class Auth {
       "body": JSON.stringify(loginParams)
     }
     return fetch("https://conntext-api.herokuapp.com/user_token", options)
-      .then(resp => resp.json())
+      .then(resp => {
+        if (resp.status === 404) {
+          alert('Failed to login - double check your username and password.')
+        }
+        return resp.json()
+      })
   }
 
   static currentUser () {

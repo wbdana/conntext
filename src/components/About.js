@@ -4,11 +4,11 @@ import { TSP } from './PageAssets'
 
 const About = () => {
   return(
-    <Container className="about">
-      <TSP />
-      <Header size="medium">About</Header>
+    <Container className="about" id="about">
+      <br/><br/>
+      <Header size="medium" id="abouta">About</Header>
 
-      <Header size="small">About Connected Text</Header>
+      <Header size="small" id="aboutb">About Connected Text</Header>
       <ul>
         <li>Connected Text (ConnText) is a work-in-progress text editor for programmers.</li>
 

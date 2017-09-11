@@ -288,10 +288,20 @@ class Editor extends React.Component {
           <Grid.Row>
             <Grid.Column width={16}>
               <Card.Group itemsPerRow={7}>
+                {this.state.renderUsers === true && <Card>
+                  <NavLink to={`users/${this.state.owner.id}`}>
+                    <Image src={this.state.owner.profile_image_url} size='large' />
+                    <Card.Content>
+                      <Card.Header size='medium'>
+                        Owner: {this.state.owner.email}
+                      </Card.Header>
+                    </Card.Content>
+                  </NavLink>
+                </Card>}
                 {this.state.partners.map( (user, index) => {
                   return(
                     <Card key={index}>
-                      <NavLink to={`users/${user.id}`}>
+                      <NavLink to={`/users/${user.id}`} exact>
                         <Image src={user.profile_image_url} size='large' />
                         <Card.Content>
                           <Card.Header size='medium'>

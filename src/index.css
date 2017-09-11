@@ -1,7 +1,6 @@
 body {
   /*background-color: black !important;*/
   background-image: url("./blueleaf.jpg") !important;
-  margin: 0;
   padding: 0;
   font-family: monospace;
   background-color: #FEF7DB !important;
@@ -53,7 +52,12 @@ body {
   font-color: white;
 }
 
-.header, .button, .form .input, .description, .navbar, .item, .column, .input, .ui.fluid.input input, .ui.fluid.input, .ui.button, .ui.segment.options, .selection.dropdown, div.ui.label, button.ui.button, a.item, ui.navbar.menu *, menu.item, div.ui.navbar.menu, ui.navbar.container, form.ui.form div.ui.input input, div.ui.card, div.ui.segment.chatbox, div.ui.container.messages, #login input, #signup input, #signupsmall, #loginsmall, div.row, div.ui.button.fluid.labeled.selection.dropdown.icon, div.ui.seven.cards div.ui.card, .about, div.ui.container.about {
+.header, .button, .form .input, .description, .navbar, .item, .column, .input, .ui.fluid.input input, .ui.fluid.input, .ui.button, .ui.segment.options, .selection.dropdown, div.ui.label, button.ui.button, a.item, ui.navbar.menu *, menu.item, div.ui.navbar.menu, ui.navbar.container, form.ui.form div.ui.input input, div.ui.card, div.ui.segment.chatbox, div.ui.container.messages, #login input, #signup input, #signupsmall, #loginsmall, div.row, div.ui.button.fluid.labeled.selection.dropdown.icon, div.ui.seven.cards div.ui.card, .about, div.ui.container.about, .ui.header {
+  font-family: monospace !important;
+  background-color: #FEF7DB;
+}
+
+div#abouta, div#aboutb {
   font-family: monospace !important;
   background-color: #FEF7DB;
 }
@@ -63,10 +67,18 @@ i.github.large.icon.middle.aligned {
 }
 
 #deletebutton {
-  background-color: #940025;
-  color: #FEF7DB;
+  font-color: black;
   position: relative;
   right: 50px;
+}
+
+#deletebutton:hover {
+  background-color: #940025;
+  color: #FEF7DB;
+}
+
+#about, div#abouta, div#aboutb {
+  background-color: #FEF7DB !important;
 }
 
 /* DEE1CD */

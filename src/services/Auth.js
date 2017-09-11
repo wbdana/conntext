@@ -11,7 +11,6 @@ class Auth {
     }
     return fetch("https://conntext-api.herokuapp.com/user_token", options)
       .then(resp => resp.json())
-      .then(json => console.log(json))
   }
 
   static currentUser () {

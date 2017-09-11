@@ -17,6 +17,9 @@ import About from './components/About'
 import GitFetch from './components/GitFetch'
 import Logout from './components/Logout'
 
+// Construction
+import Construction from './components/Construction'
+
 // Services
 import Auth from './services/Auth'
 
@@ -257,6 +260,8 @@ class App extends Component {
             <Route exact path="/logout" render={(props)=>(
               (this.state.auth.isLoggedIn === true) ? <Logout logout={this.logout} /> : <Redirect to="/home" />
             )} />
+
+            <Route exact path="/construction" render={()=>(<Construction />)} />
 
           </div>
         </Router>

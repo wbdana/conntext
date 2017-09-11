@@ -229,6 +229,7 @@ class App extends Component {
                 resetRecord={this.resetRecord}
                 auth={this.state.auth}
                 data-cableApp={this.props.cableApp}
+                currentUser={this.state.currentUser.user}
               />
             )} />
 
@@ -241,6 +242,7 @@ class App extends Component {
                 resetRecord={this.resetRecord}
                 auth={this.state.auth}
                 data-cableApp={this.props.cableApp}
+                currentUser={this.state.currentUser.user}
               />
             )} />
 

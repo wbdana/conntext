@@ -216,6 +216,7 @@ class Editor extends React.Component {
           console.log(json)
         }
       })
+      .catch(err => {alert('That user is already a collaborator on this file!')})
   }
 
   deletePartner = (userId, recordId) => {

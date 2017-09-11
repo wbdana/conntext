@@ -16,6 +16,7 @@ import SignUp from './components/SignUp'
 import About from './components/About'
 import GitFetch from './components/GitFetch'
 import Logout from './components/Logout'
+import ReadOnlyEditor from './components/ReadOnlyEditor'
 
 // Construction
 import Construction from './components/Construction'
@@ -221,6 +222,18 @@ class App extends Component {
 
             <Route exact path="/editor/:id" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <Editor
+                {...props}
+                setActiveRecord={this.setActiveRecord}
+                activeRecord={this.state.activeRecord}
+                redirectReset={this.redirectReset}
+                resetRecord={this.resetRecord}
+                auth={this.state.auth}
+                data-cableApp={this.props.cableApp}
+              />
+            )} />
+
+            <Route exact path="/noeditor/:id" render={(props)=>(
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <ReadOnlyEditor
                 {...props}
                 setActiveRecord={this.setActiveRecord}
                 activeRecord={this.state.activeRecord}

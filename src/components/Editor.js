@@ -120,22 +120,33 @@ class Editor extends React.Component {
     })
   }
 
+  // Redirect here is not working properly because Editor does not
+  // unmount; temporarily re-routing redirect to /myfiles
   handleNewSubmit = (event) => {
+    const obj = Object.assign({}, this.state, {owner_id: this.props.auth.user.id})
     const options = {
       "method": "post",
       "headers": {
         "content-type": "application/json",
         "accept": "application/json"
       },
-      body: JSON.stringify(this.state)
+      "body": JSON.stringify(obj)
     }
     fetch(`${APIURL()}/records`, options)
       .then(resp => resp.json())
-      .then(json => this.setState({
+      .then(json => {
+        console.log(json)
+        this.setState({
+        name: json.record.name,
+        language: json.record.language,
+        owner_id: json.record.owner_id,
+        messages: [],
         recordId: json.record.id,
         redirect: true
-      }))
+      })
+    })
   }
+
 
   handleUpdateSubmit = () => {
     const updateState = {
@@ -345,7 +356,7 @@ class Editor extends React.Component {
           </Grid.Row>
         </Grid>
 
-          {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
+          {this.state.redirect === true && <Redirect to={`/myfiles`} exact/>}
 
           {(this.state.openCable === true) && <RecordCable
             data-cableApp={this.props['data-cableApp']}

@@ -118,13 +118,14 @@ class ReadOnlyEditor extends React.Component {
   }
 
   handleNewSubmit = (event) => {
+    const obj = Object.assign({}, this.state, {owner_id: this.props.auth.user.id})
     const options = {
       "method": "post",
       "headers": {
         "content-type": "application/json",
         "accept": "application/json"
       },
-      body: JSON.stringify(this.state)
+      "body": JSON.stringify(obj)
     }
     fetch(`${APIURL()}/records`, options)
       .then(resp => resp.json())

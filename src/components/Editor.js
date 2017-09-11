@@ -163,7 +163,8 @@ class Editor extends React.Component {
       language: data.record.language,
       recordId: data.record.id,
       owner_id: data.record.owner_id,
-      messages: [...data.messages]
+      messages: [...data.messages],
+      partners: [...data.partners]
     })
   }
 

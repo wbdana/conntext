@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Form, Button, Header } from 'semantic-ui-react'
 import { NavLink, Redirect } from 'react-router-dom'
-import { TSP, FSP } from './PageAssets'
+import { TSP } from './PageAssets'
 
 class Login extends React.Component {
   state = {

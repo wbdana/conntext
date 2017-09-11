@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Form, Button, Header } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
-import { APIURL, TSP, FSP } from './PageAssets'
+import { APIURL, TSP } from './PageAssets'
 
 class SignUp extends React.Component {
   state = {

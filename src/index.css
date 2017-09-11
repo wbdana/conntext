@@ -97,7 +97,7 @@ i.github.large.icon.middle.aligned {
   right: 50px;
 }
 
-#deletebutton:hover {
+#deletebutton:hover, #deletepartnerbutton:hover {
   background-color: #940025;
   color: #FEF7DB;
 }

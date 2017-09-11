@@ -3,7 +3,7 @@ import base64 from 'base-64'
 import { Redirect } from 'react-router-dom'
 import { Container, Input, Button } from 'semantic-ui-react'
 import { APIURL, TSP } from './PageAssets'
-import { GHTK } from '../.secret.js'
+// import { GHTK } from '../.secret.js'
 
 class GitFetch extends React.Component {
   state = {
@@ -71,7 +71,7 @@ class GitFetch extends React.Component {
     const options = {
       "method": "get",
       "headers": {
-        "Authorization": `${GHTK}`,
+        "Authorization": "token be08da03fd41d99746b66e1c515fe27be2a153cc", // read only
         "content-type": "application/json",
         "accept": "application/vnd.github.v3+json"
       }

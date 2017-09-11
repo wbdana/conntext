@@ -46,7 +46,7 @@ class SignUp extends React.Component {
           <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' placeholder='Must be .gif, .jpg, or .png' onChange={this.handleChange} />
         </Form>
         <TSP />
-        <Button onClick={this.handleSubmit} animated='fade' size='huge' basic color='blue'>
+        <Button onClick={this.handleSubmit} animated='fade' size='huge' basic color='blue' id='signupbutton'>
           <Button.Content visible>
             Sign Up
           </Button.Content>
@@ -54,7 +54,7 @@ class SignUp extends React.Component {
             I'm in!
           </Button.Content>
         </Button>
-        <FSP />
+        <TSP />
         <div id='signupsmall'>Already a member? <NavLink to="/login" exact>Click here to login!</NavLink></div>
       </Container>
     )

@@ -82,6 +82,11 @@ div#signup {
   background-color: #FEF7DB !important;
 }
 
+button#loginbutton, button#signupbutton {
+  position: relative;
+  left: 45%;
+}
+
 i.github.large.icon.middle.aligned {
 
 }

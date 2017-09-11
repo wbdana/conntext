@@ -29,7 +29,7 @@ class Login extends React.Component {
           <Form.Input label='Password' type='password' name='password' placeholder='Must be exact... obviously' onChange={this.onChange} />
         </Form>
         <TSP />
-        <Button onClick={this.handleSubmit} animated='fade' size='huge' basic color='blue'>
+        <Button onClick={this.handleSubmit} animated='fade' size='huge' basic color='blue' id='loginbutton'>
           <Button.Content visible>
             Login
           </Button.Content>
@@ -37,7 +37,7 @@ class Login extends React.Component {
             Code Time!
           </Button.Content>
         </Button>
-        <FSP />
+        <TSP />
         <div id='loginsmall'> Not a member? <NavLink to="/signup" exact>Click here to sign up!</NavLink></div>
       </Container>
     )

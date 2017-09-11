@@ -13,7 +13,7 @@ class SignUp extends React.Component {
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
-    }, ()=>{console.log(this.state)})
+    })
   }
 
   handleSubmit = (event) => {
@@ -25,7 +25,6 @@ class SignUp extends React.Component {
       },
       body: JSON.stringify(this.state)
     }
-    console.log(`${APIURL()}/users`, options)
     fetch(`${APIURL()}/users`, options)
       .then(resp => resp.json())
       .then(json => {

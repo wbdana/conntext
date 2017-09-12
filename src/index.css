@@ -141,6 +141,28 @@ div.middle.aligned.row:hover div.five.wide.column button#deletebutton:hover div.
   background-color: #940025 !important;
 }
 
+/* UserDirectory, Editor Partner Cards */
+div.ui.four.cards div.ui.card {
+  background-color: #FEF7DB !important;
+}
+
+img.ui.large.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+div.ui.card a div.content div.header {
+  text-overflow: ellipsis;
+}
+
+/* Delete Partner Button */
+button#deletepartnerbutton {
+  position: absolute;
+  bottom: 0px;
+}
+
+
 /* DEE1CD */
 
 .messages {

@@ -362,9 +362,10 @@ class Editor extends React.Component {
                           <Card.Header size='medium'>
                             {user.email}
                           </Card.Header>
+                          <DeletePartnerButton recordId={this.state.recordId} userId={user.id} deletePartner={this.deletePartner} />
                         </Card.Content>
                       </NavLink>
-                      <DeletePartnerButton recordId={this.state.recordId} userId={user.id} deletePartner={this.deletePartner} />
+
                     </Card>
                   )
                 })}

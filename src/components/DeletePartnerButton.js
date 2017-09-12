@@ -9,7 +9,7 @@ class DeletePartnerButton extends React.Component {
 
   render(){
     return(
-      <Button floated='right' id='deletepartnerbutton' onClick={this.handleClick} color='grey'>
+      <Button id='deletepartnerbutton' onClick={this.handleClick} color='grey' fluid>
         <Button.Content>
           Remove Partner
         </Button.Content>

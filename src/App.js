@@ -184,7 +184,19 @@ class App extends Component {
     })
   }
 
+  updateViewUser = (data) => {
+    console.log('Fired!')
+    this.setState({
+      viewUser: {
+        user: data.user,
+        createdRecords: [...data.created_records],
+        partnerRecords: [...data.partner_records]
+      }
+    })
+  }
+
   render() {
+    console.log(this.props)
     return (
       <div className="App">
         <Router>
@@ -267,7 +279,7 @@ class App extends Component {
             )} />
 
             <Route path="/users/:id" render={(props)=>(
-              (!this.state.viewUser.user.email) ? <UserLoading {...props} grabViewUser={this.grabViewUser} /> : <UserShowPage {...props} viewUser={this.state.viewUser} resetViewUser={this.resetViewUser}/>
+              (!this.state.viewUser.user.email) ? <UserLoading {...props} grabViewUser={this.grabViewUser} /> : <UserShowPage {...props} viewUser={this.state.viewUser} resetViewUser={this.resetViewUser} data-cableApp={this.props.cableApp} updateWSContent={this.updateViewUser} />
             )} />
 
             <Route exact path="/about" render={()=>(

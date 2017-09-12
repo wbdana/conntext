@@ -272,7 +272,7 @@ class NewGitFetch extends React.Component {
     return(
       <Container>
         <Container textAlign='center' className="gitFetch">
-          <div>Know exactly what you need? <NavLink to="/gitfetchdirect" exact>Try GitFetch Direct instead!</NavLink></div>
+          <div className='gitfetchlink'>Know exactly what you need? <NavLink to="/gitfetchdirect" exact>Try GitFetch Direct instead!</NavLink></div>
           {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
           <TSP />
           <Input fluid placeholder='wbdana' label='GitHub Username' type='text' onChange={this.updateGithubUsername} value={this.state.githubUsername} />

@@ -163,6 +163,11 @@ button#deletepartnerbutton {
   bottom: 0px;
 }
 
+div.gitfetchlink {
+  background-color: #FEF7DB;
+  border-top: 25px;
+  font-family: monospace;
+}
 
 /* DEE1CD */
 

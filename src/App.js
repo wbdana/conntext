@@ -195,6 +195,17 @@ class App extends Component {
     })
   }
 
+  updateHomeUser = (data) => {
+    console.log('UpdateHomeUser from App')
+    this.setState({
+      currentUser: {
+        user: data.user,
+        createdRecords: [...data.created_records],
+        partnerRecords: [...data.partner_records]
+      }
+    })
+  }
+
   render() {
     console.log(this.props)
     return (
@@ -221,7 +232,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/home" render={(props)=>(
-              (this.state.auth.isLoggedIn === true && this.state.currentUser.user !== {}) ? <Home {...props} userId={this.state.auth.user.id} currentUser={this.state.currentUser} /> : <Redirect to="/login" {...props} />
+              (this.state.auth.isLoggedIn === true && this.state.currentUser.user !== {}) ? <Home {...props} userId={this.state.auth.user.id} currentUser={this.state.currentUser} updateWSContent={this.updateHomeUser}  data-cableApp={this.props.cableApp} /> : <Redirect to="/login" {...props} />
             )} />
 
             <Route path="/myfiles" render={(props)=>(

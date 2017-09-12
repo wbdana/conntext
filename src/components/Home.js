@@ -2,13 +2,14 @@ import React from 'react'
 import { Container, List, Image, Grid, Header } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
-import UserCable from './UserCable'
+import HomeCable from './HomeCable'
 
 class Home extends React.Component {
   state = {
     user: {},
     createdRecords: [],
-    partnerRecords: []
+    partnerRecords: [],
+    openCable: true
   }
 
   grabUserData = (props) => {
@@ -30,6 +31,17 @@ class Home extends React.Component {
 
   componentDidMount(){
     this.grabUserData()
+    this.setState({
+      openCable: true
+    })
+  }
+
+  updateHome = (data) => {
+    this.setState({
+      user: data.user,
+      createdRecords: [...data.created_records],
+      partnerRecords: [...data.partner_records]
+    })
   }
 
   render() {
@@ -92,6 +104,14 @@ class Home extends React.Component {
             </Grid.Row>
           </Grid>
         </Container>
+
+        {this.state.openCable === true && <HomeCable
+          updateWSContent={this.props.updateWSContent}
+          updateHomeWSContent={this.updateHome}
+          data-cableApp={this.props['data-cableApp']}
+          userId={this.props.userId}
+        />}
+
       </div>
     )
   }

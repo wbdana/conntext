@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Grid, Header, List, Container, Card, Icon } from 'semantic-ui-react'
+import { Image, Grid, Header, Container, Card, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { TSP, FSP } from './PageAssets'
 import UserCable from './UserCable'

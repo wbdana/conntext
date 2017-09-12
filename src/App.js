@@ -52,6 +52,9 @@ class App extends Component {
       user: {},
       createdRecords: [],
       partnerRecords: []
+    },
+    userDirectory: {
+      users: []
     }
   }
 
@@ -206,6 +209,23 @@ class App extends Component {
     })
   }
 
+  initialUpdateUserDirectory = (data) => {
+    this.setState({
+      userDirectory: {
+        users: data
+      }
+    })
+  }
+
+  updateWSUserDirectory = (data) => {
+    console.log('Update UserDirectory from App')
+    this.setState({
+      userDirectory: {
+        users: data.users
+      }
+    })
+  }
+
   render() {
     console.log(this.props)
     return (
@@ -286,7 +306,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/users" render={(props)=>(
-              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <UserDirectory {...props} />
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <UserDirectory {...props} users={this.state.userDirectory.users} initialUpdateUserDirectory={this.initialUpdateUserDirectory} data-cableApp={this.props.cableApp} updateWSContent={this.updateWSUserDirectory} />
             )} />
 
             <Route path="/users/:id" render={(props)=>(

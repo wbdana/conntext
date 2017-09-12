@@ -2,11 +2,13 @@ import React from 'react'
 import { Container, Image, Input, Card } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
+import DirectoryCable from './DirectoryCable'
 
 class UserDirectory extends React.Component {
   state = {
-    users: [],
-    search: ''
+    users: this.props.users,
+    search: '',
+    openCable: false
   }
 
   grabUsers = () => {
@@ -20,8 +22,9 @@ class UserDirectory extends React.Component {
     fetch(`${APIURL()}/users`, options)
       .then(resp => resp.json())
       .then(json => this.setState({
-        users: [...json]
-      }))
+        users: [...json],
+        openCable: true
+      }, ()=>{this.props.initialUpdateUserDirectory([...json])}))
   }
 
   componentDidMount() {
@@ -31,6 +34,12 @@ class UserDirectory extends React.Component {
   updateSearch = (event, data) => {
     this.setState({
       search: data.value
+    })
+  }
+
+  updateUserDirectory = (data) => {
+    this.setState({
+      users: [...data.users]
     })
   }
 
@@ -63,6 +72,9 @@ class UserDirectory extends React.Component {
           })}
           </Card.Group>
         </Container>
+
+        {this.state.openCable === true && <DirectoryCable data-cableApp={this.props['data-cableApp']} updateWSContent={this.props.updateWSContent} updateUserDirectory={this.updateUserDirectory} />}
+
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, List, Image, Grid, Header, Card, Icon } from 'semantic-ui-react'
+import { Container, Image, Grid, Header, Card, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
 import HomeCable from './HomeCable'

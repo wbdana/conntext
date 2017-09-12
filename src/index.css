@@ -87,6 +87,10 @@ button#loginbutton, button#signupbutton {
   left: 45%;
 }
 
+div#messageform form input {
+  display: inline-block;
+};
+
 i.github.large.icon.middle.aligned {
 
 }

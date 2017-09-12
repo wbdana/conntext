@@ -295,12 +295,6 @@ class Editor extends React.Component {
 
                   <br/>
 
-                  {this.state.openAddPartner === true && <div className="AddPartnerForm">
-                    <AddPartnerForm fileId={this.state.recordId} addPartner={this.addPartner} />
-                  </div>}
-
-                  <br/>
-
                   <Button color='blue' basic fluid animated='fade' width="50%" onClick={this.handleNewSubmit}>
                     <Button.Content visible>
                       <Icon name='fork' />Save as New File
@@ -310,16 +304,39 @@ class Editor extends React.Component {
                     </Button.Content>
                   </Button>
 
+                  <br/>
+
+                  {this.state.openAddPartner === true && <div className="AddPartnerForm">
+                    <AddPartnerForm fileId={this.state.recordId} addPartner={this.addPartner} />
+                  </div>}
+
                 </Container>
               </Segment>
               <Segment className="chatbox">
                 <Container className="chatbox scroller">
                   <Messages messages={this.state.messages} />
                 </Container>
-                <Form onSubmit={this.sendMessage}>
-                  <Form.Input onChange={this.updateInputContent} value={this.state.inputContent} type='text' />
-                  <Form.Input type='submit' value='Send message' />
-                </Form>
+                <Container id='messageform'>
+                  <Form onSubmit={this.sendMessage}>
+                    <Form.Input
+                      onChange={this.updateInputContent}
+                      value={this.state.inputContent}
+                      action={<Button
+                                color='blue'
+                                basic
+                                animated='fade'
+                                size='small'
+                                onClick={this.sendMessage}>
+                                  <Button.Content visible>
+                                    <Icon name='write' />Send
+                                  </Button.Content>
+                                  <Button.Content hidden>
+                                    <Icon name='mail outline' />Send
+                                  </Button.Content>
+                                </Button>
+                              } />
+                  </Form>
+                </Container>
               </Segment>
             </Grid.Column>
           </Grid.Row>

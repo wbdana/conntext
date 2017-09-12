@@ -17,6 +17,7 @@ import About from './components/About'
 import GitFetch from './components/GitFetch'
 import Logout from './components/Logout'
 import ReadOnlyEditor from './components/ReadOnlyEditor'
+import NewGitFetch from './components/NewGitFetch'
 
 // Construction
 import Construction from './components/Construction'
@@ -302,6 +303,10 @@ class App extends Component {
             )} />
 
             <Route exact path="/gitfetch" render={(props)=>(
+              (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <NewGitFetch {...props} userId={this.state.auth.user.id} />
+            )} />
+
+            <Route exact path="/gitfetchdirect" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <Redirect to="login" {...props} /> : <GitFetch {...props} userId={this.state.auth.user.id} />
             )} />
 

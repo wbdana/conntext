@@ -1,6 +1,6 @@
 import React from 'react'
 import base64 from 'base-64'
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
 import { Container, Input, Button } from 'semantic-ui-react'
 import { APIURL, TSP } from './PageAssets'
 // import { GHTK } from '../.secret.js'
@@ -113,6 +113,7 @@ class GitFetch extends React.Component {
   render() {
     return(
       <Container textAlign='center' className="gitFetch">
+        <div>No idea what you need? <NavLink to="/gitfetch" exact>Try GitFetch Direct instead!</NavLink></div>
         {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
         <TSP />
         <Input fluid placeholder='wbdana' label='GitHub Username' type='text' onChange={this.updateGithubUsername} />

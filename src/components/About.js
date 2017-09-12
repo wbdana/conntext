@@ -10,18 +10,17 @@ const About = () => {
       <ul>
         <li>Connected Text (ConnText) is a work-in-progress text editor for programmers.</li>
 
-        <li>Features
+        <li>Features:
           <ol>
             <li>Multi-user live text editing (like Google Docs);</li>
-            <li>Live chatrooms for each file to facilitate communication for collaboration.</li>
+            <li>Live chatrooms for each file to facilitate communication for collaboration;</li>
             <li>Pull files from GitHub repos through GitFetch.</li>
           </ol>
         </li>
         <li>Stretch goals that may or may not be implemented at a later date:
           <ol>
-            <li>Full GitHub integration, including login/signup and ability to open full repos;</li>
-            <li>Ability to have multiple files open at once in tabs</li>
-            <li>Ability to create and push commits to GitHub directly from ConnText.</li>
+            <li>Ability to have multiple files open at once in tabs;</li>
+            <li>Full GitHub integration (whatever that means!).</li>
           </ol>
         </li>
       </ul>

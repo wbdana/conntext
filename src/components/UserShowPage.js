@@ -45,7 +45,7 @@ class UserShowPage extends React.Component {
             </Grid.Column>
             <Grid.Column width={6}>
               <FSP/>
-              <Header size='small'>Partner Files</Header>
+              <Header size='small'>Shared Files</Header>
                 <List divided relaxed link>
                   {this.state.partnerRecords.map( (file, index) => {
                     return(

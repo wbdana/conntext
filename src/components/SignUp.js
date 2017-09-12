@@ -10,9 +10,15 @@ class SignUp extends React.Component {
     profile_image_url: '',
   }
 
-  handleChange = (event) => {
+  updateEmail = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      email: event.target.value.toLowerCase()
+    })
+  }
+
+  updatePassword = (event) => {
+    this.setState({
+      password: event.target.value
     })
   }
 
@@ -41,8 +47,8 @@ class SignUp extends React.Component {
       <Container id='signup'>
         <Header size='small'>Sign Up</Header>
         <Form id='signup' >
-          <Form.Input label='Username' type='email' name='email' placeholder='Literally whatever you want' onChange={this.handleChange} />
-          <Form.Input label='Password' type='password' name='password' placeholder='Literally whatever you want' onChange={this.handleChange} />
+          <Form.Input label='Username' type='email' name='email' placeholder='Literally whatever you want' onChange={this.updateEmail} />
+          <Form.Input label='Password' type='password' name='password' placeholder='Literally whatever you want' onChange={this.updatePassword} />
           <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' placeholder='Must be .gif, .jpg, or .png' onChange={this.handleChange} />
         </Form>
         <TSP />

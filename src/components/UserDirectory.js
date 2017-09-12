@@ -47,7 +47,7 @@ class UserDirectory extends React.Component {
           />
           <TSP />
           <Card.Group itemsPerRow={7}>
-          {this.state.users.filter( user => {return user.email.includes(this.state.search)}).map( (user, index) => {
+          {this.state.users.filter( user => {return user.email.toLowerCase().includes(this.state.search.toLowerCase())}).map( (user, index) => {
             return(
               <Card key={index}>
                 <NavLink to={`users/${user.id}`}>

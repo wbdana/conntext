@@ -66,7 +66,7 @@ class PartnerFiles extends React.Component {
         />
         <TSP />
           <List divided relaxed link>
-            {this.state.records.filter(file => {return file.name.includes(this.state.search)}).map( (file, index) => {
+            {this.state.records.filter(file => {return file.name.toLowerCase().includes(this.state.search.toLowerCase())}).map( (file, index) => {
               return(
                 <List.Item key={index}>
                   <Grid>

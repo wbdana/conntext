@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, List, Image, Grid, Header } from 'semantic-ui-react'
+import { Container, List, Image, Grid, Header, Card, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
 import HomeCable from './HomeCable'
@@ -57,49 +57,49 @@ class Home extends React.Component {
               <Grid.Column width={6}>
                 <TSP/>
                 <Header size='medium'>Welcome to Connected Text, {this.state.user.email}</Header>
-                <List divided relaxed link>
-                {this.state.createdRecords.map((file, index)=>{
-                  return(
-                    <List.Item key={index}>
-                      <NavLink to={`editor/${file.id}`}>
-                        <List.Icon name='github' size='large' verticalAlign='middle' />
-                        <List.Content>
-                          <List.Header>
-                            {file.name}
-                          </List.Header>
-                          <List.Description>
-                            Last updated {file.updated_at}
-                          </List.Description>
-                        </List.Content>
-                      </NavLink>
-                    </List.Item>
-                  )
-                })}
-                </List>
+                <Card.Group className='homeRecords'>
+                  {this.state.createdRecords.map((file, index)=>{
+                    return(
+                      <Card fluid key={index} href='#na'>
+                        <NavLink to={`editor/${file.id}`}>
+                          <Icon name='github' size='large' verticalAlign='middle' color='black' />
+                          <Card.Content>
+                            <Card.Header size='medium' id='recordsCardHeader' color='black'>
+                              <p><strong>{file.name}</strong></p>
+                            </Card.Header>
+                            <Card.Description>
+                              Last updated {file.updated_at}
+                            </Card.Description>
+                          </Card.Content>
+                        </NavLink>
+                      </Card>
+                    )
+                  })}
+                </Card.Group>
               </Grid.Column>
               <Grid.Column width={6}>
                 <TSP/>
                 <Header size='medium'></Header>
                 <Header size='small'>Shared Files</Header>
-                <List divided relaxed link>
-                {this.state.partnerRecords.map((file, index)=>{
-                  return(
-                    <List.Item key={index}>
-                      <NavLink to={`editor/${file.id}`}>
-                        <List.Icon name='github' size='large' verticalAlign='middle' />
-                        <List.Content>
-                          <List.Header>
-                            {file.name}
-                          </List.Header>
-                          <List.Description>
-                            Last updated {file.updated_at}
-                          </List.Description>
-                        </List.Content>
-                      </NavLink>
-                    </List.Item>
-                  )
-                })}
-                </List>
+                <Card.Group className='homeRecords'>
+                  {this.state.partnerRecords.map((file, index)=>{
+                    return(
+                      <Card fluid key={index} href='#na'>
+                        <NavLink to={`editor/${file.id}`}>
+                          <Icon name='github' size='large' verticalAlign='middle' color='black' />
+                          <Card.Content>
+                            <Card.Header size='medium' id='recordsCardHeader' color='black'>
+                              <p><strong>{file.name}</strong></p>
+                            </Card.Header>
+                            <Card.Description>
+                              Last updated {file.updated_at}
+                            </Card.Description>
+                          </Card.Content>
+                        </NavLink>
+                      </Card>
+                    )
+                  })}
+                </Card.Group>
               </Grid.Column>
             </Grid.Row>
           </Grid>

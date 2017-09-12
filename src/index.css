@@ -91,8 +91,8 @@ div#messageform form input {
   display: inline-block;
 };
 
-i.github.large.icon.middle.aligned {
-
+i.icon.github {
+  color: black;
 }
 
 #deletebutton {
@@ -104,6 +104,23 @@ i.github.large.icon.middle.aligned {
 #deletebutton:hover, #deletepartnerbutton:hover {
   background-color: #940025;
   color: #FEF7DB;
+}
+
+/* Home savedfiles, partnerrecords cards */
+div.ui.homeRecords.cards a.ui.fluid.card a {
+  background-color: #D3D3D3 !important;
+}
+
+div.ui.homeRecords.cards a.ui.fluid.card a:hover {
+  background-color: #1678C2 !important;
+}
+
+div.ui.homeRecords.cards a.ui.fluid.card a i.black.github.large.icon:hover {
+  color: #000000 !important;
+}
+
+div#recordsCardHeader p {
+  color: rgba(0,0,0,.87)!important;
 }
 
 /* DEE1CD */

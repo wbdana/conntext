@@ -154,6 +154,7 @@ img.ui.large.image {
 
 div.ui.card a div.content div.header {
   text-overflow: ellipsis;
+  height: 60px;
 }
 
 /* Delete Partner Button */

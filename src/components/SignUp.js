@@ -22,6 +22,12 @@ class SignUp extends React.Component {
     })
   }
 
+  updatePicture = (event) => {
+    this.setState({
+      profile_image_url: event.target.value
+    })
+  }
+
   handleSubmit = (event) => {
     const options = {
       "method": "post",
@@ -49,7 +55,7 @@ class SignUp extends React.Component {
         <Form id='signup' >
           <Form.Input label='Username' type='email' name='email' placeholder='Literally whatever you want' onChange={this.updateEmail} />
           <Form.Input label='Password' type='password' name='password' placeholder='Literally whatever you want' onChange={this.updatePassword} />
-          <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' placeholder='Must be .gif, .jpg, or .png' onChange={this.handleChange} />
+          <Form.Input label='Profile Picture Link' type='profile_image_url' name='profile_image_url' placeholder='Must be .gif, .jpg, or .png' onChange={this.updatePicture} />
         </Form>
         <TSP />
         <Button onClick={this.handleSubmit} animated='fade' size='huge' basic color='blue' id='signupbutton'>

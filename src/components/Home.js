@@ -61,7 +61,7 @@ class Home extends React.Component {
                   {this.state.createdRecords.map((file, index)=>{
                     return(
                       <Card fluid key={index} href='#na'>
-                        <NavLink to={`editor/${file.id}`}>
+                        <NavLink to={`/editor/${file.id}`} exact>
                           <Icon name='github' size='large' verticalAlign='middle' color='black' />
                           <Card.Content>
                             <Card.Header size='medium' id='recordsCardHeader' color='black'>
@@ -85,7 +85,7 @@ class Home extends React.Component {
                   {this.state.partnerRecords.map((file, index)=>{
                     return(
                       <Card fluid key={index} href='#na'>
-                        <NavLink to={`editor/${file.id}`}>
+                        <NavLink to={`/editor/${file.id}`} exact>
                           <Icon name='github' size='large' verticalAlign='middle' color='black' />
                           <Card.Content>
                             <Card.Header size='medium' id='recordsCardHeader' color='black'>

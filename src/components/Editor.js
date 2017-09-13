@@ -357,7 +357,7 @@ class Editor extends React.Component {
                   return(
                     <Card key={index}>
                       <NavLink to={`/users/${user.id}`} exact>
-                        <Image src={user.profile_image_url} size='large' />
+                        <Image src={user.profile_image_url} alt={user.email} size='large' />
                         <Card.Content>
                           <Card.Header size='medium'>
                             {user.email}

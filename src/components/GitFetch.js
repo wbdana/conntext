@@ -104,51 +104,6 @@ class GitFetch extends React.Component {
     })
   }
 
-  fetchFile = () => {
-    console.log(this.state)
-    console.log(`https://api.github.com/repos/${this.state.githubUsername}/${this.state.repoName}/contents/${this.state.filePath}`)
-    const options = {
-      "method": "get",
-      "headers": {
-        "Authorization": "token be08da03fd41d99746b66e1c515fe27be2a153cc", // read only
-        "content-type": "application/json",
-        "accept": "application/vnd.github.v3+json"
-      }
-    }
-    fetch(`https://api.github.com/repos/${this.state.githubUsername}/${this.state.repoName}/contents/${this.state.filePath}`, options)
-      .then(resp => resp.json())
-      // .then(json => console.log(json))
-      .then(json => {
-        const fileContent = base64.decode(json.content.replace(/^\s+|\s+$/gm, '').split('\n').join(''))
-        const fileName = `${this.state.repoName}/${json.path}`
-        const fileLanguage = this.getLanguage(json.path)
-        const newFile = {
-          name: fileName,
-          content: fileContent,
-          language: fileLanguage,
-          owner_id: this.props.userId
-        }
-        return newFile
-      })
-      .then(newFile => {
-        const newOptions = {
-          "method": "post",
-          "headers": {
-            "content-type": "application/json",
-            "accept": "application/json"
-          },
-          "body": JSON.stringify(newFile)
-        }
-        fetch(`${APIURL()}/records`, newOptions)
-          .then(resp => resp.json())
-          .then(json => this.setState({
-            recordId: json.record.id,
-            redirect: true
-          }))
-      })
-      .catch(err => alert('Could not fetch this file from GitHub as specified! See About for assistance.'))
-  }
-
   loadFile = (event, data) => {
     const options = {
       "method": "get",
@@ -233,7 +188,7 @@ class GitFetch extends React.Component {
         }
       })
       .then(ret => this.setState({showRepos: true}))
-      .catch(err => alert(err))
+      .catch(err => alert('Could not find this user. In fact, that user probably does not exist.'))
   }
 
   fetchRepoFiles = (event, data) => {

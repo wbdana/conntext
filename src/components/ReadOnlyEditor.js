@@ -44,25 +44,33 @@ class ReadOnlyEditor extends React.Component {
       openAddPartner: false,
       partners: [],
       owner: {},
-      renderUsers: false
+      renderUsers: false,
+      failsafe: false
     }
   }
 
   manualFetch = () => {
-    fetch(`${APIURL()}/records/${window.location.href.match(/\d+$/)[0]}`)
-      .then(resp => resp.json())
-      .then(json => {this.setState({
-        name: json.record.name,
-        content: json.record.content,
-        language: json.record.language,
-        recordId: json.record.id,
-        owner_id: json.record.owner_id,
-        openCable: true,
-        messages: json.messages,
-        openAddPartner: true,
-        partners: [...json.partners]
-      }); return json})
-      .then(json => {this.fetchOwner()})
+    if (window.location.href.match(/\d+$/)) {
+      fetch(`${APIURL()}/records/${window.location.href.match(/\d+$/)[0]}`)
+        .then(resp => resp.json())
+        .then(json => {this.setState({
+          name: json.record.name,
+          content: json.record.content,
+          language: json.record.language,
+          recordId: json.record.id,
+          owner_id: json.record.owner_id,
+          openCable: true,
+          messages: json.messages,
+          openAddPartner: true,
+          partners: [...json.partners]
+        }); return json})
+        .then(json => {this.fetchOwner()})
+    } else {
+      alert('Invalid route!')
+      this.setState({
+        failsafe: true
+      })
+    }
   }
 
   fetchOwner = () => {
@@ -74,7 +82,7 @@ class ReadOnlyEditor extends React.Component {
       }, ()=>{setTimeout(console.log(this.state), 1500)})})
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.manualFetch()
     this.props.redirectReset()
   }
@@ -299,6 +307,8 @@ class ReadOnlyEditor extends React.Component {
             data-recordId={this.props.activeRecord.recordId}
             updateWSContent={this.updateWSContent}
           />}
+
+          {this.state.failsafe === true && <Redirect to="/home" exact />}
 
       </div>
     )

@@ -177,6 +177,7 @@ class App extends Component {
          }
        })
      }
+     document.title = "Connected Text"
   }
 
   resetRecord = () => {

@@ -28,7 +28,6 @@ import Auth from './services/Auth'
 // Page Assets
 import { APIURL } from './components/PageAssets'
 
-
 class App extends Component {
   state = {
     auth: {
@@ -324,8 +323,6 @@ class App extends Component {
             )} />
 
             <Route exact path="/construction" render={()=>(<Construction />)} />
-
-            <Route render={()=>(<Redirect to="/home" exact />)} />
 
           </div>
         </Router>

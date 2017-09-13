@@ -145,12 +145,12 @@ div.ui.gitfetchcards.cards a.ui.fluid.card:hover div.content, div.ui.gitfetchcar
 }
 
 /* MyFiles, SharedFiles LIs */
-div.middle.aligned.row:hover {
+div.middle.aligned.row:hover, div.middle.aligned.row:hover * {
   background-color: #1678C2 !important;
 }
 
-div.middle.aligned.row:hover div {
-  background-color: #1678C2 !important;
+div.middle.aligned.row:hover div.one.wide.column a i.github.huge.icon.middle.aligned {
+  color: #000000 !important;
 }
 
 /* MyFiles Delete Button */
@@ -158,8 +158,12 @@ div.middle.aligned.row div.five.wide.column button#deletebutton div.content {
   background-color: #767676 !important; /* different grey */
 }
 
-div.middle.aligned.row:hover div.five.wide.column button#deletebutton:hover div.content {
+div.middle.aligned.row:hover div.five.wide.column button#deletebutton:hover, div.middle.aligned.row:hover div.five.wide.column button#deletebutton:hover div.content {
   background-color: #940025 !important;
+}
+
+div.middle.aligned.row:hover div.five.wide.column button#deletebutton {
+  background-color: #767676 !important;
 }
 
 /* UserDirectory, Editor Partner Cards */

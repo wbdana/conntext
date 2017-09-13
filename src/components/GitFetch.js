@@ -230,6 +230,7 @@ class GitFetch extends React.Component {
           {this.state.redirect === true && <Redirect to={`/editor/${this.state.recordId}`} />}
           <TSP />
           <Input fluid placeholder='wbdana' label='GitHub Username' type='text' onChange={this.updateGithubUsername} value={this.state.githubUsername} />
+          <TSP />
           <Button onClick={this.fetchUserRepos}>GitFetch!</Button>
           <Button onClick={this.resetGitFetch}>Reset</Button>
         </Container>

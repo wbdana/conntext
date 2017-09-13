@@ -325,6 +325,8 @@ class App extends Component {
 
             <Route exact path="/construction" render={()=>(<Construction />)} />
 
+            <Route render={()=>(<Redirect to="/home" exact />)} />
+
           </div>
         </Router>
       </div>

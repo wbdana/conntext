@@ -41,7 +41,11 @@ class UserShowPage extends React.Component {
         <Container>
           <Grid>
             <Grid.Column width={4}>
-              <Image src={this.state.user.profile_image_url} />
+              <Card>
+                <Card.Header>
+                  <Image src={this.state.user.profile_image_url} />
+                </Card.Header>
+              </Card>
             </Grid.Column>
             <Grid.Column width={6}>
               <TSP/>

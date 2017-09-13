@@ -171,6 +171,14 @@ div.ui.four.cards div.ui.card:hover, div.ui.four.cards div.ui.card:hover * {
   background-color: #D3D3D3 !important;
 }
 
+div.ui.seven.cards div.ui.card {
+  background-color: #FEF7DB !important;
+}
+
+div.ui.seven.cards div.ui.card:hover, div.ui.seven.cards div.ui.card:hover div.header {
+  background-color: #D3D3D3 !important;
+}
+
 img.ui.large.image {
   max-width: 100%;
   max-height: 100%;

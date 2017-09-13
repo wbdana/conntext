@@ -106,7 +106,7 @@ i.icon.github {
   color: #FEF7DB;
 }
 
-/* Home savedfiles, partnerrecords cards */
+/* Home savedfiles, partnerrecords */
 div.ui.homeRecords.cards a.ui.fluid.card a {
   background-color: #D3D3D3 !important;
 }
@@ -121,6 +121,15 @@ div.ui.homeRecords.cards a.ui.fluid.card a i.black.github.large.icon:hover {
 
 div#recordsCardHeader p {
   color: rgba(0,0,0,.87)!important;
+}
+
+/* GitFetch repo, file cards */
+a.ui.fluid.card {
+  background-color: #FEF7DB !important;
+}
+
+a.ui.fluid.card:hover, a.ui.fluid.card:hover * {
+  background-color: #1678C2 !important;
 }
 
 /* MyFiles, SharedFiles LIs */

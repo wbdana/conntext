@@ -326,7 +326,7 @@ class Editor extends React.Component {
                                 basic
                                 animated='fade'
                                 size='small'
-                                onClick={this.sendMessage}>
+                                >
                                   <Button.Content visible>
                                     <Icon name='write' />Send
                                   </Button.Content>

@@ -107,8 +107,12 @@ i.icon.github {
 }
 
 /* Home savedfiles, partnerrecords */
-div.ui.homeRecords.cards a.ui.fluid.card a {
-  background-color: #D3D3D3 !important;
+div.ui.homeRecords.cards a.ui.fluid.card a, div.ui.homeRecords.cards a.ui.fluid.card a:hover * {
+  background-color: #D3D3D3 !important; /* grey */
+}
+
+div.ui.homeRecords.cards a.ui.fluid.card a:hover i.black.github.large.icon {
+  background-color: #1678C2 !important;
 }
 
 div.ui.homeRecords.cards a.ui.fluid.card a:hover {
@@ -124,12 +128,20 @@ div#recordsCardHeader p {
 }
 
 /* GitFetch repo, file cards */
-a.ui.fluid.card {
-  background-color: #FEF7DB !important;
+div.ui.gitfetchcards.cards a.ui.fluid.card {
+  background-color: #FEF7DB !important; /* off white */
 }
 
-a.ui.fluid.card:hover, a.ui.fluid.card:hover * {
-  background-color: #1678C2 !important;
+div.ui.gitfetchcards.cards a.ui.fluid.card:hover {
+  background-color: #D3D3D3 !important; /* off white */
+}
+
+div.ui.gitfetchcards.cards a.ui.fluid.card:hover {
+  background-color: #1678C2 !important; /* blue */
+}
+
+div.ui.gitfetchcards.cards a.ui.fluid.card:hover div.content, div.ui.gitfetchcards.cards a.ui.fluid.card:hover div.content * {
+  background-color: #D3D3D3 !important;
 }
 
 /* MyFiles, SharedFiles LIs */
@@ -143,7 +155,7 @@ div.middle.aligned.row:hover div {
 
 /* MyFiles Delete Button */
 div.middle.aligned.row div.five.wide.column button#deletebutton div.content {
-  background-color: #767676 !important;
+  background-color: #767676 !important; /* different grey */
 }
 
 div.middle.aligned.row:hover div.five.wide.column button#deletebutton:hover div.content {

@@ -236,34 +236,40 @@ class GitFetch extends React.Component {
         <br/><br/>
         <Container className='repoList'>
           {this.state.showRepos === true && <Input fluid placeholder='Search repos...' label='Repo Search' type='text' onChange={this.updateRepoSearchTerm} value={this.state.repoSearchTerm} />}
-          {this.state.showRepos === true && this.state.userRepos.filter(repo => {return repo.name.toLowerCase().includes(this.state.repoSearchTerm.toLowerCase())}).map( (repo, index) => {
-            return(
-              <Card fluid key={index} href='#' onClick={this.fetchRepoFiles} value={repo.name}>
-                <Icon name='github' size='large' verticalAlign='middle' color='black' />
-                <Card.Content>
-                  <Card.Header size='medium' id='recordsCardHeader' color='black'>
-                    <p><strong>{repo.name}</strong></p>
-                  </Card.Header>
-                  <Card.Description>
-                    Last updated {repo.updated_at}
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-            )
-          })}
+          <br/><br/>
+          <Card.Group className='gitfetchcards'>
+            {this.state.showRepos === true && this.state.userRepos.filter(repo => {return repo.name.toLowerCase().includes(this.state.repoSearchTerm.toLowerCase())}).map( (repo, index) => {
+              return(
+                <Card fluid key={index} href='#' onClick={this.fetchRepoFiles} value={repo.name}>
+                  <Icon name='github' size='large' verticalAlign='middle' color='black' />
+                  <Card.Content>
+                    <Card.Header size='medium' id='recordsCardHeader' color='black'>
+                      <p id='strong'><strong>{repo.name}</strong></p>
+                    </Card.Header>
+                    <Card.Description>
+                      Last updated {repo.updated_at}
+                    </Card.Description>
+                  </Card.Content>
+                </Card>
+              )
+            })}
+          </Card.Group>
           {this.state.showFiles === true && <Input fluid placeholder='Search files...' label='File Search' type='text' onChange={this.updateFileSearchTerm} value={this.state.fileSearchTerm} />}
-          {this.state.showFiles === true && this.state.files.filter(file => {return file.path.toLowerCase().includes(this.state.fileSearchTerm.toLowerCase())}).map( (file, index) => {
-            return(
-              <Card fluid key={index} href='#' onClick={this.loadFile} value={file.path}>
-                <Icon name='github' size='large' verticalAlign='middle' color='black' />
-                <Card.Content>
-                  <Card.Header size='medium' id='recordsCardHeader' color='black'>
-                    <p><strong>{file.path}</strong></p>
-                  </Card.Header>
-                </Card.Content>
-              </Card>
-            )
-          })}
+          <br/><br/>
+          <Card.Group  className='gitfetchcards'>
+            {this.state.showFiles === true && this.state.files.filter(file => {return file.path.toLowerCase().includes(this.state.fileSearchTerm.toLowerCase())}).map( (file, index) => {
+              return(
+                <Card fluid key={index} href='#' onClick={this.loadFile} value={file.path}>
+                  <Icon name='github' size='large' verticalAlign='middle' color='black' />
+                  <Card.Content>
+                    <Card.Header size='medium' id='recordsCardHeader' color='black'>
+                      <p id='strong'><strong>{file.path}</strong></p>
+                    </Card.Header>
+                  </Card.Content>
+                </Card>
+              )
+            })}
+          </Card.Group>
         </Container>
       </Container>
     )

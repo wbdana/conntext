@@ -6,7 +6,6 @@ class RecordCable extends React.Component {
     if (window.location.href.match(/\d+$/) !== null) {
       this.props['data-cableApp'].record = this.props['data-cableApp'].cable.subscriptions.create({channel: "RecordChannel", room: window.location.href.match(/\d+$/)[0]}, {
         received: (data) => {
-          console.log(data)
           this.props.updateWSContent(data)
         }
       })

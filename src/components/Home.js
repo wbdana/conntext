@@ -49,7 +49,7 @@ class Home extends React.Component {
       <div className="homepage">
         <Container>
           <TSP/>
-          <Grid celled>
+          <Grid celled container columns={3}>
             <Grid.Row>
               <Grid.Column width={4}>
                 <Card>

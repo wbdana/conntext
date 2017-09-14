@@ -155,7 +155,6 @@ class GitFetch extends React.Component {
     }
     const parse = require('parse-link-header')
     fetch(`https://api.github.com/users/${this.state.githubUsername}/repos?sort=pushed`, options)
-      // .then(resp => resp.json())
       .then(json => {
         const pageHeaders = json.headers.get('Link')
         return pageHeaders
@@ -202,11 +201,13 @@ class GitFetch extends React.Component {
     }, () => {
       fetch(`https://api.github.com/repos/${this.state.githubUsername}/${this.state.activeRepo}/branches`, options)
         .then(resp => resp.json())
+        // .then(json => console.log(json))
         .then(json => this.setState({
           sha: json.filter(branch => {return branch.name === "master"})[0].commit.sha
         }, () => {
           fetch(`https://api.github.com/repos/${this.state.githubUsername}/${this.state.activeRepo}/git/trees/${this.state.sha}?recursive=1`, options)
             .then(resp => resp.json())
+            // .then(json => console.log(json))
             .then(json => this.setState({
               files: [...json.tree.filter((item) => {return item.type === "blob"})],
               showRepos: false,

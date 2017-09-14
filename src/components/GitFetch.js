@@ -184,7 +184,7 @@ class GitFetch extends React.Component {
         }
       })
       .then(ret => this.setState({showRepos: true}))
-      .catch(err => alert('Could not find this user. In fact, that user probably does not exist. Or they have less than 30 public repos, in which case I will add support for that user soon!'))
+      .catch(err => alert('Could not find this user. In fact, that user probably does not exist, or they have less than 30 public repos.'))
   }
 
   fetchRepoFiles = (event, data) => {
@@ -196,6 +196,7 @@ class GitFetch extends React.Component {
         "accept": "application/vnd.github.v3+json"
       }
     }
+    // console.log(data.value)
     this.setState({
       activeRepo: data.value
     }, () => {
@@ -212,7 +213,7 @@ class GitFetch extends React.Component {
               files: [...json.tree.filter((item) => {return item.type === "blob"})],
               showRepos: false,
               showFiles: true
-            }))
+            }, () => {console.log(this.state.files)}))
         }))
     })
   }

@@ -242,7 +242,7 @@ class App extends Component {
               (this.state.auth.isLoggedIn === true && this.state.currentUser.user !== {}) ? <Redirect to="/home" {...props} currentUser={this.state.currentUser} /> : <Login login={this.login} />
             )} />
 
-            <Route exact path="/editor/login" render={(props)=>(<Redirect to="/login" />)} />
+            <Route exact path="/editor/login" render={(props)=>(<Redirect to="/home" />)} />
 
             <Route exact path="/signup" render={(props)=>(
               (this.state.auth.isLoggedIn === false) ? <SignUp {...props} login={this.login} /> : <Redirect to="/home" {...props} />

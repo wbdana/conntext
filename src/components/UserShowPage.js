@@ -45,16 +45,15 @@ class UserShowPage extends React.Component {
                 <Card.Header>
                   <Image src={this.state.user.profile_image_url} />
                 </Card.Header>
+                <Header size='medium'>{this.state.user.email}</Header>
               </Card>
             </Grid.Column>
             <Grid.Column width={6}>
-              <TSP/>
-              <Header size='medium'>{this.state.user.email}</Header>
               <Header size='small'>Created Files</Header>
                 <Card.Group className='homeRecords'>
                 {this.state.createdRecords.map((file, index)=>{
                   return(
-                    <Card fluid key={index} href='#na'>
+                    <Card fluid key={index}  id='homecard'>
                       <NavLink to={`/noeditor/${file.id}`} exact>
                         <Icon name='github' size='large' verticalAlign='middle' color='black' />
                         <Card.Content>
@@ -72,12 +71,11 @@ class UserShowPage extends React.Component {
                 </Card.Group>
             </Grid.Column>
             <Grid.Column width={6}>
-              <FSP/>
               <Header size='small'>Shared Files</Header>
                 <Card.Group className='homeRecords'>
                 {this.state.partnerRecords.map((file, index)=>{
                   return(
-                    <Card fluid key={index} href='#na'>
+                    <Card fluid key={index}  id='homecard'>
                       <NavLink to={`/noeditor/${file.id}`} exact>
                         <Icon name='github' size='large' verticalAlign='middle' color='black' />
                         <Card.Content>

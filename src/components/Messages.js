@@ -12,7 +12,6 @@ class Messages extends React.Component {
 
   componentDidMount(){
     this.scrollToBottom()
-    console.log('Should have worked!')
   }
 
   componentDidUpdate(){
@@ -22,7 +21,7 @@ class Messages extends React.Component {
   render() {
     return(
       <Container className="messages">
-        <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} onChange={this.handleChange}>
+        <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false}>
           <List celled animated>
             {this.props.messages.map( (message, index) => {
               return(

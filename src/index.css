@@ -107,10 +107,33 @@ i.icon.github {
 }
 
 /* Home savedfiles, partnerrecords */
-div.ui.homeRecords.cards a.ui.fluid.card a, div.ui.homeRecords.cards a.ui.fluid.card a:hover * {
+/*div.ui.homeRecords.cards a.ui.fluid.card a, div.ui.homeRecords.cards a.ui.fluid.card a:hover *, div.ui.homeRecords.cards a.ui.fluid.card:hover, #homecard, #homecard:hover {
   background-color: #D3D3D3 !important; /* grey */
+/*}*/
+
+div.ui.homeRecords.cards {
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
+#homecard {
+  background-color: #D3D3D3 !important;
+  font: #000000 !important;
+}
+
+#homecard:hover, #homecard:hover {
+  background-color: #1678C2 !important;
+}
+
+#homecard:hover a {
+  background-color: #1678C2 !important;
+}
+
+#homecard:hover a div, #homecard:hover a div * {
+  background-color: #D3D3D3 !important;
+}
+
+/*
 div.ui.homeRecords.cards a.ui.fluid.card a:hover i.black.github.large.icon {
   background-color: #1678C2 !important;
 }
@@ -125,7 +148,7 @@ div.ui.homeRecords.cards a.ui.fluid.card a i.black.github.large.icon:hover {
 
 div#recordsCardHeader p {
   color: rgba(0,0,0,.87)!important;
-}
+}*/
 
 /* GitFetch repo, file cards */
 div.ui.gitfetchcards.cards a.ui.fluid.card {
@@ -212,6 +235,10 @@ div.gitfetchlink {
   height: 300px;
   background-color: white;
   font-color: #000000;
+}
+
+.homeRecords {
+  height: 500px;
 }
 
 .input {

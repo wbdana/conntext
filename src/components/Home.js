@@ -3,6 +3,7 @@ import { Container, Image, Grid, Header, Card, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
 import HomeCable from './HomeCable'
+import ScrollArea from 'react-scrollbar'
 
 class Home extends React.Component {
   state = {
@@ -25,14 +26,14 @@ class Home extends React.Component {
       .then(json => this.setState({
         user: json.user,
         createdRecords: json.created_records,
-        partnerRecords: json.partner_records
+        partnerRecords: json.partner_records,
       }))
   }
 
   componentDidMount(){
     this.grabUserData()
     this.setState({
-      openCable: true
+      openCable: true,
     })
   }
 
@@ -51,20 +52,20 @@ class Home extends React.Component {
           <TSP/>
           <Grid celled container columns={3}>
             <Grid.Row>
-              <Grid.Column width={4}>
+              <Grid.Column width={4} vertically padded vertical verticalAlign='top'>
                 <Card>
                   <Card.Header>
                     <Image src={this.state.user.profile_image_url} />
+                    <Header size='medium'>Welcome to Connected Text, {this.state.user.email}</Header>
                   </Card.Header>
                 </Card>
               </Grid.Column>
               <Grid.Column width={6}>
-                <TSP/>
-                <Header size='medium'>Welcome to Connected Text, {this.state.user.email}</Header>
+                <Header size='small'>Created Files</Header>
                 <Card.Group className='homeRecords'>
                   {this.state.createdRecords.map((file, index)=>{
                     return(
-                      <Card fluid key={index} href='#na'>
+                      <Card fluid key={index} id='homecard'>
                         <NavLink to={`/editor/${file.id}`} exact>
                           <Icon name='github' size='large' verticalAlign='middle' color='black' />
                           <Card.Content>
@@ -82,13 +83,11 @@ class Home extends React.Component {
                 </Card.Group>
               </Grid.Column>
               <Grid.Column width={6}>
-                <TSP/>
-                <Header size='medium'></Header>
                 <Header size='small'>Shared Files</Header>
                 <Card.Group className='homeRecords'>
                   {this.state.partnerRecords.map((file, index)=>{
                     return(
-                      <Card fluid key={index} href='#na'>
+                      <Card fluid key={index}  id='homecard' link>
                         <NavLink to={`/editor/${file.id}`} exact>
                           <Icon name='github' size='large' verticalAlign='middle' color='black' />
                           <Card.Content>

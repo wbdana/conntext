@@ -180,9 +180,6 @@ class GitFetch extends React.Component {
             .then(json => {
               this.setState({
                 userRepos: [...this.state.userRepos, ...json]
-              }, ()=>{
-                console.log(this.state.userRepos)
-                console.log(i)
               })
             })
         }
@@ -200,24 +197,21 @@ class GitFetch extends React.Component {
         "accept": "application/vnd.github.v3+json"
       }
     }
-    // console.log(data.value)
     this.setState({
       activeRepo: data.value
     }, () => {
       fetch(`https://api.github.com/repos/${this.state.githubUsername}/${this.state.activeRepo}/branches`, options)
         .then(resp => resp.json())
-        // .then(json => console.log(json))
         .then(json => this.setState({
           sha: json.filter(branch => {return branch.name === "master"})[0].commit.sha
         }, () => {
           fetch(`https://api.github.com/repos/${this.state.githubUsername}/${this.state.activeRepo}/git/trees/${this.state.sha}?recursive=1`, options)
             .then(resp => resp.json())
-            // .then(json => console.log(json))
             .then(json => this.setState({
               files: [...json.tree.filter((item) => {return item.type === "blob"})],
               showRepos: false,
               showFiles: true
-            }, () => {console.log(this.state.files)}))
+            }))
         }))
     })
   }

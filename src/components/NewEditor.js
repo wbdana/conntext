@@ -95,7 +95,6 @@ class NewEditor extends React.Component {
   }
 
   render() {
-    console.log('Rendering!')
     return(
       <div className="newEditor">
         <Grid celled stretched>

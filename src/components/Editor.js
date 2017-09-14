@@ -269,8 +269,6 @@ class Editor extends React.Component {
                 keyboardHandler="vim"
                 width="100%"
                 setOptions={{
-                  enableBasicAutocompletion: true,
-                  enableLiveAutocompletion: true,
                   behavioursEnabled: true,
                   wrapBehavioursEnabled: true,
                   autoScrollEditorIntoView: true

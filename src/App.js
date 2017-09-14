@@ -139,7 +139,6 @@ class App extends Component {
             "accept": "application/json"
           }
         }
-        console.log(`${APIURL()}/users/${this.state.auth.user.id}`)
         fetch(`${APIURL()}/users/${this.state.auth.user.id}`, options)
           .then(resp => resp.json())
           .then(json => this.setState({
@@ -185,7 +184,6 @@ class App extends Component {
   }
 
   updateViewUser = (data) => {
-    console.log('Fired!')
     this.setState({
       viewUser: {
         user: data.user,
@@ -196,7 +194,6 @@ class App extends Component {
   }
 
   updateHomeUser = (data) => {
-    console.log('UpdateHomeUser from App')
     this.setState({
       currentUser: {
         user: data.user,
@@ -215,7 +212,6 @@ class App extends Component {
   }
 
   updateWSUserDirectory = (data) => {
-    console.log('Update UserDirectory from App')
     this.setState({
       userDirectory: {
         users: data.users
@@ -224,7 +220,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="App">
         <Router>

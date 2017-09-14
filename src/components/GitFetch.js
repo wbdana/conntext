@@ -184,7 +184,7 @@ class GitFetch extends React.Component {
         }
       })
       .then(ret => this.setState({showRepos: true}))
-      .catch(err => alert('Could not find this user. In fact, that user probably does not exist.'))
+      .catch(err => alert('Could not find this user. In fact, that user probably does not exist. Or they have less than 30 public repos, in which case I will add support for that user soon!'))
   }
 
   fetchRepoFiles = (event, data) => {

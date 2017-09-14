@@ -10,9 +10,10 @@ class Messages extends React.Component {
     node.scrollIntoView({ behavior: "smooth" })
   }
 
-  componentDidUpdate(){
-    this.scrollToBottom()
-  }
+  // This works but winds up being really annoying
+  // componentDidUpdate(){
+  //   this.scrollToBottom()
+  // }
 
   render() {
     return(

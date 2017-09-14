@@ -73,12 +73,6 @@ const NavBar = (props) => {
           <Icon name='remove user' /> Logout - {props.username}
         </Menu.Item></NavLink>}
 
-        <NavLink to="/construction" exact>
-          <Menu.Item name='construction'>
-            <Icon name='warning sign' />SITE UNDER CONSTRUCTION
-          </Menu.Item>
-        </NavLink>
-
       </Menu>
     </Container>
   )

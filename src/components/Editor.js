@@ -187,24 +187,26 @@ class Editor extends React.Component {
   }
 
   sendMessage = () => {
-    const body = {
-      record_id: this.state.recordId,
-      content: this.state.inputContent,
-      user_id: this.state.userId
+    if (this.state.inputContent !== "") {
+      const body = {
+        record_id: this.state.recordId,
+        content: this.state.inputContent,
+        user_id: this.state.userId
+      }
+      const options = {
+        "method": "post",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        "body": JSON.stringify(body)
+      }
+      fetch(`${APIURL()}/messages`, options)
+        .then(resp => resp.json())
+        .then(json => this.setState({
+          inputContent: ''
+        }, console.log('Message sent!')))
     }
-    const options = {
-      "method": "post",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json"
-      },
-      "body": JSON.stringify(body)
-    }
-    fetch(`${APIURL()}/messages`, options)
-      .then(resp => resp.json())
-      .then(json => this.setState({
-        inputContent: ''
-      }, console.log('Message sent!')))
   }
 
   addPartner = (partnerName, fileId) => {

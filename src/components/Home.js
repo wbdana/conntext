@@ -3,7 +3,6 @@ import { Container, Image, Grid, Header, Card, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { APIURL, TSP } from './PageAssets'
 import HomeCable from './HomeCable'
-import ScrollArea from 'react-scrollbar'
 
 class Home extends React.Component {
   state = {
@@ -52,7 +51,7 @@ class Home extends React.Component {
           <TSP/>
           <Grid celled container columns={3}>
             <Grid.Row>
-              <Grid.Column width={4} vertically padded vertical verticalAlign='top'>
+              <Grid.Column width={4} verticalAlign='top'>
                 <Card>
                   <Card.Header>
                     <Image src={this.state.user.profile_image_url} />
@@ -67,7 +66,7 @@ class Home extends React.Component {
                     return(
                       <Card fluid key={index} id='homecard'>
                         <NavLink to={`/editor/${file.id}`} exact>
-                          <Icon name='github' size='large' verticalAlign='middle' color='black' />
+                          <Icon name='github' size='large' color='black' />
                           <Card.Content>
                             <Card.Header size='medium' id='recordsCardHeader' color='black'>
                               <p><strong>{file.name}</strong></p>
@@ -89,7 +88,7 @@ class Home extends React.Component {
                     return(
                       <Card fluid key={index}  id='homecard' link>
                         <NavLink to={`/editor/${file.id}`} exact>
-                          <Icon name='github' size='large' verticalAlign='middle' color='black' />
+                          <Icon name='github' size='large' color='black' />
                           <Card.Content>
                             <Card.Header size='medium' id='recordsCardHeader' color='black'>
                               <p><strong>{file.name}</strong></p>

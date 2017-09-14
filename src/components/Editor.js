@@ -74,7 +74,7 @@ class Editor extends React.Component {
       .then(json => {this.setState({
         owner: json.user,
         renderUsers: true
-      }, ()=>{setTimeout(console.log(this.state), 1500)})})
+      })})
   }
 
   componentWillMount() {
@@ -135,7 +135,6 @@ class Editor extends React.Component {
     fetch(`${APIURL()}/records`, options)
       .then(resp => resp.json())
       .then(json => {
-        console.log(json)
         this.setState({
         name: json.record.name,
         language: json.record.language,
@@ -205,7 +204,7 @@ class Editor extends React.Component {
         .then(resp => resp.json())
         .then(json => this.setState({
           inputContent: ''
-        }, console.log('Message sent!')))
+        }))
     }
   }
 
@@ -243,8 +242,6 @@ class Editor extends React.Component {
       },
       "body": JSON.stringify(obj)
     }
-    console.log(options)
-    console.log(`${APIURL()}/records_users`)
     fetch(`${APIURL()}/records_users`, options)
       // .then(resp => resp.json())
       .then(json => {

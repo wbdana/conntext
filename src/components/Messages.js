@@ -10,10 +10,6 @@ class Messages extends React.Component {
     node.scrollIntoView({ behavior: "smooth" })
   }
 
-  componentDidMount(){
-    this.scrollToBottom()
-  }
-
   componentDidUpdate(){
     this.scrollToBottom()
   }

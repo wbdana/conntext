@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, Grid, Header, Container, Card, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
-import { TSP, FSP } from './PageAssets'
+import { TSP } from './PageAssets'
 import UserCable from './UserCable'
 
 class UserShowPage extends React.Component {
@@ -23,7 +23,6 @@ class UserShowPage extends React.Component {
   }
 
   updateUserShowPageWSContent = (data) => {
-    console.log('Firing on the UserShowPage!')
     this.setState({
       user: data.user,
       createdRecords: [...data.created_records],
@@ -32,9 +31,6 @@ class UserShowPage extends React.Component {
   }
 
   render() {
-    console.log(this.props.viewUser.user)
-    console.log(this.props.viewUser.createdRecords)
-    console.log(this.props.viewUser.partnerRecords)
     return(
       <div className="userShowPage">
         <TSP/>

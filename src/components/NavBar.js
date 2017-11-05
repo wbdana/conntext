@@ -8,7 +8,7 @@ const NavBar = (props) => {
 
       <Menu className="navbar">
 
-        <a href='https://github.com/wbdana/' target='_blank' rel="noopener noreferrer">
+        <a href='https://wbdana.herokuapp.com' target='_blank' rel="noopener noreferrer">
           <Menu.Item name="conntext">
             Connected Text - by wbdana
           </Menu.Item>

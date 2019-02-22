@@ -34,7 +34,7 @@ class Login extends React.Component {
             Login
           </Button.Content>
           <Button.Content hidden>
-            Code Time!
+            Go!
           </Button.Content>
         </Button>
         <TSP />

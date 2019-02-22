@@ -70,7 +70,6 @@ class GitFetchDirect extends React.Component {
     const options = {
       "method": "get",
       "headers": {
-        "Authorization": "token be08da03fd41d99746b66e1c515fe27be2a153cc", // read only
         "content-type": "application/json",
         "accept": "application/vnd.github.v3+json"
       }

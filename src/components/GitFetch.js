@@ -108,7 +108,6 @@ class GitFetch extends React.Component {
     const options = {
       "method": "get",
       "headers": {
-        "Authorization": "token 75357d1db793700cc3a981c68a98df16473f6982", // read only
         "content-type": "application/json",
         "accept": "application/vnd.github.v3+json"
       }

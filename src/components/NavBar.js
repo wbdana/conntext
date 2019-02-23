@@ -42,7 +42,8 @@ const NavBar = (props) => {
         {
           props.loggedIn === true &&
           <NavLink to="/gitfetch" exact>
-            <Menu.Item name='gitfetch'>
+            <Menu.Item name='gitfetch' onClick={() => alert('GitFetch is currently undergoing repairs and may not' +
+                ' work right now.')}>
               <Icon name='warning sign' />GitFetch
             </Menu.Item>
           </NavLink>

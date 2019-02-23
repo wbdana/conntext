@@ -105,6 +105,7 @@ class GitFetch extends React.Component {
   }
 
   loadFile = (event, data) => {
+    console.log(process.env);
     const options = {
       "method": "get",
       "headers": {

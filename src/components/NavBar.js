@@ -38,13 +38,14 @@ const NavBar = (props) => {
           </Menu.Item>
         </NavLink>}
 
-        {/*<NavLink to="/gitfetch" exact>*/}
-        {/*</NavLink>*/}
+
         {
           props.loggedIn === true &&
-          <Menu.Item name='gitfetch' onClick={() => (alert('GitFetch is currently undergoing repairs. Stay tuned!'))}>
-            <Icon name='warning sign' />GitFetch
-          </Menu.Item>
+          <NavLink to="/gitfetch" exact>
+            <Menu.Item name='gitfetch' onClick={() => (alert('GitFetch is currently undergoing repairs. Stay tuned!'))}>
+              <Icon name='warning sign' />GitFetch
+            </Menu.Item>
+          </NavLink>
         }
 
         {props.loggedIn === true && <NavLink to="/users" exact>

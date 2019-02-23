@@ -103,7 +103,7 @@ class App extends Component {
   // Need to add error handling
   login = (loginParams) => {
     Auth.login(loginParams)
-      .then( user => {
+      .then(user => {
         if (!user.error) {
           this.setState({
             auth:{
@@ -116,7 +116,7 @@ class App extends Component {
         }
       }).then(()=>{
         Auth.currentUser()
-          .then( user => {
+          .then(user => {
             if (!user.error) {
               this.setState({
                 auth: {
@@ -158,7 +158,7 @@ class App extends Component {
     if (localStorage.getItem('jwt')) {
      Auth.currentUser()
        .then(user => {
-         if (!user.error) {
+         if (user && !user.error) {
            this.setState({
              auth: {
                isLoggedIn: true,

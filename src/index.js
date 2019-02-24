@@ -12,9 +12,6 @@ import 'semantic-ui-css/semantic.min.css'
 // ActionCable setup
 import actionCable from 'actioncable'
 
-// dotenv setup
-require('dotenv').config();
-
 const CableApp = {}
 CableApp.cable = actionCable.createConsumer(`wss://conntext-api.herokuapp.com/cable`)
 

@@ -20,7 +20,7 @@ class GitFetch extends React.Component {
     files: [],
     showFiles: false,
     fileSearchTerm: ''
-  }
+  };
 
 
   componentWillUnmount(){
@@ -38,19 +38,19 @@ class GitFetch extends React.Component {
     this.setState({
       githubUsername: data.value
     })
-  }
+  };
 
   updateRepoName = (event, data) => {
     this.setState({
       repoName: data.value
     })
-  }
+  };
 
   updateFilePath = (event, data) => {
     this.setState({
       filePath: data.value
     })
-  }
+  };
 
   getLanguage = (filePath) => {
     if (filePath.includes('.rb')) {
@@ -72,19 +72,19 @@ class GitFetch extends React.Component {
     } else {
       return 'ruby'
     }
-  }
+  };
 
   updateRepoSearchTerm = (event, data) => {
     this.setState({
       repoSearchTerm: data.value
-    })
-  }
+    });
+  };
 
   updateFileSearchTerm = (event, data) => {
     this.setState({
       fileSearchTerm: data.value
-    })
-  }
+    });
+  };
 
   resetGitFetch = () => {
     this.setState({
@@ -101,8 +101,8 @@ class GitFetch extends React.Component {
       files: [],
       showFiles: false,
       fileSearchTerm: ''
-    })
-  }
+    });
+  };
 
   loadFile = (event, data) => {
     console.log(process.env);
@@ -113,19 +113,19 @@ class GitFetch extends React.Component {
         "content-type": "application/json",
         "accept": "application/vnd.github.v3+json"
       }
-    }
+    };
     fetch(`https://api.github.com/repos/${this.state.githubUsername}/${this.state.activeRepo}/contents/${data.value}`, options)
       .then(resp => resp.json())
       .then(json => {
-        const fileContent = base64.decode(json.content.replace(/^\s+|\s+$/gm, '').split('\n').join(''))
-        const fileName = `${this.state.repoName}/${json.path}`
-        const fileLanguage = this.getLanguage(json.path)
+        const fileContent = base64.decode(json.content.replace(/^\s+|\s+$/gm, '').split('\n').join(''));
+        const fileName = `${this.state.repoName}/${json.path}`;
+        const fileLanguage = this.getLanguage(json.path);
         const newFile = {
           name: fileName,
           content: fileContent,
           language: fileLanguage,
           owner_id: this.props.userId
-        }
+        };
         return newFile
       })
       .then(newFile => {
@@ -136,16 +136,16 @@ class GitFetch extends React.Component {
             "accept": "application/json"
           },
           "body": JSON.stringify(newFile)
-        }
+        };
         fetch(`${APIURL()}/records`, newOptions)
           .then(resp => resp.json())
           .then(json => this.setState({
             recordId: json.record.id,
             redirect: true
-          }))
+          }));
       })
-      .catch(err => alert('Could not fetch this file from GitHub as specified! See About for assistance.'))
-  }
+      .catch(err => alert('Could not fetch this file from GitHub as specified! See About for assistance.'));
+  };
 
   fetchUserRepos = () => {
     const options = {
@@ -153,15 +153,15 @@ class GitFetch extends React.Component {
       "headers": {
         "Authorization": "token be08da03fd41d99746b66e1c515fe27be2a153cc"
       }
-    }
-    const parse = require('parse-link-header')
+    };
+    const parse = require('parse-link-header');
     fetch(`https://api.github.com/users/${this.state.githubUsername}/repos?sort=pushed`, options)
       .then(json => {
-        const pageHeaders = json.headers.get('Link')
+        const pageHeaders = json.headers.get('Link');
         return pageHeaders
       })
       .then(pageHeaders => {
-        const parsed = parse(pageHeaders)
+        const parsed = parse(pageHeaders);
         return parsed
       })
       .then(parsed => {
@@ -173,7 +173,7 @@ class GitFetch extends React.Component {
             "content-type": "application/json",
             "accept": "application/vnd.github.v3+json"
           }
-        }
+        };
         for (i = 1; i < parseInt(parsed.last.page, 10) + 1; i++) {
           fetch(`https://api.github.com/users/${this.state.githubUsername}/repos?page=${i}`, userRepoOptions)
             .then(resp => resp.json())
@@ -181,12 +181,13 @@ class GitFetch extends React.Component {
               this.setState({
                 userRepos: [...this.state.userRepos, ...json]
               })
-            })
+            });
         }
       })
       .then(ret => this.setState({showRepos: true}))
-      .catch(err => alert('Could not find this user. In fact, that user probably does not exist, or they have less than 30 public repos.'))
-  }
+      .catch(err => alert('Could not find this user. In fact, that user probably does not exist, or they have less' +
+          ' than 30 public repos.'));
+  };
 
   fetchRepoFiles = (event, data) => {
     const options = {
@@ -196,7 +197,7 @@ class GitFetch extends React.Component {
         "content-type": "application/json",
         "accept": "application/vnd.github.v3+json"
       }
-    }
+    };
     // console.log(data.value)
     this.setState({
       activeRepo: data.value
@@ -214,10 +215,10 @@ class GitFetch extends React.Component {
               files: [...json.tree.filter((item) => {return item.type === "blob"})],
               showRepos: false,
               showFiles: true
-            }, () => {console.log(this.state.files)}))
-        }))
-    })
-  }
+            }, () => {console.log(this.state.files)}));
+        }));
+    });
+  };
 
   render() {
     return(
@@ -274,4 +275,4 @@ class GitFetch extends React.Component {
   }
 }
 
-export default GitFetch
+export default GitFetch;

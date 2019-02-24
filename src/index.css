@@ -89,7 +89,7 @@ button#loginbutton, button#signupbutton {
 
 div#messageform form input {
   display: inline-block;
-};
+}
 
 i.icon.github {
   color: black;
@@ -118,7 +118,7 @@ div.ui.homeRecords.cards {
 
 #homecard {
   background-color: #D3D3D3 !important;
-  font: #000000 !important;
+  color: #000000 !important;
 }
 
 #homecard:hover, #homecard:hover {

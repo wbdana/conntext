@@ -44,7 +44,7 @@ const NavBar = (props) => {
           <NavLink to="/gitfetch" exact>
             <Menu.Item name='gitfetch' onClick={() => alert('GitFetch is currently undergoing repairs and may not' +
                 ' work right now.')}>
-              <Icon name='warning sign' />GitFetch
+              <Icon name='github' />GitFetch
             </Menu.Item>
           </NavLink>
         }

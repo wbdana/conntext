@@ -6,15 +6,17 @@ import registerServiceWorker from './registerServiceWorker';
 
 // CSS
 import './App.css';
-import 'semantic-ui-css/semantic.min.css'
-// import '../semantic/dist/semantic.min.css';
+import 'semantic-ui-css/semantic.min.css';
 
 // ActionCable setup
-import actionCable from 'actioncable'
+import actionCable from 'actioncable';
 
-const CableApp = {}
-CableApp.cable = actionCable.createConsumer(`wss://conntext-api.herokuapp.com/cable`)
+const CableApp = {};
+CableApp.cable = actionCable.createConsumer(`wss://conntext-api.herokuapp.com/cable`);
 
 // Pass in CableApp as cableApp prop
-ReactDOM.render(<App cableApp={CableApp} />, document.getElementById('root'));
+ReactDOM.render(
+    <App cableApp={CableApp} />,
+    document.getElementById('root')
+);
 registerServiceWorker();
